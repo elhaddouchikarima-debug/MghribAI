@@ -1,0 +1,223 @@
+/* STREAMING_CHUNK:Defining core CSS rules, design tokens, and keyframe animations... */
+body {
+font-family: 'Plus Jakarta Sans', sans-serif;
+background-color: #121212;
+color: #FAF8F5;
+overflow-x: hidden;
+}
+
+.font-heading {
+font-family: 'Cinzel', serif;
+}
+
+/* Glassmorphism Panels & Cards */
+.glass-panel {
+background: rgba(18, 18, 18, 0.88);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.glass-card {
+background: rgba(30, 26, 26, 0.8);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(250, 248, 245, 0.12);
+}
+
+.glass-card:hover {
+border-color: rgba(217, 119, 6, 0.6);
+box-shadow: 0 16px 40px -10px rgba(200, 75, 49, 0.4);
+}
+
+/* Gold Gradient Text */
+.text-gradient-gold {
+background: linear-gradient(135deg, #FAF8F5 0%, #D97706 50%, #C84B31 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+width: 8px;
+}
+::-webkit-scrollbar-track {
+background: #121212;
+}
+::-webkit-scrollbar-thumb {
+background: #C84B31;
+border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #D97706;
+}
+
+/* Zellige Pattern */
+.bg-zellige {
+background-image: url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M40 0l40 40-40 40L0 40z" fill="%23c84b31" fill-opacity="0.08"/%3E%3Cpath d="M40 10l30 30-30 30-30-30z" fill="%23d97706" fill-opacity="0.06"/%3E%3C/svg%3E');
+}
+
+/* Navigation links */
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: -4px;
+height: 2px;
+width: 0;
+background: #C84B31;
+transition: width .3s;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+
+/* Hero Slideshow Transitions */
+.hero-slide {
+transition: opacity 1.2s ease-in-out, transform 8s ease-out;
+opacity: 0;
+transform: scale(1.08);
+position: absolute;
+inset: 0;
+}
+.hero-slide.active {
+opacity: 1;
+transform: scale(1);
+}
+
+@keyframes patternMove {
+from { background-position: 0 0; }
+to { background-position: 320px 320px; }
+}
+.pattern-move {
+animation: patternMove 60s linear infinite;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(26px); }
+to { opacity: 1; transform: none; }
+}
+.fade-up {
+opacity: 0;
+animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.d1 { animation-delay: .1s; }
+.d2 { animation-delay: .25s; }
+.d3 { animation-delay: .4s; }
+.d4 { animation-delay: .55s; }
+.d5 { animation-delay: .7s; }
+
+/* Filter Tabs Styling */
+.tab-on {
+background: #C84B31;
+color: #ffffff;
+font-weight: 700;
+}
+.tab-off {
+color: rgba(250, 248, 245, 0.7);
+}
+.tab-off:hover {
+color: #ffffff;
+}
+
+.lang-on {
+background: #C84B31;
+color: #ffffff;
+font-weight: 700;
+}
+.lang-off {
+color: rgba(250, 248, 245, 0.6);
+}
+.lang-off:hover {
+color: #ffffff;
+}
+
+/* Planner Questionnaire Styling */
+#planner {
+transition: opacity .4s ease, visibility .4s;
+}
+#planner.hidden-planner {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+.opt {
+border: 1px solid rgba(255, 255, 255, 0.14);
+background: rgba(255, 255, 255, 0.04);
+border-radius: 18px;
+padding: 16px 12px;
+cursor: pointer;
+text-align: center;
+transition: all .25s;
+position: relative;
+}
+.opt:hover {
+border-color: #D97706;
+transform: translateY(-3px);
+}
+.opt.sel {
+border-color: #D97706;
+background: linear-gradient(135deg, rgba(200,75,49,0.5), rgba(217,119,6,0.22));
+box-shadow: 0 10px 28px rgba(200, 75, 49, 0.35);
+}
+.opt .tick {
+position: absolute;
+top: 8px;
+right: 8px;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #D97706;
+color: #121212;
+font-size: 10px;
+display: none;
+align-items: center;
+justify-content: center;
+}
+.opt.sel .tick {
+display: flex;
+}
+
+.pdot {
+width: 14px;
+height: 14px;
+border-radius: 50%;
+border: 2px solid rgba(255, 255, 255, 0.25);
+background: #121212;
+transition: all .4s;
+}
+.pdot.active {
+border-color: #D97706;
+background: #D97706;
+}
+.pdot.done {
+border-color: #C84B31;
+background: #C84B31;
+}
+.pline {
+height: 2px;
+flex: 1;
+background: rgba(255, 255, 255, 0.15);
+position: relative;
+overflow: hidden;
+}
+.pline i {
+position: absolute;
+inset: 0;
+width: 0;
+background: linear-gradient(90deg, #C84B31, #D97706);
+transition: width .5s ease;
+}
+.pline.done i {
+width: 100%;
+}
+
+@keyframes spinSlow {
+to { transform: rotate(360deg); }
+}
+.spin-slow {
+animation: spinSlow 8s linear infinite;
+}

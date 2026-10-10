@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MghribAI — Discover Morocco. Your Way.</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        morocco: {
+                            emerald: '#0F382C',
+                            emeraldDark: '#0A261E',
+                            terracotta: '#C84B31',
+                            terracottaDark: '#993520',
+                            sand: '#FAF8F5',
+                            saffron: '#D97706',
+                            obsidian: '#121212',
+                            darkCard: '#1E1A1A'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cinzel', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-morocco-obsidian text-morocco-sand min-h-screen relative selection:bg-morocco-terracotta selection:text-white">
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-30 bg-gradient-to-b from-morocco-obsidian/95 via-morocco-obsidian/80 to-transparent border-b border-white/10 transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-8 h-20 flex items-center justify-between gap-4">
+
+            <!-- Logo -->
+            <a href="#top" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-morocco-terracotta via-morocco-saffron to-morocco-emerald flex items-center justify-center p-[1.5px] shadow-lg shadow-morocco-terracotta/30 group-hover:shadow-morocco-saffron/50 transition-all">
+                    <div class="w-full h-full bg-morocco-obsidian rounded-[14px] flex items-center justify-center">
+                        <svg class="w-6 h-6 text-morocco-saffron group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 20.5L12 17L6.5 20.5L8 14L3 9.5L9.5 8.5L12 2Z"/>
+                            <circle cx="12" cy="12" r="2.5" fill="#FAF8F5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-2xl font-black tracking-wider text-gradient-gold">Mghrib<span class="text-morocco-saffron font-bold">AI</span></span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] text-morocco-saffron/90 font-semibold -mt-1">Moroccan Intelligence</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+                <a href="#discover" class="nav-link text-morocco-sand/90 hover:text-morocco-saffron transition-colors">Discover</a>
+                <a href="#destinations" class="nav-link text-morocco-sand/90 hover:text-morocco-saffron transition-colors">Destinations</a>
+                <a href="#experiences" class="nav-link text-morocco-sand/90 hover:text-morocco-saffron transition-colors">Experiences</a>
+                <button data-open-planner class="text-morocco-saffron font-bold flex items-center gap-2 py-2 px-4 rounded-xl bg-morocco-saffron/15 border border-morocco-saffron/40 hover:bg-morocco-saffron/25 transition-all">
+                    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Plan Your Trip
+                </button>
+            </nav>
+
+            <!-- Actions Bar -->
+            <div class="flex items-center gap-3 md:gap-4">
+                
+                <!-- Voice Translation Button -->
+                <button id="voiceTranslateBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-full bg-morocco-emerald/80 border border-morocco-emerald text-morocco-sand hover:bg-morocco-emerald hover:border-morocco-saffron text-xs font-bold transition-all shadow-md">
+                    <i class="fa-solid fa-microphone-lines text-morocco-saffron animate-pulse"></i>
+                    <span class="hidden sm:inline">Voice Darija</span>
+                </button>
+
+                <!-- Search Icon -->
+                <button id="searchToggle" aria-label="Search" class="w-10 h-10 rounded-full border border-white/15 hover:border-morocco-saffron hover:text-morocco-saffron transition-all flex items-center justify-center bg-white/5">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+
+                <!-- Language Selector -->
+                <div id="langSwitch" class="hidden sm:flex items-center bg-morocco-darkCard/90 border border-morocco-saffron/30 rounded-full p-1 text-xs font-semibold">
+                    <button class="lang-off px-2.5 py-1 rounded-full transition-all">FR</button>
+                    <button class="lang-on px-2.5 py-1 rounded-full transition-all">EN</button>
+                    <button class="lang-off px-2.5 py-1 rounded-full transition-all font-serif">العربية</button>
+                </div>
+
+                <!-- Hamburger Mobile Button -->
+                <button id="burger" aria-label="Menu" class="lg:hidden w-10 h-10 rounded-full border border-white/15 flex items-center justify-center bg-white/5">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="searchBar" class="hidden border-t border-white/10 bg-morocco-obsidian/95 backdrop-blur-xl transition-all">
+            <div class="max-w-3xl mx-auto px-5 py-3.5 flex items-center gap-3">
+                <i class="fa-solid fa-magnifying-glass text-morocco-saffron"></i>
+                <input id="searchInput" type="text" placeholder="Search cities, regions, or vibe (e.g., Marrakech, Desert, Beach, Hiking)..." class="w-full bg-transparent focus:outline-none text-sm placeholder-morocco-sand/40 text-white">
+                <button id="searchClear" class="text-morocco-sand/60 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-morocco-obsidian/95 backdrop-blur-xl">
+            <div class="px-5 py-5 flex flex-col gap-4 text-sm font-semibold">
+                <a href="#discover" class="mobile-link">Discover</a>
+                <a href="#destinations" class="mobile-link">Destinations</a>
+                <a href="#experiences" class="mobile-link">Experiences</a>
+                <button data-open-planner class="mobile-link text-left text-morocco-saffron"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Plan Your Trip</button>
+                <div class="flex items-center justify-between pt-3 border-t border-white/10">
+                    <div id="langSwitchMobile" class="flex items-center bg-morocco-darkCard border border-morocco-saffron/30 rounded-full p-1 text-xs">
+                        <button class="lang-off px-3 py-1 rounded-full">FR</button>
+                        <button class="lang-on px-3 py-1 rounded-full">EN</button>
+                        <button class="lang-off px-3 py-1 rounded-full font-serif">العربية</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="top" class="relative min-h-screen w-full pt-28 pb-16 flex flex-col justify-between overflow-hidden">
+        
+        <!-- Hero Slideshow -->
+        <div class="absolute inset-0 z-0" id="heroSlideshow">
+            <!-- Slide 0: Sahara Desert -->
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=2000&auto=format&fit=crop" alt="Sahara Desert Dunes" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-morocco-obsidian/95 via-morocco-obsidian/75 to-morocco-obsidian/85"></div>
+            </div>
+            <!-- Slide 1: Ocean / Beaches -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1572252821143-2075f6174be6?q=80&w=2000&auto=format&fit=crop" alt="Essaouira Coast and Ocean" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-morocco-obsidian/95 via-morocco-obsidian/75 to-morocco-obsidian/85"></div>
+            </div>
+            <!-- Slide 2: Atlas Mountains -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=2000&auto=format&fit=crop" alt="Atlas Mountains High Peaks" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-morocco-obsidian/95 via-morocco-obsidian/75 to-morocco-obsidian/85"></div>
+            </div>
+            <!-- Slide 3: Chefchaouen -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2000&auto=format&fit=crop" alt="Chefchaouen Blue Streets" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-morocco-obsidian/95 via-morocco-obsidian/75 to-morocco-obsidian/85"></div>
+            </div>
+            <!-- Slide 4: Marrakech -->
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?q=80&w=2000&auto=format&fit=crop" alt="Marrakech Medina Architecture" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-morocco-obsidian/95 via-morocco-obsidian/75 to-morocco-obsidian/85"></div>
+            </div>
+
+            <!-- Moroccan Pattern & Ambient Glow -->
+            <div class="absolute inset-0 bg-zellige opacity-30 pointer-events-none pattern-move"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-morocco-obsidian/30 to-morocco-obsidian"></div>
+        </div>
+
+        <div class="relative z-10 max-w-[1440px] mx-auto px-5 md:px-8 w-full my-auto pt-6 flex flex-col items-center text-center">
+
+            <div class="fade-up d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel shadow-2xl mb-6">
+                <span class="flex h-2.5 w-2.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-morocco-terracotta opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-morocco-saffron"></span>
+                </span>
+                <span class="text-[11px] sm:text-xs font-bold tracking-wider uppercase text-morocco-saffron">✨ Authentic Moroccan Travel Platform</span>
+            </div>
+
+            <h1 class="fade-up d2 font-heading text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.08] text-white max-w-5xl mb-6 drop-shadow-2xl">
+                DISCOVER MOROCCO.<br>
+                <span class="text-gradient-gold">YOUR WAY.</span>
+            </h1>
+
+            <p class="fade-up d3 text-lg md:text-xl text-morocco-sand/90 max-w-2xl leading-relaxed mb-10">
+                Tell us what you love, and discover the Morocco that fits you.
+            </p>
+
+            <div class="fade-up d4 flex flex-col sm:flex-row items-center gap-4 mb-10">
+                <button data-open-planner class="px-9 py-4 rounded-2xl bg-gradient-to-r from-morocco-terracotta via-morocco-saffron to-amber-700 text-white font-extrabold text-base tracking-wide shadow-2xl hover:shadow-morocco-terracotta/40 hover:scale-[1.04] active:scale-[0.98] transition-all flex items-center gap-2">
+                    ✨ Plan My Trip
+                </button>
+                <a href="#destinations" class="px-8 py-4 rounded-2xl bg-morocco-emerald/80 hover:bg-morocco-emerald border border-morocco-saffron/40 text-white font-bold text-sm backdrop-blur-md transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-compass text-morocco-saffron"></i> Explore Destinations
+                </a>
+            </div>
+
+            <!-- Quick Category Tags -->
+            <div class="fade-up d5 flex flex-wrap items-center justify-center gap-2.5 max-w-3xl mb-10" id="heroTags">
+                <button data-tag="mountains" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🏔 Mountains</button>
+                <button data-tag="beach" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🏖 Beach</button>
+                <button data-tag="desert" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🏜 Desert</button>
+                <button data-tag="culture" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🏛 Culture</button>
+                <button data-tag="food" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🍽 Food</button>
+                <button data-tag="nature" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🌿 Nature</button>
+                <button data-tag="cities" class="tag glass-panel px-4 py-2 rounded-full text-sm font-medium hover:border-morocco-saffron hover:-translate-y-0.5 transition-all">🏙 Cities</button>
+            </div>
+
+            <!-- Slideshow Pagination Dots -->
+            <div class="fade-up d5 flex items-center gap-2 px-4 py-2 rounded-full glass-panel" id="heroDots">
+                <span class="text-[11px] uppercase tracking-wider text-morocco-sand/60 mr-1">Gallery:</span>
+                <button data-dot="0" class="dot w-2.5 h-2.5 rounded-full bg-morocco-saffron transition-all" title="Sahara Desert"></button>
+                <button data-dot="1" class="dot w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/60 transition-all" title="Ocean & Coast"></button>
+                <button data-dot="2" class="dot w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/60 transition-all" title="Atlas Mountains"></button>
+                <button data-dot="3" class="dot w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/60 transition-all" title="Chefchaouen"></button>
+                <button data-dot="4" class="dot w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/60 transition-all" title="Marrakech"></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="discover" class="relative py-24 bg-morocco-obsidian z-10 border-t border-white/10">
+        <div class="absolute inset-0 bg-zellige opacity-20 pointer-events-none pattern-move"></div>
+
+        <div class="max-w-[1440px] mx-auto px-5 md:px-8 relative z-10">
+            <div id="destinations" class="reveal flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6 scroll-mt-28">
+                <div>
+                    <div class="flex items-center gap-2 text-morocco-saffron font-bold text-xs tracking-widest uppercase mb-3">
+                        <span class="w-8 h-[2px] bg-morocco-terracotta"></span> Curated Destinations
+                    </div>
+                    <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-white">
+                        Discover Morocco's <span class="text-gradient-gold">Gems</span>
+                    </h2>
+                    <p class="text-morocco-sand/80 text-base max-w-xl mt-3">
+                        Explore high-definition photos, local highlights, and seasonal insights for each city.
+                    </p>
+                </div>
+
+                <!-- Filters -->
+                <div id="filterTabs" class="flex items-center gap-2 bg-morocco-darkCard p-1.5 rounded-2xl border border-morocco-saffron/30 text-xs font-semibold overflow-x-auto">
+                    <button data-filter="all" class="tab-on px-4 py-2 rounded-xl transition-all whitespace-nowrap">All</button>
+                    <button data-filter="imperial" class="tab-off px-4 py-2 rounded-xl transition-all whitespace-nowrap">Imperial Cities</button>
+                    <button data-filter="mountains" class="tab-off px-4 py-2 rounded-xl transition-all whitespace-nowrap">Mountains</button>
+                    <button data-filter="coast" class="tab-off px-4 py-2 rounded-xl transition-all whitespace-nowrap">Coast</button>
+                    <button data-filter="desert" class="tab-off px-4 py-2 rounded-xl transition-all whitespace-nowrap">Desert</button>
+                    <button data-filter="hidden" class="tab-off px-4 py-2 rounded-xl transition-all whitespace-nowrap">Hidden Gems</button>
+                </div>
+            </div>
+
+            <!-- Destinations Cards Grid -->
+            <div id="destinationsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+            <p id="emptyMsg" class="hidden text-center text-morocco-sand/70 py-16">No destination matches your search criteria. Try typing another city or category.</p>
+        </div>
+    </section>
+
+    <section id="experiences" class="relative py-24 bg-gradient-to-b from-morocco-obsidian to-morocco-emeraldDark border-t border-white/10 scroll-mt-20">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-8">
+            <div class="reveal text-center mb-14">
+                <div class="inline-flex items-center gap-2 text-morocco-saffron font-bold text-xs tracking-widest uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-morocco-terracotta"></span> Experiences <span class="w-8 h-[2px] bg-morocco-terracotta"></span>
+                </div>
+                <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-white">Moments you'll <span class="text-gradient-gold">remember</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal glass-card rounded-3xl p-7 transition-all hover:border-morocco-saffron"><div class="text-4xl mb-4">🛁</div><h3 class="font-heading text-xl font-bold mb-2">Hammam &amp; Spa</h3><p class="text-sm text-morocco-sand/70 leading-relaxed">Traditional steam baths, argan oil treatments and rooftop tea relaxation.</p></div>
+                <div class="reveal glass-card rounded-3xl p-7 transition-all hover:border-morocco-saffron"><div class="text-4xl mb-4">🐪</div><h3 class="font-heading text-xl font-bold mb-2">Camel Trek at Sunset</h3><p class="text-sm text-morocco-sand/70 leading-relaxed">Ride across golden Merzouga dunes and sleep under Saharan stars.</p></div>
+                <div class="reveal glass-card rounded-3xl p-7 transition-all hover:border-morocco-saffron"><div class="text-4xl mb-4">🍲</div><h3 class="font-heading text-xl font-bold mb-2">Cooking in a Riad</h3><p class="text-sm text-morocco-sand/70 leading-relaxed">Learn tagine masterclasses, spices, and mint tea recipes from local chefs.</p></div>
+                <div class="reveal glass-card rounded-3xl p-7 transition-all hover:border-morocco-saffron"><div class="text-4xl mb-4">🏄</div><h3 class="font-heading text-xl font-bold mb-2">Atlantic Ocean Surf</h3><p class="text-sm text-morocco-sand/70 leading-relaxed">Catch legendary waves in Taghazout and Essaouira coastal bastions.</p></div>
+            </div>
+
+            <div class="reveal mt-16 text-center">
+                <button data-open-planner class="px-9 py-4 rounded-2xl bg-gradient-to-r from-morocco-terracotta via-morocco-saffron to-amber-700 text-white font-extrabold tracking-wide shadow-2xl hover:scale-[1.04] transition-all">✨ Plan My Trip</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-xs text-morocco-sand/50 border-t border-white/10 bg-morocco-obsidian">
+        © 2026 MghribAI · Moroccan Intelligence Platform
+    </footer>
+
+    <div id="voiceModal" class="hidden fixed inset-0 z-50 bg-morocco-obsidian/90 backdrop-blur-xl flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full rounded-3xl p-6 md:p-8 relative border border-morocco-saffron/40 shadow-2xl">
+            <button id="closeVoiceModal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-morocco-emerald border border-morocco-saffron/50 flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <i class="fa-solid fa-microphone-lines text-2xl text-morocco-saffron"></i>
+                </div>
+                <h3 class="font-heading text-2xl font-bold text-white">Voice Translator</h3>
+                <p class="text-xs text-morocco-sand/70 mt-1">Select your source language before recording Darija audio translation.</p>
+            </div>
+
+            <!-- Step 1: Language Picker -->
+            <div id="voiceLangStep">
+                <label class="block text-xs font-bold uppercase tracking-wider text-morocco-saffron mb-3">I want to speak in:</label>
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button data-voice-lang="en" class="voice-lang-btn px-4 py-3 rounded-xl border border-white/15 bg-white/5 hover:border-morocco-saffron text-sm font-semibold text-left flex items-center gap-2">🇬🇧 English</button>
+                    <button data-voice-lang="fr" class="voice-lang-btn px-4 py-3 rounded-xl border border-white/15 bg-white/5 hover:border-morocco-saffron text-sm font-semibold text-left flex items-center gap-2">🇫🇷 French</button>
+                    <button data-voice-lang="es" class="voice-lang-btn px-4 py-3 rounded-xl border border-white/15 bg-white/5 hover:border-morocco-saffron text-sm font-semibold text-left flex items-center gap-2">🇪🇸 Spanish</button>
+                    <button data-voice-lang="ar" class="voice-lang-btn px-4 py-3 rounded-xl border border-white/15 bg-white/5 hover:border-morocco-saffron text-sm font-semibold text-left flex items-center gap-2">🇸🇦 Arabic</button>
+                </div>
+                <button id="startRecordingBtn" disabled class="w-full py-3.5 rounded-xl bg-morocco-terracotta text-white font-bold text-sm disabled:opacity-40 disabled:pointer-events-none hover:bg-morocco-terracottaDark transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-microphone"></i> Start Audio Input
+                </button>
+            </div>
+
+            <!-- Step 2: Recording Audio State -->
+            <div id="voiceRecordStep" class="hidden text-center py-4">
+                <div class="w-20 h-20 rounded-full bg-morocco-terracotta/30 border-2 border-morocco-terracotta flex items-center justify-center mx-auto mb-4 animate-ping">
+                    <i class="fa-solid fa-microphone text-3xl text-morocco-terracotta"></i>
+                </div>
+                <p class="text-sm font-bold text-white mb-2">Listening...</p>
+                <p class="text-xs text-morocco-sand/60 mb-6">Audio will be transcribed & translated to Moroccan Darija (الدارجة المغربية).</p>
+                <button id="stopRecordingBtn" class="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-bold text-white">Stop & Transcribe</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cityDetailModal" class="hidden fixed inset-0 z-50 bg-morocco-obsidian/95 backdrop-blur-2xl overflow-y-auto">
+        <div class="max-w-5xl mx-auto px-4 py-8 min-h-screen flex flex-col justify-center">
+            <div class="glass-panel rounded-3xl overflow-hidden border border-morocco-saffron/40 relative shadow-2xl">
+                <!-- Close Button -->
+                <button id="closeCityModal" class="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-morocco-obsidian/80 hover:bg-morocco-terracotta text-white flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <!-- City Header Banner -->
+                <div class="relative h-80 md:h-96 w-full overflow-hidden">
+                    <img id="cityModalHeroImg" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-morocco-obsidian via-morocco-obsidian/50 to-transparent"></div>
+                    <div class="absolute bottom-8 left-6 md:left-10 right-6">
+                        <span id="cityModalCategory" class="px-3.5 py-1 rounded-full bg-morocco-terracotta/90 text-white text-xs font-bold uppercase tracking-wider mb-3 inline-block"></span>
+                        <h2 id="cityModalTitle" class="font-heading text-4xl md:text-6xl font-black text-white"></h2>
+                        <p id="cityModalRegion" class="text-morocco-saffron font-bold text-xs uppercase tracking-widest mt-1"></p>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="flex border-b border-white/10 bg-morocco-darkCard px-6 overflow-x-auto text-xs font-bold">
+                    <button data-city-tab="overview" class="city-tab-btn active border-b-2 border-morocco-saffron text-morocco-saffron py-4 px-4 whitespace-nowrap">Overview</button>
+                    <button data-city-tab="gallery" class="city-tab-btn text-morocco-sand/70 hover:text-white py-4 px-4 whitespace-nowrap">Photo Gallery</button>
+                    <button data-city-tab="landmarks" class="city-tab-btn text-morocco-sand/70 hover:text-white py-4 px-4 whitespace-nowrap">Landmarks &amp; Culture</button>
+                </div>
+
+                <!-- City Content Body -->
+                <div class="p-6 md:p-10">
+                    <!-- Tab 1: Overview -->
+                    <div id="cityTabOverview" class="city-tab-content">
+                        <p id="cityModalDescription" class="text-morocco-sand/90 text-base md:text-lg leading-relaxed mb-8"></p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                            <div class="glass-card p-5 rounded-2xl"><div class="text-xs uppercase text-morocco-saffron font-bold">Best Season</div><div id="cityModalSeason" class="text-sm font-semibold text-white mt-1"></div></div>
+                            <div class="glass-card p-5 rounded-2xl"><div class="text-xs uppercase text-morocco-saffron font-bold">Weather Vibe</div><div id="cityModalWeather" class="text-sm font-semibold text-white mt-1"></div></div>
+                            <div class="glass-card p-5 rounded-2xl"><div class="text-xs uppercase text-morocco-saffron font-bold">Ideal Duration</div><div id="cityModalDuration" class="text-sm font-semibold text-white mt-1"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Gallery -->
+                    <div id="cityTabGallery" class="city-tab-content hidden">
+                        <div id="cityGalleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8"></div>
+                    </div>
+
+                    <!-- Tab 3: Landmarks -->
+                    <div id="cityTabLandmarks" class="city-tab-content hidden">
+                        <div id="cityLandmarksList" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"></div>
+                    </div>
+
+                    <!-- CTA Action -->
+                    <div class="pt-6 border-t border-white/10 flex items-center justify-between flex-wrap gap-4">
+                        <button id="cityModalPlanBtn" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-morocco-terracotta to-morocco-saffron text-white font-extrabold text-sm shadow-xl hover:scale-105 transition-all">
+                            ✨ Plan a trip to <span id="cityModalBtnName"></span>
+                        </button>
+                        <button id="cityModalCloseBottom" class="px-6 py-3.5 rounded-xl bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-all">Back to Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="planner" class="hidden-planner fixed inset-0 z-50 bg-morocco-obsidian overflow-hidden" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-zellige opacity-30 pattern-move pointer-events-none"></div>
+
+        <div class="relative z-10 h-full flex flex-col">
+            <!-- Top bar -->
+            <div class="flex items-center justify-between px-5 md:px-10 py-5">
+                <span class="font-heading text-xl font-black tracking-wider text-gradient-gold">Mghrib<span class="text-morocco-saffron">AI</span></span>
+                <button id="plannerClose" aria-label="Close" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="px-5 md:px-10 max-w-3xl w-full mx-auto">
+                <div id="progress" class="flex items-center"></div>
+            </div>
+
+            <!-- Question Step Body -->
+            <div class="flex-1 overflow-y-auto px-5 md:px-10 py-6">
+                <div class="max-w-4xl mx-auto">
+                    <div id="stepBody"></div>
+                </div>
+            </div>
+
+            <!-- Footer Controls -->
+            <div class="px-5 md:px-10 py-5 border-t border-white/10 bg-morocco-obsidian/80 backdrop-blur-md">
+                <div class="max-w-4xl mx-auto flex items-center justify-between gap-3">
+                    <button id="btnBack" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all flex items-center gap-2"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
+                    <div class="flex items-center gap-3">
+                        <button id="btnSkip" class="px-4 py-3 text-sm font-semibold text-morocco-sand/60 hover:text-white transition-colors">Skip</button>
+                        <button id="btnNext" class="px-8 py-3 rounded-xl bg-gradient-to-r from-morocco-terracotta to-morocco-saffron text-white text-sm font-extrabold tracking-wide shadow-xl hover:scale-[1.03] transition-all disabled:opacity-40 disabled:pointer-events-none">Continue →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submission Loading Placeholder -->
+        <div id="plannerLoading" class="hidden absolute inset-0 z-20 bg-morocco-obsidian flex items-center justify-center p-6 text-center">
+            <div class="relative max-w-md w-full">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full border border-morocco-saffron/40 flex items-center justify-center relative">
+                    <svg class="w-12 h-12 text-morocco-saffron spin-slow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 20.5L12 17L6.5 20.5L8 14L3 9.5L9.5 8.5L12 2Z"/>
+                        <circle cx="12" cy="12" r="2.5" fill="#121212"/>
+                    </svg>
+                </div>
+                <h3 class="font-heading text-3xl font-bold text-white mb-3">Your personalized Moroccan journey is being prepared...</h3>
+                <p class="text-xs text-morocco-sand/50 mb-8">Data collected and ready for machine learning model integration.</p>
+                <div class="flex items-center justify-center gap-3">
+                    <button id="loadingEdit" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all">Edit choices</button>
+                    <button id="loadingClose" class="px-5 py-3 rounded-xl bg-morocco-terracotta hover:bg-morocco-terracottaDark text-sm font-bold transition-all">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application -->
+    <script src="app.js"></script>
+</body>
+</html>
