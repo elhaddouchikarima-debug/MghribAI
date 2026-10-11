@@ -27,6 +27,15 @@ const HERO_SLIDES = [
         posMobile: '10% 50%'
     },
     {
+        key: 'chefchaouen-mountain-panorama',
+        fallback: 'assets/discover/chefchaouen-mountain-panorama.png',
+        alt: 'Chefchaouen, the Blue City, spread across its mountainside at dusk',
+        title: 'Chefchaouen',
+        subtitle: 'The Blue Pearl of the Rif at Dusk',
+        pos: '50% 55%',
+        posMobile: '70% 50%'
+    },
+    {
         key: 'sahara-merzouga-caravan',
         fallback: 'assets/discover/sahara-merzouga-caravan.png',
         alt: 'Camel caravan crossing the golden Merzouga dunes in the Sahara',
@@ -36,13 +45,22 @@ const HERO_SLIDES = [
         posMobile: '62% 50%'
     },
     {
-        key: 'chefchaouen-mountain-panorama',
-        fallback: 'assets/discover/chefchaouen-mountain-panorama.png',
-        alt: 'Chefchaouen, the Blue City, spread across its mountainside at dusk',
-        title: 'Chefchaouen',
-        subtitle: 'The Blue Pearl of the Rif at Dusk',
-        pos: '50% 55%',
-        posMobile: '70% 50%'
+        key: 'al-hoceima-bay-view',
+        fallback: 'assets/discover/al-hoceima-bay-view.png',
+        alt: 'Al Hoceima — rocky headland, harbour and turquoise Mediterranean sea',
+        title: 'Al Hoceima',
+        subtitle: 'Mediterranean Cliffs & Turquoise Bay',
+        pos: '45% 50%',
+        posMobile: '40% 50%'
+    },
+    {
+        key: 'marrakech-riad-rooftops',
+        fallback: 'assets/discover/marrakech-riad-rooftops.png',
+        alt: 'Marrakech medina — rose-pink riad rooftops and a minaret above the souks',
+        title: 'Marrakech Medina',
+        subtitle: 'Rose-Pink Rooftops & Historic Souks',
+        pos: '50% 68%',
+        posMobile: '15% 50%'
     }
     // To add more photos later: export a larger original (≥ 1600px wide), place web versions in
     // assets/hero/<key>-1600.jpg and <key>-2560.jpg, then add an entry above.
