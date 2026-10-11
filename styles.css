@@ -405,24 +405,187 @@ html.theme-dark .discover-eyebrow {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-/* Language switcher menu */
-.lang-option {
+/* Language switcher: globe button + code + chevron */
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 12px 0 11px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-inset) 100%);
+  border: 1px solid rgba(196, 154, 69, 0.55);
+  color: var(--accent-primary);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.lang-btn:hover,
+.lang-btn[aria-expanded="true"] {
+  border-color: #C49A45;
+  box-shadow: 0 4px 14px rgba(196, 154, 69, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.lang-btn:focus-visible {
+  outline: 2px solid #C49A45;
+  outline-offset: 2px;
+}
+.lang-btn .lang-globe {
+  flex-shrink: 0;
+  transition: transform 0.5s ease;
+}
+.lang-btn:hover .lang-globe {
+  transform: rotate(25deg);
+}
+.lang-btn .lang-code {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   color: var(--text-main);
+}
+.lang-btn .lang-chevron {
+  color: #C49A45;
+  transition: transform 0.25s ease;
+}
+.lang-btn[aria-expanded="true"] .lang-chevron {
+  transform: rotate(180deg);
+}
+html.theme-dark .lang-btn {
+  color: #E2C485;
+  background: linear-gradient(180deg, #1C2026 0%, #15181D 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Dropdown panel */
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  width: 232px;
+  padding: 8px;
+  border-radius: 18px;
+  background: var(--bg-card);
+  border: 1px solid rgba(196, 154, 69, 0.55);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  z-index: 60;
+  transform-origin: top right;
+  animation: langMenuIn 0.18s ease-out;
+}
+.lang-menu.hidden {
+  display: none;
+}
+/* little notch pointing at the button */
+.lang-menu::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 22px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-card);
+  border-left: 1px solid rgba(196, 154, 69, 0.55);
+  border-top: 1px solid rgba(196, 154, 69, 0.55);
+  transform: rotate(45deg);
+}
+@keyframes langMenuIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.lang-menu-title {
+  padding: 6px 10px 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #B0883A;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 6px;
+}
+html.theme-dark .lang-menu-title {
+  color: #D4AC54;
+}
+
+.lang-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 12px;
+  text-align: left;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.18s ease, color 0.18s ease;
 }
-.lang-option:hover {
+.lang-option:hover,
+.lang-option:focus-visible {
   background: rgba(196, 154, 69, 0.16);
-  color: var(--accent-burgundy);
+  outline: none;
+}
+.lang-option .lang-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(23, 107, 77, 0.10);
+  border: 1px solid rgba(23, 107, 77, 0.25);
+  color: var(--accent-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.lang-option .lang-name {
+  flex: 1;
+}
+.lang-option .lang-name.font-arabic {
+  font-size: 17px;
+  line-height: 1;
 }
 .lang-option .lang-check {
+  color: #C49A45;
   opacity: 0;
+  flex-shrink: 0;
 }
 .lang-option[aria-checked="true"] {
-  color: var(--accent-primary);
-  background: rgba(23, 107, 77, 0.08);
+  background: rgba(23, 107, 77, 0.09);
+}
+.lang-option[aria-checked="true"] .lang-chip {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #FFFFFF;
 }
 .lang-option[aria-checked="true"] .lang-check {
   opacity: 1;
+}
+html.theme-dark .lang-option .lang-chip {
+  background: rgba(30, 165, 120, 0.16);
+  border-color: rgba(30, 165, 120, 0.35);
+}
+
+/* very small phones: just the globe */
+@media (max-width: 439px) {
+  .lang-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+  .lang-btn .lang-code,
+  .lang-btn .lang-chevron {
+    display: none;
+  }
+  .lang-menu {
+    width: 216px;
+    right: -44px;
+  }
+  .lang-menu::before {
+    right: 66px;
+  }
 }
 
 /* Small notice shown after choosing a language (until translation is connected) */
