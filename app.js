@@ -2031,6 +2031,108 @@ function selectVoiceLanguage(langCode) {
     if (darijaLatEl) darijaLatEl.textContent = phrase.darijaLat;
 }
 
+// =============================================================================
+// 10c. PAGE LANGUAGE SWITCHER (EN / FR / DE / AR)
+//      UI only: choosing a language stores the choice and calls the hook below.
+//      No text is translated yet.
+// =============================================================================
+const SITE_LANGUAGES = {
+    en: { code: 'EN', name: 'English' },
+    fr: { code: 'FR', name: 'Français' },
+    de: { code: 'DE', name: 'Deutsch' },
+    ar: { code: 'AR', name: 'العربية' }
+};
+let currentSiteLang = 'en';
+let langToastTimer = null;
+
+/**
+ * ===========================================================================
+ *  APERTUS INTEGRATION POINT — WHOLE-PAGE TRANSLATION
+ *  Called every time the visitor picks a language in the navbar.
+ *    targetLang : 'en' | 'fr' | 'de' | 'ar'
+ *  What to do here once Apertus is connected:
+ *    - translate the visible page text (headings, paragraphs, buttons, labels,
+ *      destination cards, planner questions...) into targetLang
+ *    - set document.documentElement.lang = targetLang
+ *    - set document.documentElement.dir  = (targetLang === 'ar' ? 'rtl' : 'ltr')
+ *  Return true when the page was translated.
+ *  Return false/null to show the "coming soon" notice (current behaviour).
+ * ===========================================================================
+ */
+async function translatePageWithApertus(targetLang) {
+    return null;
+}
+
+function showLangToast(message) {
+    let toast = $('#langToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'langToast';
+        toast.className = 'lang-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    if (langToastTimer) clearTimeout(langToastTimer);
+    langToastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+function setLangMenuOpen(open) {
+    $('#langMenu')?.classList.toggle('hidden', !open);
+    $('#langToggle')?.setAttribute('aria-expanded', String(open));
+}
+
+function updateLangUI() {
+    const lang = SITE_LANGUAGES[currentSiteLang] || SITE_LANGUAGES.en;
+    const codeEl = $('#langCode');
+    if (codeEl) codeEl.textContent = lang.code;
+    $$('.lang-option').forEach(opt => {
+        opt.setAttribute('aria-checked', String(opt.dataset.lang === currentSiteLang));
+    });
+}
+
+async function selectSiteLanguage(langCode) {
+    if (!SITE_LANGUAGES[langCode]) return;
+    currentSiteLang = langCode;
+    try { localStorage.setItem('maghrib_lang', langCode); } catch (e) { /* storage unavailable */ }
+    updateLangUI();
+    setLangMenuOpen(false);
+
+    try {
+        const translated = await translatePageWithApertus(langCode);
+        if (!translated && langCode !== 'en') {
+            showLangToast(`Translation to ${SITE_LANGUAGES[langCode].name} is coming soon.`);
+        }
+    } catch (err) {
+        console.error('Page translation failed:', err);
+        showLangToast('Translation failed. Please try again.');
+    }
+}
+
+function initLanguageSwitcher() {
+    const toggle = $('#langToggle');
+    if (!toggle) return;
+
+    try {
+        const saved = localStorage.getItem('maghrib_lang');
+        if (saved && SITE_LANGUAGES[saved]) currentSiteLang = saved;
+    } catch (e) { /* storage unavailable */ }
+    updateLangUI();
+
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setLangMenuOpen($('#langMenu').classList.contains('hidden'));
+    });
+    $$('.lang-option').forEach(opt => {
+        opt.addEventListener('click', () => selectSiteLanguage(opt.dataset.lang));
+    });
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#langSwitcher')) setLangMenuOpen(false);
+    });
+}
+
 // Utility: Escape HTML
 function escapeHtml(str) {
     if (!str) return '';
@@ -2116,6 +2218,9 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#btnBack')?.addEventListener('click', handlePlannerBack);
     $('#btnSkip')?.addEventListener('click', handlePlannerSkip);
 
+    // 9b. Page language switcher (navbar)
+    initLanguageSwitcher();
+
     // 10. Voice Translator Controls
     $$('[data-open-voice]').forEach(btn => btn.addEventListener('click', openVoiceTranslator));
     $('#closeVoiceModal')?.addEventListener('click', closeVoiceTranslator);
@@ -2141,6 +2246,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 12. Global Keyboard Handlers
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+            const langMenu = $('#langMenu');
+            if (langMenu && !langMenu.classList.contains('hidden')) {
+                setLangMenuOpen(false);
+                $('#langToggle')?.focus();
+                return;
+            }
             const lightbox = $('#lightboxModal');
             if (lightbox && !lightbox.classList.contains('hidden-lightbox')) {
                 closeLightbox();
