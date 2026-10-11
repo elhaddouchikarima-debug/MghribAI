@@ -1,223 +1,645 @@
-/* STREAMING_CHUNK:Defining core CSS rules, design tokens, and keyframe animations... */
+/* ==========================================================================
+   MaghribAI — Moroccan Travel Platform Stylesheet
+   Moroccan Visual Identity: Emerald Green (#176B4D), Burgundy (#8C2635),
+   Gold (#C49A45), Cream (#FAF7F0), White (#FFFFFF), Text (#202820).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Variables: Light Mode (Default) vs Dark Mode (.theme-dark)
+   -------------------------------------------------------------------------- */
+:root,
+html.theme-light {
+  /* Palette exact as specified by user */
+  --bg-main: #FFFFFF;
+  --bg-secondary: #FAF7F0;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FFFDF9;
+  --bg-card-inset: #FAF7F0;
+  
+  --text-main: #202820;
+  --text-secondary: #59645B;
+  --text-muted: #78857B;
+  --text-heading: #202820;
+  
+  --accent-primary: #176B4D;      /* Deep Emerald Green */
+  --accent-primary-hover: #12573E;
+  --accent-burgundy: #8C2635;     /* Burgundy */
+  --accent-burgundy-hover: #721E2B;
+  --accent-gold: #C49A45;         /* Moroccan Gold */
+  --accent-gold-hover: #B0883A;
+  
+  --border-color: #E5E0D5;
+  --border-color-strong: #C49A45;
+  --border-subtle: #EDE8DE;
+  
+  --nav-bg: rgba(255, 255, 255, 0.96);
+  --modal-bg: #FFFFFF;
+  --input-bg: #FFFFFF;
+  
+  --card-shadow: 0 10px 28px -8px rgba(23, 107, 77, 0.08), 0 0 0 1px #E5E0D5;
+  --card-shadow-hover: 0 18px 38px -10px rgba(140, 38, 53, 0.14), 0 0 0 1.5px #C49A45;
+  
+  --zellige-pattern: url('assets/zellige-moroccan.svg');
+  --zellige-opacity: 0.65;
+  /* Hero overlay: warm centre vignette for text + emerald (top) → burgundy (bottom) wash */
+  --hero-overlay:
+    radial-gradient(ellipse 78% 62% at 50% 50%, rgba(28, 14, 8, 0.52) 0%, rgba(28, 14, 8, 0.24) 58%, rgba(28, 14, 8, 0) 100%),
+    linear-gradient(180deg, rgba(18, 87, 62, 0.58) 0%, rgba(40, 22, 14, 0.14) 36%, rgba(60, 22, 26, 0.28) 66%, rgba(114, 30, 43, 0.80) 100%);
+  --badge-bg: rgba(255, 255, 255, 0.94);
+  --badge-text: #176B4D;
+  --badge-border: #C49A45;
+}
+
+html.theme-dark {
+  --bg-main: #121316;
+  --bg-secondary: #171A1F;
+  --bg-card: #1C2026;
+  --bg-card-hover: #222730;
+  --bg-card-inset: #15181D;
+  
+  --text-main: #FAF7F2;
+  --text-secondary: #B5BEB7;
+  --text-muted: #7E8780;
+  --text-heading: #FAF7F2;
+  
+  --accent-primary: #1EA578;
+  --accent-primary-hover: #176B4D;
+  --accent-burgundy: #A83244;
+  --accent-burgundy-hover: #8C2635;
+  --accent-gold: #D4AC54;
+  --accent-gold-hover: #C49A45;
+  
+  --border-color: rgba(196, 154, 69, 0.25);
+  --border-color-strong: rgba(196, 154, 69, 0.65);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  
+  --nav-bg: rgba(18, 19, 22, 0.95);
+  --modal-bg: #16191E;
+  --input-bg: #1C2026;
+  
+  --card-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(196, 154, 69, 0.2);
+  --card-shadow-hover: 0 20px 48px -12px rgba(23, 107, 77, 0.4), 0 0 0 1.5px rgba(212, 172, 84, 0.55);
+  
+  --zellige-pattern: url('assets/zellige-dark.svg');
+  --zellige-opacity: 0.5;
+  --hero-overlay:
+    radial-gradient(ellipse 78% 62% at 50% 50%, rgba(14, 8, 6, 0.62) 0%, rgba(14, 8, 6, 0.32) 58%, rgba(14, 8, 6, 0) 100%),
+    linear-gradient(180deg, rgba(12, 62, 44, 0.68) 0%, rgba(18, 12, 10, 0.26) 36%, rgba(40, 16, 20, 0.40) 66%, rgba(80, 22, 32, 0.88) 100%);
+  --badge-bg: rgba(28, 32, 38, 0.94);
+  --badge-text: #D4AC54;
+  --badge-border: rgba(196, 154, 69, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base Document Elements
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
 body {
-font-family: 'Plus Jakarta Sans', sans-serif;
-background-color: #121212;
-color: #FAF8F5;
-overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .font-heading {
-font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
 }
 
-/* Glassmorphism Panels & Cards */
+.font-arabic {
+  font-family: 'Amiri', serif;
+}
+
+/* --------------------------------------------------------------------------
+   3. Moroccan Zellige Pattern & Arch Motifs
+   -------------------------------------------------------------------------- */
+/* Sharp Moroccan Zellige Pattern Background */
+.bg-moroccan-zellige {
+  background-color: var(--bg-secondary);
+  background-image: var(--zellige-pattern);
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  position: relative;
+}
+
+.moroccan-arch-frieze {
+  background-image: url('assets/moroccan-arch-border.svg');
+  background-repeat: repeat-x;
+  background-size: 400px 24px;
+  height: 24px;
+  width: 100%;
+}
+
+/* Moroccan Arch Shape Utilities */
+.moroccan-arch-top {
+  border-top-left-radius: 36px;
+  border-top-right-radius: 36px;
+}
+
+.moroccan-badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--badge-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   4. Surface & Card Styling (Theme-Adaptive)
+   -------------------------------------------------------------------------- */
+.surface-card {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.25s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-color-strong);
+}
+
+.surface-inset {
+  background-color: var(--bg-card-inset);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Glassmorphism Panel */
 .glass-panel {
-background: rgba(18, 18, 18, 0.88);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border: 1px solid rgba(217, 119, 6, 0.25);
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-color);
 }
 
-.glass-card {
-background: rgba(30, 26, 26, 0.8);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
-border: 1px solid rgba(250, 248, 245, 0.12);
-}
-
-.glass-card:hover {
-border-color: rgba(217, 119, 6, 0.6);
-box-shadow: 0 16px 40px -10px rgba(200, 75, 49, 0.4);
-}
-
-/* Gold Gradient Text */
+/* Typography Gradient */
 .text-gradient-gold {
-background: linear-gradient(135deg, #FAF8F5 0%, #D97706 50%, #C84B31 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-burgundy) 50%, var(--accent-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Custom Scrollbars */
+html.theme-dark .text-gradient-gold {
+  background: linear-gradient(135deg, #FAF7F2 10%, #E2C485 50%, #C49A45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-width: 8px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-background: #121212;
+  background: var(--bg-secondary);
 }
 ::-webkit-scrollbar-thumb {
-background: #C84B31;
-border-radius: 4px;
+  background: var(--accent-primary);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-background: #D97706;
+  background: var(--accent-burgundy);
 }
 
-/* Zellige Pattern */
-.bg-zellige {
-background-image: url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M40 0l40 40-40 40L0 40z" fill="%23c84b31" fill-opacity="0.08"/%3E%3Cpath d="M40 10l30 30-30 30-30-30z" fill="%23d97706" fill-opacity="0.06"/%3E%3C/svg%3E');
+/* --------------------------------------------------------------------------
+   5. Hero Section & Slideshow
+   -------------------------------------------------------------------------- */
+#heroSlideshow {
+  background-color: #1d1410;           /* warm fallback while photos load */
+  overflow: hidden;
 }
 
-/* Navigation links */
-.nav-link {
-position: relative;
-}
-.nav-link::after {
-content: "";
-position: absolute;
-left: 0;
-bottom: -4px;
-height: 2px;
-width: 0;
-background: #C84B31;
-transition: width .3s;
-}
-.nav-link:hover::after {
-width: 100%;
+/* Fine zellige texture over the photos (one layer for the whole slideshow) */
+#heroSlideshow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--zellige-pattern);
+  background-size: 140px 140px;
+  opacity: 0.07;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
 
-/* Hero Slideshow Transitions */
+/* Gold-framed base edge of the hero: emerald → gold → burgundy */
+#top::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #176B4D 0%, #C49A45 50%, #8C2635 100%);
+  z-index: 11;
+  pointer-events: none;
+}
+
 .hero-slide {
-transition: opacity 1.2s ease-in-out, transform 8s ease-out;
-opacity: 0;
-transform: scale(1.08);
-position: absolute;
-inset: 0;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
 }
+
 .hero-slide.active {
-opacity: 1;
-transform: scale(1);
+  opacity: 1;
 }
 
-@keyframes patternMove {
-from { background-position: 0 0; }
-to { background-position: 320px 320px; }
-}
-.pattern-move {
-animation: patternMove 60s linear infinite;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(26px); }
-to { opacity: 1; transform: none; }
-}
-.fade-up {
-opacity: 0;
-animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards;
-}
-.d1 { animation-delay: .1s; }
-.d2 { animation-delay: .25s; }
-.d3 { animation-delay: .4s; }
-.d4 { animation-delay: .55s; }
-.d5 { animation-delay: .7s; }
-
-/* Filter Tabs Styling */
-.tab-on {
-background: #C84B31;
-color: #ffffff;
-font-weight: 700;
-}
-.tab-off {
-color: rgba(250, 248, 245, 0.7);
-}
-.tab-off:hover {
-color: #ffffff;
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--pos, center);   /* per-photo focal point (landscape) */
+  transform: scale(1);
+  transform-origin: 50% 55%;
+  transition: transform 9s linear;      /* very slow, subtle drift while visible */
+  will-change: transform;
 }
 
-.lang-on {
-background: #C84B31;
-color: #ffffff;
-font-weight: 700;
-}
-.lang-off {
-color: rgba(250, 248, 245, 0.6);
-}
-.lang-off:hover {
-color: #ffffff;
+.hero-slide.active img {
+  transform: scale(1.03);
 }
 
-/* Planner Questionnaire Styling */
+/* Portrait screens (phones): show the most recognisable part of each photo */
+@media (orientation: portrait) {
+  .hero-slide img {
+    object-position: var(--pos-m, center);
+  }
+}
+
+.hero-overlay-layer {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: opacity 0.5s ease;
+  }
+  .hero-slide img,
+  .hero-slide.active img {
+    transition: none;
+    transform: none;
+  }
+  .surface-card:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Navigation Links & Tabs
+   -------------------------------------------------------------------------- */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--accent-gold);
+  transition: width 0.25s ease, left 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Tab Filter Buttons */
+.tab-btn {
+  transition: all 0.22s ease;
+  border: 1px solid transparent;
+}
+
+.tab-btn.tab-on {
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-color: var(--accent-gold);
+  box-shadow: 0 4px 12px rgba(23, 107, 77, 0.35);
+}
+
+.tab-btn.tab-off {
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+.tab-btn.tab-off:hover {
+  color: var(--text-main);
+  background: rgba(196, 154, 69, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   7. Trip Planner Questionnaire & Stepper Progress
+   -------------------------------------------------------------------------- */
 #planner {
-transition: opacity .4s ease, visibility .4s;
+  transition: opacity 0.3s ease, visibility 0.3s;
 }
+
 #planner.hidden-planner {
-opacity: 0;
-visibility: hidden;
-pointer-events: none;
-}
-.opt {
-border: 1px solid rgba(255, 255, 255, 0.14);
-background: rgba(255, 255, 255, 0.04);
-border-radius: 18px;
-padding: 16px 12px;
-cursor: pointer;
-text-align: center;
-transition: all .25s;
-position: relative;
-}
-.opt:hover {
-border-color: #D97706;
-transform: translateY(-3px);
-}
-.opt.sel {
-border-color: #D97706;
-background: linear-gradient(135deg, rgba(200,75,49,0.5), rgba(217,119,6,0.22));
-box-shadow: 0 10px 28px rgba(200, 75, 49, 0.35);
-}
-.opt .tick {
-position: absolute;
-top: 8px;
-right: 8px;
-width: 20px;
-height: 20px;
-border-radius: 50%;
-background: #D97706;
-color: #121212;
-font-size: 10px;
-display: none;
-align-items: center;
-justify-content: center;
-}
-.opt.sel .tick {
-display: flex;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
+.opt-card {
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 20px;
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+}
+
+.opt-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(23, 107, 77, 0.12);
+}
+
+.opt-card.sel {
+  border-color: var(--accent-primary);
+  background: linear-gradient(135deg, rgba(23, 107, 77, 0.1), rgba(196, 154, 69, 0.1));
+  box-shadow: 0 8px 24px rgba(23, 107, 77, 0.18);
+}
+
+.opt-card .tick {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  font-size: 11px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.opt-card.sel .tick {
+  display: flex;
+}
+
+/* Progress Stepper */
 .pdot {
-width: 14px;
-height: 14px;
-border-radius: 50%;
-border: 2px solid rgba(255, 255, 255, 0.25);
-background: #121212;
-transition: all .4s;
-}
-.pdot.active {
-border-color: #D97706;
-background: #D97706;
-}
-.pdot.done {
-border-color: #C84B31;
-background: #C84B31;
-}
-.pline {
-height: 2px;
-flex: 1;
-background: rgba(255, 255, 255, 0.15);
-position: relative;
-overflow: hidden;
-}
-.pline i {
-position: absolute;
-inset: 0;
-width: 0;
-background: linear-gradient(90deg, #C84B31, #D97706);
-transition: width .5s ease;
-}
-.pline.done i {
-width: 100%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
 }
 
-@keyframes spinSlow {
-to { transform: rotate(360deg); }
+.pdot.active {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+  box-shadow: 0 0 10px var(--accent-gold);
 }
-.spin-slow {
-animation: spinSlow 8s linear infinite;
+
+.pdot.done {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+}
+
+.pline {
+  height: 2px;
+  flex: 1;
+  background: var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.pline i {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
+  transition: width 0.35s ease;
+}
+
+.pline.done i {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   8. Lightbox & Autocomplete
+   -------------------------------------------------------------------------- */
+#lightboxModal {
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+#lightboxModal.hidden-lightbox {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.search-item {
+  transition: background-color 0.18s ease;
+}
+
+.search-item:hover {
+  background-color: rgba(196, 154, 69, 0.14);
+}
+
+/* --------------------------------------------------------------------------
+   9. Apertus AI Integration Placeholder Styling
+   -------------------------------------------------------------------------- */
+.apertus-slot {
+  border: 2px dashed var(--border-color-strong);
+  border-radius: 20px;
+  background: var(--bg-card-inset);
+  padding: 24px;
+  text-align: center;
+  transition: border-color 0.25s ease;
+}
+
+.apertus-slot:hover {
+  border-color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   10. Discover Section — Photographic Banner Slideshow
+   -------------------------------------------------------------------------- */
+
+/* Main photo panel container */
+.discover-photo-panel {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  background: #121316; /* fallback while images load */
+}
+
+/* Each individual slide image */
+.discover-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.discover-slide.active {
+  opacity: 1;
+}
+
+/* Semi-transparent Moroccan Zellige SVG overlay on top of the photos */
+.discover-zellige-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/zellige-moroccan.svg');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.10; /* very subtle — keeps identity without hiding photo */
+  pointer-events: none;
+  z-index: 2;
+}
+
+html.theme-dark .discover-zellige-overlay {
+  background-image: url('assets/zellige-dark.svg');
+  opacity: 0.12;
+}
+
+/* Dark overlay at top so the page nav doesn't clash with the bright photo */
+.discover-photo-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 10, 0.35) 0%,
+    rgba(10, 12, 10, 0.10) 40%,
+    rgba(10, 12, 10, 0.08) 70%,
+    rgba(10, 12, 10, 0.55) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Gradient fade at the bottom that blends into the section background */
+.discover-panel-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Location caption badge — bottom-left corner */
+.discover-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 12, 10, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 154, 69, 0.4);
+  border-radius: 40px;
+  padding: 6px 18px 6px 12px;
+  color: #FAF7F0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.discover-caption::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #C49A45;
+  flex-shrink: 0;
+}
+
+/* Dot navigation row — bottom-right corner */
+.discover-dots {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  display: flex;
+  gap: 7px;
+  z-index: 5;
+}
+
+.discover-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.discover-dot.active {
+  background: #C49A45;
+  border-color: #C49A45;
+  transform: scale(1.25);
+}
+
+.discover-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* Responsive: shorter panel on mobile */
+@media (max-width: 768px) {
+  .discover-photo-panel {
+    height: 340px;
+  }
+
+  .discover-caption {
+    font-size: 10px;
+    bottom: 20px;
+    left: 16px;
+    padding: 5px 12px 5px 10px;
+  }
+
+  .discover-dots {
+    bottom: 20px;
+    right: 16px;
+  }
 }
