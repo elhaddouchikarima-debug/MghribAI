@@ -1844,8 +1844,172 @@ function openVoiceTranslator() {
 }
 
 function closeVoiceTranslator() {
+    stopVoiceRecording(true);   // never keep the microphone open after the modal closes
     $('#voiceModal')?.classList.add('hidden');
     document.body.style.overflow = '';
+}
+
+// =============================================================================
+// 10b. VOICE RECORDER (microphone → audio Blob)
+//      Tap the mic to record, tap again to stop. The recorded audio is played
+//      back and then handed to translateWithApertus() below.
+// =============================================================================
+let voiceRecorder = null;
+let voiceStream = null;
+let voiceChunks = [];
+let voiceTimerId = null;
+let voiceStartedAt = 0;
+let voiceAudioUrl = null;
+let voiceDiscard = false;
+
+function setVoiceStatus(text) {
+    const el = $('#voiceStatus');
+    if (el) el.textContent = text;
+}
+
+function formatVoiceTime(ms) {
+    const s = Math.floor(ms / 1000);
+    return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+}
+
+function setVoiceRecordingUI(isRecording) {
+    const btn = $('#voiceRecordBtn');
+    const icon = $('#voiceRecordIcon');
+    const dot = $('#voiceRecordDot');
+    if (btn) {
+        btn.setAttribute('aria-pressed', String(isRecording));
+        btn.setAttribute('aria-label', isRecording ? 'Stop recording' : 'Start recording');
+        btn.classList.toggle('bg-[var(--accent-burgundy)]', isRecording);
+        btn.classList.toggle('bg-[var(--accent-primary)]', !isRecording);
+        btn.classList.toggle('animate-pulse', isRecording);
+    }
+    if (icon) icon.className = isRecording ? 'fa-solid fa-stop' : 'fa-solid fa-microphone';
+    if (dot) dot.classList.toggle('hidden', !isRecording);
+}
+
+async function startVoiceRecording() {
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
+        setVoiceStatus('Recording is not supported in this browser. Try Chrome, Edge, Firefox or Safari.');
+        return;
+    }
+    if (!window.isSecureContext) {
+        setVoiceStatus('The microphone needs a secure page (https:// or localhost).');
+        return;
+    }
+    try {
+        voiceStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (err) {
+        const denied = err && (err.name === 'NotAllowedError' || err.name === 'SecurityError');
+        setVoiceStatus(denied
+            ? 'Microphone access was blocked. Allow it in your browser settings and try again.'
+            : 'No microphone was found.');
+        return;
+    }
+
+    voiceChunks = [];
+    voiceDiscard = false;
+    voiceRecorder = new MediaRecorder(voiceStream);
+    voiceRecorder.ondataavailable = (e) => { if (e.data && e.data.size > 0) voiceChunks.push(e.data); };
+    voiceRecorder.onstop = onVoiceRecordingStopped;
+    voiceRecorder.start();
+
+    // reset previous result
+    $('#voicePlayback')?.classList.add('hidden');
+    $('#voiceResult')?.classList.add('hidden');
+    voiceStartedAt = Date.now();
+    voiceTimerId = setInterval(() => {
+        const t = $('#voiceTimer');
+        if (t) t.textContent = formatVoiceTime(Date.now() - voiceStartedAt);
+    }, 250);
+    setVoiceRecordingUI(true);
+    setVoiceStatus('Recording… tap again to stop.');
+}
+
+function stopVoiceRecording(discard = false) {
+    voiceDiscard = discard;
+    if (voiceTimerId) { clearInterval(voiceTimerId); voiceTimerId = null; }
+    if (voiceRecorder && voiceRecorder.state !== 'inactive') {
+        voiceRecorder.stop();           // triggers onVoiceRecordingStopped
+    } else {
+        releaseVoiceStream();
+    }
+    setVoiceRecordingUI(false);
+    if (discard) setVoiceStatus('Tap the microphone and speak.');
+}
+
+function releaseVoiceStream() {
+    if (voiceStream) {
+        voiceStream.getTracks().forEach(t => t.stop());   // turns the browser's mic indicator off
+        voiceStream = null;
+    }
+}
+
+async function onVoiceRecordingStopped() {
+    releaseVoiceStream();
+    if (voiceDiscard || !voiceChunks.length) { voiceChunks = []; return; }
+
+    const mimeType = (voiceRecorder && voiceRecorder.mimeType) || 'audio/webm';
+    const audioBlob = new Blob(voiceChunks, { type: mimeType });
+    voiceChunks = [];
+
+    // Let the visitor listen to what was recorded
+    const player = $('#voicePlayback');
+    if (player) {
+        if (voiceAudioUrl) URL.revokeObjectURL(voiceAudioUrl);
+        voiceAudioUrl = URL.createObjectURL(audioBlob);
+        player.src = voiceAudioUrl;
+        player.classList.remove('hidden');
+    }
+
+    setVoiceStatus('Recording saved. Translating…');
+    try {
+        const result = await translateWithApertus(audioBlob, currentVoiceLang);
+        showVoiceTranslation(result);
+    } catch (err) {
+        console.error('Voice translation failed:', err);
+        setVoiceStatus('Translation failed. Please try again.');
+    }
+}
+
+function showVoiceTranslation(result) {
+    if (!result) {
+        // Apertus is not connected yet: the recording is ready, nothing to display.
+        setVoiceStatus('Recording saved. Translation will appear here once Apertus is connected.');
+        return;
+    }
+    $('#voiceResultAr').textContent = result.darijaAr || '';
+    $('#voiceResultLat').textContent = result.darijaLat || '';
+    $('#voiceResult')?.classList.remove('hidden');
+    setVoiceStatus('Done.');
+}
+
+/**
+ * ===========================================================================
+ *  APERTUS INTEGRATION POINT
+ *  Called automatically when a recording finishes.
+ *    audioBlob  : the recorded audio (Blob, usually audio/webm or audio/mp4)
+ *    sourceLang : language the visitor spoke ('en','fr','es','de','it','ar')
+ *  Return (or resolve with):
+ *    { darijaAr: 'النص بالدارجة', darijaLat: 'Text in Latin letters' }
+ *  Return null to show "waiting for Apertus" (current behaviour).
+ *  Example once the API is available:
+ *    const body = new FormData();
+ *    body.append('audio', audioBlob, 'recording.webm');
+ *    body.append('source_lang', sourceLang);
+ *    const res = await fetch('<APERTUS_ENDPOINT>', { method: 'POST', body });
+ *    return await res.json();
+ * ===========================================================================
+ */
+async function translateWithApertus(audioBlob, sourceLang) {
+    return null;
+}
+
+function toggleVoiceRecording() {
+    if (voiceRecorder && voiceRecorder.state === 'recording') {
+        stopVoiceRecording(false);
+    } else {
+        startVoiceRecording();
+    }
 }
 
 function selectVoiceLanguage(langCode) {
@@ -1955,6 +2119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 10. Voice Translator Controls
     $$('[data-open-voice]').forEach(btn => btn.addEventListener('click', openVoiceTranslator));
     $('#closeVoiceModal')?.addEventListener('click', closeVoiceTranslator);
+    $('#voiceRecordBtn')?.addEventListener('click', toggleVoiceRecording);
     $$('.voice-lang-btn').forEach(btn => {
         btn.addEventListener('click', () => selectVoiceLanguage(btn.dataset.voiceLang));
     });
