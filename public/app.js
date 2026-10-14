@@ -96,527 +96,7 @@ const DISCOVER_SLIDES = [
     }
 ];
 
-// =============================================================================
-// 2. MOROCCAN DESTINATIONS DATASET (AUTHENTIC & VERIFIED)
-// =============================================================================
-const DESTINATIONS = [
-    {
-        id: 'marrakech',
-        name: 'Marrakech',
-        nameFr: 'Marrakech',
-        nameAr: 'مراكش',
-        region: 'Marrakech-Safi',
-        cats: ['imperial'],
-        label: 'Imperial Capital',
-        emoji: '🕌',
-        img: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'The bustling Red City where centuries of history meet vibrant souks, tranquil riads, and Jemaa el-Fna.',
-        overview: 'Marrakech is a feast for all senses. Founded in 1062 by the Almoravids, its red clay ramparts shelter lush hidden courtyards, aromatic spice markets, and grand Islamic architecture. As the sun sets, the legendary Jemaa el-Fna square comes alive with storytellers, musicians, and sizzling food stalls.',
-        season: 'October – April',
-        weather: 'Sunny & Mild (18°C – 28°C)',
-        duration: '3 – 5 Days',
-        budgetEst: '$45 – $120 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=900&q=80', caption: 'Koutoubia Mosque & Historic Medina' },
-            { url: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80', caption: 'Vibrant Spice Souks of the Old Medina' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'Bahia Palace Moorish Archways' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Tranquil Riad Courtyard with Zellige Fountain' },
-            { url: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80', caption: 'Ancient Clay Ramparts at Sunset' },
-            { url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=900&q=80', caption: 'Intricate Moroccan Zellige Ceramic Tiles' }
-        ],
-        landmarks: [
-            { name: 'Jemaa el-Fna Square', icon: 'fa-sun', desc: 'UNESCO Masterpiece of Oral and Intangible Heritage' },
-            { name: 'Bahia Palace', icon: 'fa-landmark', desc: '19th-century masterpiece of Islamic and Moroccan decorative arts' },
-            { name: 'Koutoubia Mosque', icon: 'fa-mosque', desc: 'The 77-meter iconic minaret dominating the city skyline' },
-            { name: 'Majorelle Garden', icon: 'fa-seedling', desc: 'Cobalt blue botanical sanctuary created by Jacques Majorelle' }
-        ],
-        food: [
-            { name: 'Tanjia Marrakchia', desc: 'Slow-cooked spiced beef or lamb in a clay urn beneath the hammam ashes.' },
-            { name: 'Pastilla', desc: 'Delicate crispy filo pastry layered with spiced meat, cinnamon, and toasted almonds.' },
-            { name: 'Mint Tea with Sheeba', desc: 'Traditional gunpowder green tea steeped with fresh spearmint and wormwood.' }
-        ],
-        culture: 'Marrakech celebrates artisanal craftsmanship with over 40 distinct artisan guilds in the souks, from leather tanners to copper beaters and cedarwood carvers.',
-        tips: [
-            'Bargain with a friendly smile in the souks — counter-offer roughly half and negotiate warmly.',
-            'Stay inside a traditional riad in the Medina for an authentic and peaceful oasis experience.',
-            'Visit popular sites like Bahia Palace and Majorelle early morning to avoid peak crowds.'
-        ],
-        tags: ['marrakech', 'red city', 'medina', 'souks', 'palaces', 'culture', 'food', 'tanjia', 'shopping', 'imperial', 'history', 'spa', 'hammam']
-    },
-    {
-        id: 'chefchaouen',
-        name: 'Chefchaouen',
-        nameFr: 'Chefchaouen',
-        nameAr: 'شفشاون',
-        region: 'Tanger-Tétouan-Al Hoceïma',
-        cats: ['mountains', 'hidden'],
-        label: 'The Blue Pearl',
-        emoji: '💙',
-        img: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Nestled between the peaks of the Rif Mountains, famous worldwide for its serene blue-washed alleyways.',
-        overview: 'Founded in 1471 as a fortress against Portuguese invasions, Chefchaouen is legendary for its tranquil blue-painted alleyways and mountain backdrop. Jewish refugees and Andalusian Muslims shaped its distinctive architecture, tinting walls in shades of sky blue to symbolize peace and spirituality.',
-        season: 'Year-round (Best: March – June, Sept – Nov)',
-        weather: 'Fresh Mountain Breeze (16°C – 25°C)',
-        duration: '2 – 3 Days',
-        budgetEst: '$35 – $75 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80', caption: 'Famous Blue-Washed Medina Alleyways' },
-            { url: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?auto=format&fit=crop&w=900&q=80', caption: 'Blue Steps Decorated with Clay Flowerpots' },
-            { url: 'https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=900&q=80', caption: 'Charming Indigo Passageways in the Old Town' },
-            { url: 'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=900&q=80', caption: 'Handcrafted Blue Wooden Doors' },
-            { url: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80', caption: 'Rif Mountain Peaks Framing the Valley' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'View from the Spanish Mosque at Golden Hour' }
-        ],
-        landmarks: [
-            { name: 'Plaza Uta el-Hammam', icon: 'fa-tree', desc: 'The atmospheric main square lined with cafes and red-stone kasbah' },
-            { name: 'The Spanish Mosque', icon: 'fa-mountain', desc: 'Hilltop lookout offering breathtaking sunset views over the blue medina' },
-            { name: 'Ras El Maa Waterfall', icon: 'fa-water', desc: 'Fresh mountain springs where locals gather and wash rugs' },
-            { name: 'Kasbah Museum', icon: 'fa-shield', desc: 'Restored 15th-century fortress featuring Andalusian gardens and ethnography' }
-        ],
-        food: [
-            { name: 'Jben (Fresh Goat Cheese)', desc: 'Tangy local mountain goat cheese served with fresh olive oil and herbs.' },
-            { name: 'Bissara Soup', desc: 'Hearty fava bean soup laced with cumin, garlic, and fresh extra virgin olive oil.' },
-            { name: 'Mountain Honey & Figs', desc: 'Wild thyme honey gathered from the surrounding Rif valleys.' }
-        ],
-        culture: 'Renowned for handwoven Berber wool blankets (mendil) with distinctive red, white, and blue stripes, and delicate cedarwood pottery.',
-        tips: [
-            'Wear comfortable walking shoes with grip; the cobbled alleys can be steep and slick.',
-            'Hike up to the Spanish Mosque 45 minutes before sunset for the most photogenic panorama.',
-            'Respect residents by asking permission before photographing people or private doorways.'
-        ],
-        tags: ['chefchaouen', 'blue pearl', 'blue city', 'mountains', 'rif', 'hiking', 'photography', 'relaxation', 'nature', 'hidden']
-    },
-    {
-        id: 'fes',
-        name: 'Fès',
-        nameFr: 'Fès',
-        nameAr: 'فاس',
-        region: 'Fès-Meknès',
-        cats: ['imperial'],
-        label: 'Spiritual Capital',
-        emoji: '🏛',
-        img: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'The spiritual and intellectual heart of Morocco, home to the worlds oldest university and medieval medina.',
-        overview: 'Founded in the 8th century, Fès el-Bali is the worlds largest car-free urban area and a UNESCO World Heritage site. Stepping through the blue tile gates of Bab Bou Jeloud transports you into a living medieval civilization of over 9,000 labyrinthine alleyways, sacred mosques, and aromatic spice souks.',
-        season: 'September – May',
-        weather: 'Mild & Pleasant (17°C – 26°C)',
-        duration: '2 – 4 Days',
-        budgetEst: '$40 – $95 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=900&q=80', caption: 'Bab Bou Jeloud (The Famous Blue Gate)' },
-            { url: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=900&q=80', caption: 'Chouara Leather Tanneries from the Terraces' },
-            { url: 'https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=900&q=80', caption: 'Labyrinth of Fès el-Bali Medieval Medina' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Bou Inania Medersa Carved Stucco and Zellige' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'Al Quaraouiyine University Marble Court' },
-            { url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=900&q=80', caption: 'Fassi Cobalt Blue Ceramic Pottery' }
-        ],
-        landmarks: [
-            { name: 'Chouara Tannery', icon: 'fa-shoe-prints', desc: '11th-century open-air stone dyeing pits producing world-renowned Moroccan leather' },
-            { name: 'Al Quaraouiyine University', icon: 'fa-book-open', desc: 'Founded in 859 AD by Fatima al-Fihri, the oldest continually operating university in the world' },
-            { name: 'Bou Inania Medersa', icon: 'fa-mosque', desc: 'Exquisite 14th-century Marinid theological college with intact clock tower' },
-            { name: 'Bab Bou Jeloud Gate', icon: 'fa-door-open', desc: 'Grand Moorish entrance tiled in blue on the outside and green inside' }
-        ],
-        food: [
-            { name: 'Pastilla Fassi', desc: 'The definitive Fassi luxury dish: shredded pigeon or chicken layered with spiced almonds and orange blossom water.' },
-            { name: 'Lamb Tagine with Prunes', desc: 'Tender braised lamb slow-cooked with caramelized prunes, toasted almonds, and sesame.' },
-            { name: 'Khlea', desc: 'Cured spiced beef dried in the sun and preserved in olive oil, traditionally eaten with eggs.' }
-        ],
-        culture: 'Fes is the artisan capital of Moroccan ceramics, famous worldwide for Fassi cobalt blue pottery, intricate zellige mosaics, and hammered brass lanterns.',
-        tips: [
-            'Hire an official licensed guide for your first morning to master the Medinas 9,000 alleys without getting lost.',
-            'Accept the mint sprig offered by tannery shopkeepers — holding it to your nose counters the strong leather curing scents.',
-            'Visit the Pottery Cooperative of Ain Nokbi just outside the medina to watch master artisans at work.'
-        ],
-        tags: ['fes', 'fez', 'imperial', 'history', 'culture', 'tanneries', 'medina', 'pottery', 'monuments', 'food', 'pastilla']
-    },
-    {
-        id: 'tangier',
-        name: 'Tangier',
-        nameFr: 'Tanger',
-        nameAr: 'طنجة',
-        region: 'Tanger-Tétouan-Al Hoceïma',
-        cats: ['coast', 'imperial'],
-        label: 'Gateway of Africa',
-        emoji: '⚓',
-        img: 'https://images.unsplash.com/photo-1580837119756-563d608dd119?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Where the Atlantic meets the Mediterranean, steeped in cosmopolitan romance, coastal views, and legendary literary history.',
-        overview: 'Perched on the Strait of Gibraltar just 14 kilometers from Spain, Tangier has captivated artists, writers, and travelers for decades. Once a legendary international zone, the modern city blends bohemian cafes, whitewashed kasbah battlements, and the meeting point of two seas.',
-        season: 'April – October',
-        weather: 'Sunny & Maritime (19°C – 26°C)',
-        duration: '2 – 3 Days',
-        budgetEst: '$45 – $105 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1580837119756-563d608dd119?auto=format&fit=crop&w=900&q=80', caption: 'Cap Spartel Lighthouse Where Atlantic Meets Mediterranean' },
-            { url: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80', caption: 'Tangier Coastal Bay & Corniche at Dusk' },
-            { url: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80', caption: 'Whitewashed Alleys in the Historic Kasbah' },
-            { url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80', caption: 'Waves Crashing against the Straits of Gibraltar' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'Grand Socco & Cinema Rif Moorish Architecture' },
-            { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', caption: 'Sandy Coastline of Achakar Beach' }
-        ],
-        landmarks: [
-            { name: 'Cap Spartel & Lighthouse', icon: 'fa-compass', desc: 'The northwestern tip of Africa where the Atlantic Ocean and Mediterranean Sea merge' },
-            { name: 'Caves of Hercules', icon: 'fa-cave', desc: 'Mythological sea-cavern whose opening to the ocean mirrors the outline of Africa' },
-            { name: 'The Kasbah & Museum', icon: 'fa-fort-awesome', desc: 'Former sultans palace with panoramic views across the Strait to Spain' },
-            { name: 'Café Hafa', icon: 'fa-mug-hot', desc: 'Historic cliffside open-air cafe frequented by Paul Bowles and The Rolling Stones' }
-        ],
-        food: [
-            { name: 'Fresh Mediterranean Fish Tagine', desc: 'Catch of the day with chermoula marinade, bell peppers, tomatoes, and preserved lemon.' },
-            { name: 'Bocadillo Tanjawi', desc: 'Famous Tangier street sandwich stuffed with tuna, boiled egg, fries, olives, and harissa.' },
-            { name: 'Mint Tea with Pine Nuts', desc: 'Northern Moroccan specialty tea served in the cliffside cafes of Cap Spartel.' }
-        ],
-        culture: 'A unique cultural crossroads connecting Andalusian music, international diplomacy, Mediterranean seafood traditions, and contemporary art.',
-        tips: [
-            'Take the Al Boraq high-speed train for a fast, scenic 2-hour trip connecting Tangier to Casablanca or Rabat.',
-            'Spend late afternoon at Café Hafa sipping mint tea while watching ferry boats cross to Spain.',
-            'Stroll through the Petit Socco to enjoy authentic vintage coffee shops and lively conversation.'
-        ],
-        tags: ['tangier', 'tanger', 'coast', 'beach', 'strait', 'mediterranean', 'atlantic', 'history', 'sea']
-    },
-    {
-        id: 'essaouira',
-        name: 'Essaouira',
-        nameFr: 'Essaouira',
-        nameAr: 'الصويرة',
-        region: 'Marrakech-Safi',
-        cats: ['coast'],
-        label: 'Atlantic Fort & Port',
-        emoji: '🌬',
-        img: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'A relaxed Atlantic coastal haven celebrated for 18th-century sea ramparts, fresh seafood, and soulful Gnaoua music.',
-        overview: 'Formerly known as Mogador, Essaouira is an Atlantic seaside fortress designed in 1760 by a French military architect for Sultan Mohammed ben Abdallah. Known for its steady trade winds, squawking gulls, vibrant blue fishing skiffs, and relaxed artistic tempo, it offers an idyllic coastal escape.',
-        season: 'May – November',
-        weather: 'Fresh Ocean Breeze (19°C – 24°C)',
-        duration: '2 – 4 Days',
-        budgetEst: '$40 – $90 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=900&q=80', caption: 'Skala de la Kasbah Ramparts with Bronze Cannons' },
-            { url: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=900&q=80', caption: 'Ocean Bastions Facing the Atlantic Sea Spray' },
-            { url: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=80', caption: 'Windsurfing and Kitesurfing across the Atlantic Bay' },
-            { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', caption: 'Wide Golden Sand Beach and Camel Rides' },
-            { url: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80', caption: 'Ancient Portuguese Fortification Walls at Twilight' },
-            { url: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80', caption: 'Thuya Wood Carving Workshops and Souks' }
-        ],
-        landmarks: [
-            { name: 'Skala du Port & Ramparts', icon: 'fa-shield-halved', desc: 'Historic stone ramparts with ocean views across the Atlantic bastions' },
-            { name: 'The Fishing Port', icon: 'fa-anchor', desc: 'Bustling harbor where fishermen haul blue wooden boats and grill fresh sardines' },
-            { name: 'Mogador Island', icon: 'fa-water', desc: 'Protected nature reserve and sanctuary for rare Eleonoras falcons' },
-            { name: 'Thuya Wood Crafts Guild', icon: 'fa-tree', desc: 'Famous artisan workshops carving aromatic burl thuya root wood' }
-        ],
-        food: [
-            { name: 'Fresh Grilled Sardines', desc: 'Caught morning of, tossed on open coals with lemon juice and cumin salt.' },
-            { name: 'Fish Tagine with Argan Oil', desc: 'Atlantic sea bass or monkfish cooked in clay tagine drizzled with culinary argan oil.' },
-            { name: 'Argan Oil & Amlou', desc: 'Creamy Moroccan spread made from roasted almonds, pure argan oil, and wild honey.' }
-        ],
-        culture: 'The spiritual birthplace of Gnaoua music — a UNESCO Intangible Cultural Heritage blending sub-Saharan spiritual rhythms and Berber poetry.',
-        tips: [
-            'Bring a light windbreaker or sweater even in mid-summer; the Atlantic trade wind (Alizee) keeps it breezy.',
-            'Select your fresh seafood directly at the port stalls to have it cooked on the spot for lunch.',
-            'Take a beginner kitesurfing or horse-riding lesson along the wide sandy beach.'
-        ],
-        tags: ['essaouira', 'mogador', 'coast', 'beach', 'surfing', 'windsurfing', 'ramparts', 'port', 'seafood', 'gnaoua', 'music', 'argan']
-    },
-    {
-        id: 'merzouga',
-        name: 'Merzouga',
-        nameFr: 'Merzouga',
-        nameAr: 'مرزوكة',
-        region: 'Drâa-Tafilalet',
-        cats: ['desert'],
-        label: 'Jewel of the Sahara',
-        emoji: '🏜',
-        img: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Awe-inspiring Sahara Desert dunes reaching up to 150 meters high, camel caravans, and starlit Berber camps.',
-        overview: 'Merzouga is the gateway to Erg Chebbi, Moroccos most majestic dune sea. Watching the apricot-gold sands shift into deep violet as the Saharan sun dips below the horizon, followed by a sky glittering with millions of stars around a desert campfire, is an unforgettable experience.',
-        season: 'October – April',
-        weather: 'Sunny Warm Days, Crisp Starry Nights',
-        duration: '2 – 3 Days',
-        budgetEst: '$50 – $140 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80', caption: 'Erg Chebbi Majestic Sand Dunes at Sunset' },
-            { url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80', caption: 'Camel Caravan Trekking across Golden Ridges' },
-            { url: 'https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=900&q=80', caption: 'Vibrant Sunset Over the Endless Saharan Horizon' },
-            { url: 'https://images.unsplash.com/photo-1489493585363-d69421e0edd3?auto=format&fit=crop&w=900&q=80', caption: 'Milky Way and Crystal Clear Stargazing Skies' },
-            { url: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80', caption: 'Gateway to the Great Dunes of Tafilalet' },
-            { url: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80', caption: 'Traditional Saharan Mint Tea & Desert Spices' }
-        ],
-        landmarks: [
-            { name: 'Erg Chebbi Dunes', icon: 'fa-mountain-sun', desc: 'Moroccos tallest golden dunes shifting colors continuously with the sun' },
-            { name: 'Khamlia Gnawa Village', icon: 'fa-drum', desc: 'Desert community famous for soulful live Gnawa music and hospitality' },
-            { name: 'Dayet Srji Flamingo Lake', icon: 'fa-feather', desc: 'Seasonal desert lake attracting flocks of pink flamingos in winter and spring' },
-            { name: 'Rissani Mausoleum & Date Souk', icon: 'fa-landmark', desc: 'Ancient trading post on the trans-Saharan caravan route' }
-        ],
-        food: [
-            { name: 'Medfouna (Berber Pizza)', desc: 'Stuffed desert bread baked in sand ovens with spiced minced beef, almonds, and herbs.' },
-            { name: 'Desert Camp Tagine', desc: 'Clay pot cooked over glowing charcoal in the sand, scented with cumin, ginger, and saffron.' },
-            { name: 'Dates of Tafilalet', desc: 'Sweet, rich Medjool dates harvested from the surrounding desert palmeries.' }
-        ],
-        culture: 'Deeply rooted in nomadic Berber traditions, camel husbandry, celestial navigation, and warm hospitality around the evening fire.',
-        tips: [
-            'Pack warm layers — desert nights can drop below 10°C even after sunny 25°C days.',
-            'Opt for a desert camp with private en-suite tents and solar power for maximum comfort.',
-            'Wake up before dawn for a sunrise trek up the high ridge — the colors are unforgettable.'
-        ],
-        tags: ['merzouga', 'sahara', 'desert', 'dunes', 'erg chebbi', 'camels', 'stargazing', 'camp', 'medfouna', 'adventure']
-    },
-    {
-        id: 'agadir',
-        name: 'Agadir & Taghazout',
-        nameFr: 'Agadir & Taghazout',
-        nameAr: 'أكادير وتغازوت',
-        region: 'Souss-Massa',
-        cats: ['coast'],
-        label: 'Sun & Atlantic Surf',
-        emoji: '🏄',
-        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Moroccos premier coastal resort with 300 days of sunshine, world-class surf breaks, and sandy crescent bays.',
-        overview: 'Blessed with 300 days of annual sunshine and a wide 10-kilometer golden beach, Agadir is Moroccos modern seaside capital. Just 20 minutes north lies the world-famous surf village of Taghazout, where surfers from around the globe ride legendary point breaks.',
-        season: 'Year-round (Best: October – May)',
-        weather: 'Warm & Sunny (22°C – 28°C)',
-        duration: '3 – 6 Days',
-        budgetEst: '$45 – $110 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', caption: 'Agadir 10-Kilometer Golden Beach Crescent' },
-            { url: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=80', caption: 'Surfing World-Class Waves in Taghazout' },
-            { url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80', caption: 'Sunny Coastline and Beachfront Resorts' },
-            { url: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80', caption: 'Atlantic Golden Hour Sunset over the Ocean' },
-            { url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80', caption: 'Waves Breaking near Anchor Point Bastion' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Paradise Valley Natural Rock Pools & Palms' }
-        ],
-        landmarks: [
-            { name: 'Agadir Oufella Kasbah', icon: 'fa-landmark', desc: '16th-century hilltop citadel featuring panoramic views across the bay' },
-            { name: 'Taghazout Bay & Anchor Point', icon: 'fa-water', desc: 'Legendary surf mecca with right-hand point breaks and chill bohemian cafes' },
-            { name: 'Souk El Had', icon: 'fa-store', desc: 'One of the largest markets in Africa with over 6,000 stalls of spices and crafts' },
-            { name: 'Paradise Valley', icon: 'fa-gem', desc: 'Mountain oasis 45 minutes inland with emerald rock pools and palm groves' }
-        ],
-        food: [
-            { name: 'Argan Tagine of the Souss', desc: 'Slow-cooked local chicken with preserved lemons and organic Souss argan oil.' },
-            { name: 'Grilled Sea Bream & Calamari', desc: 'Fresh seafood prepared on the beachfront boardwalk with homemade harissa.' },
-            { name: 'Amlou on Warm Msemmen', desc: 'Rich dip of roasted almonds, pure argan oil, and blossom honey served on flaky flatbread.' }
-        ],
-        culture: 'Center of Amazigh (Berber) culture in the fertile Souss Valley, celebrated for silver jewelry and argan cooperatives.',
-        tips: [
-            'Take the modern cable car up to the restored Agadir Oufella Kasbah at sunset.',
-            'Visit an authentic women-led argan oil cooperative on the road to Taghazout.',
-            'Rent a surfboard or book a surf coaching lesson in Taghazout.'
-        ],
-        tags: ['agadir', 'taghazout', 'coast', 'beach', 'surf', 'sun', 'swimming', 'paradise valley', 'argan', 'souss']
-    },
-    {
-        id: 'rabat',
-        name: 'Rabat',
-        nameFr: 'Rabat',
-        nameAr: 'الرباط',
-        region: 'Rabat-Salé-Kénitra',
-        cats: ['imperial', 'coast'],
-        label: 'Modern Capital & UNESCO Heritage',
-        emoji: '🏛',
-        img: 'https://images.unsplash.com/photo-1544085311-11a028465b03?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Moroccos elegant capital combining tree-lined boulevards, coastal ocean fortress, and UNESCO-listed monuments.',
-        overview: 'Named a UNESCO World Heritage site, Rabat is one of Moroccos four Imperial Cities. It offers a sophisticated atmosphere with clean coastal air, the dramatic 12th-century Hassan Tower, and the cliffside Kasbah of the Udayas.',
-        season: 'Year-round (Best: April – November)',
-        weather: 'Pleasant Coastal Climate (18°C – 25°C)',
-        duration: '2 – 3 Days',
-        budgetEst: '$45 – $100 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1544085311-11a028465b03?auto=format&fit=crop&w=900&q=80', caption: 'Hassan Tower Red Sandstone Columns & Minaret' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Andalusian Gardens of the Kasbah of the Udayas' },
-            { url: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80', caption: 'Blue and White Alleys of the Kasbah of the Udayas' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'Royal Palace Monumental Archway' },
-            { url: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80', caption: 'Bouregreg Marina & Mohammed VI Tower' },
-            { url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=900&q=80', caption: 'Mausoleum of Mohammed V Royal Craftsmanship' }
-        ],
-        landmarks: [
-            { name: 'Hassan Tower & Mausoleum', icon: 'fa-monument', desc: '12th-century minaret and tomb of the royal kings guarded by royal horsemen' },
-            { name: 'Kasbah of the Udayas', icon: 'fa-fort-awesome', desc: '12th-century cliffside fortress with blue-and-white houses and ocean vistas' },
-            { name: 'Chellah Necropolis', icon: 'fa-landmark', desc: 'Ancient Roman ruins of Sala Colonia intertwined with medieval Marinid royal tombs' },
-            { name: 'Grand Theatre of Rabat', icon: 'fa-masks-theater', desc: 'Futuristic architectural masterpiece designed by Zaha Hadid' }
-        ],
-        food: [
-            { name: 'Couscous Bidawi with Seven Vegetables', desc: 'Fluffy steamed semolina topped with pumpkin, turnips, carrots, and chickpeas.' },
-            { name: 'Kaab el Ghazal (Gazelle Horns)', desc: 'Delicate crescent pastries filled with almond paste scented with orange blossom.' },
-            { name: 'Harira Soup with Dates', desc: 'Rich tomato, lentil, and chickpea broth traditionally served with honeyed chebakia.' }
-        ],
-        culture: 'A calm, prestigious cultural center hosting the National Museum of Modern Art and pristine embassies.',
-        tips: [
-            'Rabat is very walkable and has modern trams connecting the capital across the river to Salé.',
-            'Visit the Café Maure in the Kasbah of the Udayas for mint tea with a panoramic view of the river mouth.',
-            'Dress respectfully when visiting the Mausoleum of Mohammed V.'
-        ],
-        tags: ['rabat', 'capital', 'imperial', 'history', 'monuments', 'unesco', 'hassan tower', 'udayas', 'museums']
-    },
-    {
-        id: 'ifrane',
-        name: 'Ifrane',
-        nameFr: 'Ifrane',
-        nameAr: 'إفران',
-        region: 'Fès-Meknès',
-        cats: ['mountains', 'hidden'],
-        label: 'Little Switzerland of Morocco',
-        emoji: '🌲',
-        img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'A picturesque alpine resort in the Middle Atlas featuring cedar forests, Swiss-style chalets, and winter snow.',
-        overview: 'Located at 1,665 meters altitude in the Middle Atlas, Ifrane was built in the 1930s. Often called the Switzerland of Morocco, it boasts red-roofed alpine chalets, pristine flower-lined parks, Europe-like cleanliness, and nearby ski slopes at Michlifen.',
-        season: 'Year-round (Autumn & Winter for snow; Spring for greenery)',
-        weather: 'Crisp Alpine Air (0°C in Winter, 22°C in Summer)',
-        duration: '1 – 2 Days',
-        budgetEst: '$40 – $95 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80', caption: 'Pristine Cedar and Pine Mountains of the Middle Atlas' },
-            { url: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80', caption: 'Cèdre Gouraud Ancient Forest Near Azrou' },
-            { url: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=900&q=80', caption: 'Alpine Snow Chalets and Ski Resort of Michlifen' },
-            { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80', caption: 'Snow-Dusted Middle Atlas Mountain Horizon' },
-            { url: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80', caption: 'Green Valleys and Springs around Ifrane National Park' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Tranquil Lakeside Gardens of Al Akhawayn University' }
-        ],
-        landmarks: [
-            { name: 'The Stone Lion of Ifrane', icon: 'fa-shield-cat', desc: 'Famous sculpture carved into living boulder commemorating the extinct Atlas Lion' },
-            { name: 'Cèdre Gouraud Forest (Azrou)', icon: 'fa-tree', desc: 'Century-old cedar forest home to wild Barbary macaque monkeys' },
-            { name: 'Michlifen Ski Station', icon: 'fa-person-skiing', desc: 'Volcanic crater ski resort situated at 2,000 meters altitude' },
-            { name: 'Vittel Spring & Waterfalls', icon: 'fa-water', desc: 'Peaceful forested pathway leading to freshwater mountain springs' }
-        ],
-        food: [
-            { name: 'Atlas Mountain Trout', desc: 'Fresh trout caught in cold mountain streams and grilled with fresh herbs.' },
-            { name: 'Middle Atlas Wild Mushroom Tagine', desc: 'Seasonal morel and boletus mushrooms braised with tender beef.' },
-            { name: 'Hot Spiced Mint Tea with Mountain Thyme', desc: 'Warming herbal tea infused with wild thyme and pennyroyal.' }
-        ],
-        culture: 'A unique blend of clean alpine university town culture and traditional Berber pastoral life from nearby Azrou.',
-        tips: [
-            'Visit the nearby Azrou cedar forest to see friendly Barbary macaques in their natural habitat.',
-            'Great stopover destination when traveling between Fes and the Sahara Desert.',
-            'In winter (Dec-Feb), pack warm winter coats, gloves, and boots.'
-        ],
-        tags: ['ifrane', 'mountains', 'snow', 'cedar', 'nature', 'switzerland', 'monkeys', 'middle atlas', 'hiking']
-    },
-    {
-        id: 'al-hoceima',
-        name: 'Al Hoceima',
-        nameFr: 'Al Hoceïma',
-        nameAr: 'الحسيمة',
-        region: 'Tanger-Tétouan-Al Hoceïma',
-        cats: ['coast', 'hidden'],
-        label: 'Mediterranean Turquoise Jewel',
-        emoji: '🏖',
-        img: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Crystal-clear turquoise Mediterranean waters framed by the dramatic red cliffs of the Rif Mountains.',
-        overview: 'Overlooking one of the most stunning Mediterranean bays in North Africa, Al Hoceima combines turquoise waters, hidden coves, and pristine national parks. Its Spanish-influenced plazas and fresh grilled seafood make it a sublime coastal paradise.',
-        season: 'May – October',
-        weather: 'Warm Mediterranean Sunshine (22°C – 29°C)',
-        duration: '2 – 4 Days',
-        budgetEst: '$35 – $85 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80', caption: 'Plage Quemado Turquoise Water and Cliffs' },
-            { url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80', caption: 'Al Hoceima National Park Coastal Cliffs' },
-            { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', caption: 'Cala Bonita Cove with Crystal Calm Seas' },
-            { url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80', caption: 'Mediterranean Clear Blue Waters' },
-            { url: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80', caption: 'Scenic Clifftop Promenades and Sunset Views' },
-            { url: 'https://images.unsplash.com/photo-1580837119756-563d608dd119?auto=format&fit=crop&w=900&q=80', caption: 'Al Hoceima Harbor and Fishing Skiffs' }
-        ],
-        landmarks: [
-            { name: 'Plage Quemado', icon: 'fa-umbrella-beach', desc: 'The iconic golden sand cove situated right at the foot of dramatic cliff walls' },
-            { name: 'Al Hoceima National Park', icon: 'fa-mountain', desc: 'Coastal park sanctuary for rare osprey birds, dolphins, and unspoiled coves' },
-            { name: 'Plage Asfiha & Spanish Rock', icon: 'fa-island-tropical', desc: 'Panoramic beach looking directly across at Peñón de Alhucemas' },
-            { name: 'Cala Bonita', icon: 'fa-water', desc: 'Peaceful turquoise cove ideal for family swimming and snorkeling' }
-        ],
-        food: [
-            { name: 'Mediterranean Espeto de Sardinas', desc: 'Fresh sardines skewered on canes and barbecued over open beach fires.' },
-            { name: 'Rifian Paella & Seafood Platter', desc: 'Seafood rice dish bursting with local shrimp, squid, and clams.' },
-            { name: 'Fresh Fig & Cactus Fruit', desc: 'Sweet prickly pears harvested fresh from coastal Rif slopes.' }
-        ],
-        culture: 'Proud Amazigh Rifian maritime culture, where Berber traditions merge with Mediterranean lifestyle.',
-        tips: [
-            'Rent a kayak or take a boat tour to explore secret sea caves in Al Hoceima National Park.',
-            'Visit in June or September for tranquil beaches without midsummer holiday crowds.',
-            'Try snorkeling at Cala Bonita where waters are calm and transparent.'
-        ],
-        tags: ['al hoceima', 'mediterranean', 'beach', 'turquoise', 'cove', 'rif', 'nature', 'swimming', 'seafood']
-    },
-    {
-        id: 'ouarzazate',
-        name: 'Ouarzazate & Aït Benhaddou',
-        nameFr: 'Ouarzazate & Aït Benhaddou',
-        nameAr: 'ورزازات وقصر آيت بن حدو',
-        region: 'Drâa-Tafilalet',
-        cats: ['desert', 'hidden'],
-        label: 'Door of the Desert & UNESCO Ksar',
-        emoji: '🏰',
-        img: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Legendary clay kasbahs, cinema studios, and the iconic UNESCO World Heritage fortress of Aït Benhaddou.',
-        overview: 'Known as the Door of the Desert, Ouarzazate is famed for its monumental earthen architecture and global film studios. Nearby stands the majestic Ksar of Aït Benhaddou, a UNESCO World Heritage site and backdrop for Gladiator and Lawrence of Arabia.',
-        season: 'October – April',
-        weather: 'Sunny & Dry Desert Climate (20°C – 28°C)',
-        duration: '1 – 3 Days',
-        budgetEst: '$40 – $90 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80', caption: 'Aït Benhaddou Ancient Clay Kasbah Towers' },
-            { url: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80', caption: 'Gateway to the Saharan Desert and Ounila Valley' },
-            { url: 'https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=900&q=80', caption: 'Red Clay Earth of Draa Valley at Sunset' },
-            { url: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=80', caption: 'Taourirt Kasbah Intricate Geometric Reliefs' },
-            { url: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80', caption: 'Local Saffron and Spices of the Draa Valley' },
-            { url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80', caption: 'Lush Date Palm Oasis beneath Red Mountains' }
-        ],
-        landmarks: [
-            { name: 'Ksar of Aït Benhaddou', icon: 'fa-chess-rook', desc: '11th-century UNESCO fortified clay village on the trans-Saharan caravan route' },
-            { name: 'Atlas Film Studios', icon: 'fa-film', desc: 'One of the worlds largest movie production lots with Egyptian and Roman sets' },
-            { name: 'Kasbah Taourirt', icon: 'fa-castle', desc: 'Historic residence of the Glaoui pasha featuring ornate clay rooms' },
-            { name: 'Ounila Valley', icon: 'fa-road', desc: 'Spectacular canyon road linking Aït Benhaddou to the High Atlas' }
-        ],
-        food: [
-            { name: 'Tagine of Camel Meat & Figs', desc: 'Slow-braised camel meat with desert figs, wild cumin, and sweet onions.' },
-            { name: 'Ouarzazate Saffron Couscous', desc: 'Golden semolina scented with pure Taliouine saffron and organic vegetables.' },
-            { name: 'Berber Bread with Olive Oil', desc: 'Fresh baked clay-oven flatbread dipped in local Draa olive oil.' }
-        ],
-        culture: 'Centuries of southern Moroccan Glaoua history, caravan trade lore, and traditional mud-brick earthen architecture.',
-        tips: [
-            'Cross the river stones early in the morning to explore Aït Benhaddou before tour buses arrive.',
-            'Climb to the ruined granary at the summit of Aït Benhaddou for an extraordinary 360° valley view.',
-            'Tour Atlas Film Studios for behind-the-scenes movie sets.'
-        ],
-        tags: ['ouarzazate', 'ait benhaddou', 'kasbah', 'cinema', 'gladiator', 'unesco', 'desert', 'history', 'architecture']
-    },
-    {
-        id: 'high-atlas',
-        name: 'High Atlas & Imlil (Toubkal)',
-        nameFr: 'Haut Atlas & Imlil (Toubkal)',
-        nameAr: 'الأطلس الكبير وإمليل (توبقال)',
-        region: 'Marrakech-Safi',
-        cats: ['mountains'],
-        label: 'Roof of North Africa',
-        emoji: '🏔',
-        img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80',
-        shortDesc: 'Gateway to Mount Toubkal (4,167m), terraced Berber villages, rushing mountain rivers, and alpine hiking.',
-        overview: 'Rising just 90 minutes south of Marrakech, the High Atlas Mountains form the dramatic spine of Morocco. The village of Imlil serves as the premier mountain trekking base, where terraced apple orchards, stone Berber houses, and mule tracks lead toward Mount Toubkal.',
-        season: 'April – October (Hiking); Dec – March (Snow sports)',
-        weather: 'Cool Mountain Breeze (14°C – 24°C Summer)',
-        duration: '2 – 4 Days',
-        budgetEst: '$35 – $80 / day per person',
-        gallery: [
-            { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80', caption: 'High Atlas Snowy Peaks and Ridgelines' },
-            { url: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=80', caption: 'Traditional Stone Berber Village of Imlil' },
-            { url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80', caption: 'Ourika Valley Cascades and Riverbanks' },
-            { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80', caption: 'Walnut Groves along Mountain Trekking Trails' },
-            { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80', caption: 'Kasbah du Toubkal Terraces Facing High Peaks' },
-            { url: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80', caption: 'Berber Hospitality with Freshly Steeped Mint Tea' }
-        ],
-        landmarks: [
-            { name: 'Mount Toubkal Peak (4,167m)', icon: 'fa-mountain', desc: 'Highest mountain peak in North Africa and the Arab world' },
-            { name: 'Aroumd Village', icon: 'fa-house-chimney-window', desc: 'Traditional village built on a spur of rock with views across the Mizane Valley' },
-            { name: 'Tizi n’Tichka Pass', icon: 'fa-road', desc: 'Breathtaking 2,260-meter mountain pass connecting Marrakech to the south' },
-            { name: 'Ourika Valley Waterfalls', icon: 'fa-water', desc: 'Lush green valley with natural cascades and riverside cafes' }
-        ],
-        food: [
-            { name: 'Berber Tagine on Open Fire', desc: 'Conical earthenware tagine packed with mountain vegetables, wild herbs, and goat meat.' },
-            { name: 'Fresh Walnuts & Mountain Honey', desc: 'Locally harvested Atlas walnuts served with warm bread and wild thyme honey.' },
-            { name: 'High Atlas Herb Tea', desc: 'Infused with mountain sage, pennyroyal, and spearmint.' }
-        ],
-        culture: 'Authentic Berber highland culture emphasizing community solidarity, terraced agriculture, and mountain hospitality.',
-        tips: [
-            'Hiring an official registered mountain guide is mandatory for the Mount Toubkal summit trek.',
-            'Pack sturdy hiking boots, sun protection, and a warm fleece for cool mountain evenings.',
-            'Stop for lunch at a riverside Berber cafe in the Ourika Valley.'
-        ],
-        tags: ['high atlas', 'atlas', 'imlil', 'toubkal', 'mountains', 'hiking', 'trekking', 'berber', 'nature', 'ourika']
-    }
-];
+// Destination records are loaded from the SQLite-backed API.\nlet DESTINATIONS = [];
 
 // Helper Selectors
 const $ = (s, r = document) => r.querySelector(s);
@@ -851,6 +331,15 @@ function restartDiscoverInterval() {
 // =============================================================================
 let activeCategoryFilter = 'all';
 let currentSearchQuery = '';
+
+async function loadDestinations() {
+    const response = await fetch('/api/destinations');
+    if (!response.ok) throw new Error(`Destinations API returned ${response.status}`);
+
+    const destinations = await response.json();
+    if (!Array.isArray(destinations)) throw new Error('Destinations API returned invalid data');
+    DESTINATIONS = destinations;
+}
 
 function renderDestinationsGrid() {
     const grid = $('#destinationsGrid');
@@ -1178,16 +667,28 @@ function openCityDetail(cityId) {
     // Landmarks Tab
     const landmarksList = $('#cityLandmarksList');
     if (landmarksList) {
-        landmarksList.innerHTML = city.landmarks.map(lm => `
-            <div class="surface-card p-5 rounded-2xl flex items-start gap-4">
-                <div class="w-10 h-10 rounded-xl bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 flex items-center justify-center text-[var(--accent-primary)] text-base shrink-0">
-                    <i class="fa-solid ${lm.icon}"></i>
+        landmarksList.innerHTML = city.landmarks.map((lm, index) => `
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${lm.name} ${city.name}`)}"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Find ${lm.name} in ${city.name} on Google Maps"
+               class="surface-card rounded-2xl overflow-hidden block group hover:-translate-y-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--accent-gold)]">
+                <img src="${lm.img || city.gallery[index % city.gallery.length]?.url || city.img}"
+                     alt="${lm.name}" class="w-full h-40 object-cover group-hover:scale-[1.02] transition-transform"
+                     loading="lazy" onerror="this.src='${city.img}'">
+                <div class="p-5 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 flex items-center justify-center text-[var(--accent-primary)] text-base shrink-0">
+                        <i class="fa-solid ${lm.icon}"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-sm mb-1">${lm.name}</h5>
+                        <p class="text-xs opacity-75 leading-relaxed">${lm.desc}</p>
+                        <span class="inline-flex items-center gap-2 mt-4 text-xs font-bold text-[var(--accent-primary)]">
+                            <i class="fa-solid fa-map-location-dot"></i> Find in ${city.name}
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <h5 class="font-bold text-sm mb-1">${lm.name}</h5>
-                    <p class="text-xs opacity-75 leading-relaxed">${lm.desc}</p>
-                </div>
-            </div>
+            </a>
         `).join('');
     }
 
@@ -1195,12 +696,24 @@ function openCityDetail(cityId) {
     const foodList = $('#cityFoodList');
     if (foodList) {
         foodList.innerHTML = city.food.map(f => `
-            <div class="surface-card p-5 rounded-2xl">
-                <div class="flex items-center gap-2 mb-1.5">
-                    <span class="text-[var(--accent-gold)] font-bold text-sm">🍲 ${f.name}</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${f.name} ${city.name}`)}"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Find ${f.name} in ${city.name} on Google Maps"
+               class="surface-card rounded-2xl overflow-hidden block group hover:-translate-y-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--accent-gold)]">
+                ${f.img ? `<img src="${f.img}" alt="${f.name}"
+                class="w-full h-40 object-cover group-hover:scale-[1.02] transition-transform" loading="lazy"
+                onerror="this.remove()">` : ''}
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span class="text-[var(--accent-gold)] font-bold text-sm">🍲 ${f.name}</span>
+                    </div>
+                    <p class="text-xs opacity-80 leading-relaxed">${f.desc}</p>
+                    <span class="inline-flex items-center gap-2 mt-4 text-xs font-bold text-[var(--accent-primary)]">
+                        <i class="fa-solid fa-map-location-dot"></i> Find it in ${city.name}
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </span>
                 </div>
-                <p class="text-xs opacity-80 leading-relaxed">${f.desc}</p>
-            </div>
+            </a>
         `).join('');
     }
 
@@ -2162,8 +1675,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Search System
     initSearch();
 
-    // 4. Destinations Grid
-    renderDestinationsGrid();
+    // 4. Destinations Grid (loaded from the SQLite-backed API)
+    loadDestinations().then(() => {
+        renderDestinationsGrid();
+    }).catch((error) => {
+        console.error('Could not load destinations:', error);
+        const grid = $('#destinationsGrid');
+        if (grid) {
+            grid.innerHTML = '<p class="col-span-full text-center py-10">Destinations could not be loaded. Please make sure the server is running.</p>';
+        }
+    });
 
     // 5. Filter Tabs
     $$('#filterTabs button').forEach(btn => {

@@ -1,0 +1,94 @@
+{
+  "data_status": "demo",
+  "notice": "Synthetic examples for schema and UI testing only. These are not real establishments, addresses, routes, or confirmed prices.",
+  "accommodations": [
+    {
+      "destination_id": "marrakech",
+      "source_record_id": "demo-lodging-marrakech-001",
+      "name": "DEMO — Riad Exemple Medina",
+      "category": "riad",
+      "address": "Adresse fictive — médina de Marrakech",
+      "services": ["wifi", "breakfast"],
+      "price_min": 450,
+      "price_max": 700,
+      "price_currency": "MAD",
+      "price_status": "demo",
+      "official_url": null,
+      "booking_url": "https://example.invalid/demo-riad"
+    },
+    {
+      "destination_id": "chefchaouen",
+      "source_record_id": "demo-lodging-chefchaouen-001",
+      "name": "DEMO — Maison d'hôtes Exemple Rif",
+      "category": "guest_house",
+      "address": "Adresse fictive — Chefchaouen",
+      "services": ["wifi"],
+      "price_min": 300,
+      "price_max": 500,
+      "price_currency": "MAD",
+      "price_status": "demo",
+      "official_url": null,
+      "booking_url": "https://example.invalid/demo-guest-house"
+    }
+  ],
+  "restaurants": [
+    {
+      "destination_id": "fes",
+      "source_record_id": "demo-restaurant-fes-001",
+      "name": "DEMO — Table Fassi de Test",
+      "cuisine": "Moroccan",
+      "specialties": "Exemple fictif: pastilla",
+      "budget_min": 80,
+      "budget_max": 140,
+      "budget_currency": "MAD",
+      "budget_status": "demo",
+      "opening_hours": null,
+      "rating": null,
+      "website_url": null
+    },
+    {
+      "destination_id": "essaouira",
+      "source_record_id": "demo-restaurant-essaouira-001",
+      "name": "DEMO — Cantine de Test Atlantique",
+      "cuisine": "Seafood",
+      "specialties": "Exemple fictif: poisson grille",
+      "budget_min": 100,
+      "budget_max": 180,
+      "budget_currency": "MAD",
+      "budget_status": "demo",
+      "opening_hours": null,
+      "rating": null,
+      "website_url": null
+    }
+  ],
+  "transport_routes": [
+    {
+      "source_record_id": "demo-route-marrakech-fes-001",
+      "origin_destination_id": "marrakech",
+      "destination_destination_id": "fes",
+      "transport_type": "train",
+      "operator": "DEMO — opérateur fictif",
+      "distance_km": null,
+      "duration_minutes": null,
+      "price_min": null,
+      "price_max": null,
+      "price_currency": "MAD",
+      "price_status": "demo",
+      "official_url": null
+    },
+    {
+      "source_record_id": "demo-route-rabat-chefchaouen-001",
+      "origin_destination_id": "rabat",
+      "destination_destination_id": "chefchaouen",
+      "transport_type": "bus",
+      "operator": "DEMO — opérateur fictif",
+      "distance_km": null,
+      "duration_minutes": null,
+      "price_min": null,
+      "price_max": null,
+      "price_currency": "MAD",
+      "price_status": "demo",
+      "official_url": null
+    }
+  ]
+}

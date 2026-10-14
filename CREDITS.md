@@ -1,0 +1,3 @@
+- Essaouira: "Maroc Essaouira Luc Viatour 4" — Luc Viatour0, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Maroc_Essaouira_Luc_Viatour_4.JPG
+- Essaouira: "Skala du Port Essaouira Morocco" — CastlesCatalog, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Skala_du_Port_Essaouira_Morocco.jpg
+- Essaouira: "Fishing Port of Essaouira Morocco" — CastlesCatalog, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Fishing_Port_of_Essaouira_Morocco.jpg
