@@ -163,3 +163,6 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+// The recommendation route needs the same destination records the public API
+// serves, including planner activities, meals, stays and city photo galleries.
+module.exports.loadDestinations = loadDestinations;

@@ -98,7 +98,7 @@
                     <i class="fa-solid fa-magnifying-glass text-sm"></i>
                 </button>
 
-                <!-- Page Language / Translate Switcher (EN, FR, DE, AR) -->
+                <!-- Page Language / Translate Switcher (EN, FR, ES, DE, IT, AR) -->
                 <div class="relative" id="langSwitcher">
                     <button id="langToggle" type="button" aria-haspopup="true" aria-expanded="false"
                             aria-label="Change page language" title="Translate page"
@@ -128,9 +128,19 @@
                             <span class="lang-name">Français</span>
                             <svg class="lang-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
                         </button>
+                        <button type="button" role="menuitemradio" data-lang="es" class="lang-option">
+                            <span class="lang-chip">ES</span>
+                            <span class="lang-name">Español</span>
+                            <svg class="lang-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
+                        </button>
                         <button type="button" role="menuitemradio" data-lang="de" class="lang-option">
                             <span class="lang-chip">DE</span>
                             <span class="lang-name">Deutsch</span>
+                            <svg class="lang-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
+                        </button>
+                        <button type="button" role="menuitemradio" data-lang="it" class="lang-option">
+                            <span class="lang-chip">IT</span>
+                            <span class="lang-name">Italiano</span>
                             <svg class="lang-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
                         </button>
                         <button type="button" role="menuitemradio" data-lang="ar" class="lang-option">
@@ -371,9 +381,9 @@
         </div>
     </footer>
 
-    <!-- VOICE TRANSLATOR MODAL (PREVIEW INTERFACE) -->
+    <!-- VOICE TRANSLATOR MODAL -->
     <div id="voiceModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="surface-card max-w-lg w-full rounded-3xl p-6 md:p-8 relative border border-[var(--border-color)] shadow-2xl">
+        <div class="surface-card max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-3xl p-6 md:p-8 relative border border-[var(--border-color)] shadow-2xl">
             <!-- Close Button -->
             <button id="closeVoiceModal" aria-label="Close Voice Translator" class="absolute top-5 right-5 w-9 h-9 rounded-full surface-inset flex items-center justify-center transition-colors">
                 <i class="fa-solid fa-xmark"></i>
@@ -384,11 +394,11 @@
                     <i class="fa-solid fa-microphone-lines text-2xl text-[var(--accent-primary)]"></i>
                 </div>
                 <div class="inline-block px-3 py-1 rounded-full bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/40 text-[10px] font-bold text-[var(--accent-gold)] uppercase tracking-widest mb-2">
-                    Recording Ready — Darija AI Coming Soon
+                    Speech to text · Apertus translation
                 </div>
                 <h3 class="font-heading text-2xl font-bold">Voice Translator</h3>
                 <p class="text-xs opacity-75 mt-1 leading-relaxed">
-                    Our upcoming AI engine will translate your spoken phrases directly into Moroccan Darija (<span class="font-arabic font-bold text-[var(--accent-gold)]">الدارجة المغربية</span>) with authentic local pronunciation.
+                    Choose what language to speak and what language you want to hear and read. Whisper transcribes; Apertus translates.
                 </p>
             </div>
 
@@ -405,39 +415,17 @@
                 </div>
             </div>
 
-            <!-- Future Feature Preview Card -->
-            <div class="p-4 rounded-2xl surface-inset mb-6">
-                <div class="flex items-center justify-between text-[11px] text-[var(--accent-gold)] font-bold uppercase tracking-wider mb-2">
-                    <span>Feature Preview</span>
-                    <span class="text-[10px] opacity-60">Simulated Darija Output</span>
-                </div>
-                
-                <div class="mb-3">
-                    <span class="text-[10px] opacity-60 block">Visitor Spoke:</span>
-                    <p id="voiceSampleSpoken" class="text-xs italic font-medium">"Where is the nearest entrance to the medina, please?"</p>
-                </div>
-
-                <div class="p-3 rounded-xl surface-card border border-[var(--accent-gold)]/40">
-                    <span class="text-[10px] text-[var(--accent-gold)] font-bold block mb-1">Moroccan Darija (الدارجة):</span>
-                    <p id="voiceSampleDarijaAr" class="font-arabic text-lg font-bold text-right text-[var(--accent-primary)]" dir="rtl">فين كاين أقرب باب للمدينة عافاك؟</p>
-                    <p id="voiceSampleDarijaLat" class="text-xs opacity-80 mt-1 font-mono">Fein kayen aqreb bab l-medina afak?</p>
-                </div>
-
-                <!-- Mock Audio Waveform Bar -->
-                <div class="mt-3 flex items-center gap-3">
-                    <button disabled class="w-8 h-8 rounded-full bg-[var(--accent-gold)]/20 text-[var(--accent-gold)] flex items-center justify-center text-xs opacity-75 cursor-not-allowed">
-                        <i class="fa-solid fa-volume-high"></i>
-                    </button>
-                    <div class="flex-1 flex items-center gap-1 h-3 opacity-60">
-                        <span class="w-1 h-3 bg-[var(--accent-gold)] rounded-full animate-pulse"></span>
-                        <span class="w-1 h-5 bg-[var(--accent-gold)] rounded-full"></span>
-                        <span class="w-1 h-2 bg-[var(--accent-gold)] rounded-full"></span>
-                        <span class="w-1 h-6 bg-[var(--accent-gold)] rounded-full animate-pulse"></span>
-                        <span class="w-1 h-3 bg-[var(--accent-gold)] rounded-full"></span>
-                        <span class="w-1 h-4 bg-[var(--accent-gold)] rounded-full"></span>
-                    </div>
-                    <span class="text-[10px] opacity-60 font-mono">Audio Preview</span>
-                </div>
+            <div class="mb-6">
+                <label for="voiceTargetLang" class="block text-xs font-bold uppercase tracking-wider text-[var(--accent-gold)] mb-2">Translate into:</label>
+                <select id="voiceTargetLang" class="w-full bg-[var(--bg-main)] border border-[var(--border-color)] rounded-xl px-4 py-3 text-sm font-bold">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 French</option>
+                    <option value="es">🇪🇸 Spanish</option>
+                    <option value="de">🇩🇪 German</option>
+                    <option value="it">🇮🇹 Italian</option>
+                    <option value="ar">🇸🇦 Arabic</option>
+                    <option value="darija" selected>🇲🇦 Moroccan Darija</option>
+                </select>
             </div>
 
             <!-- Voice Recorder: tap the mic to record, tap again to stop -->
@@ -455,14 +443,20 @@
                 <!-- Playback of the recorded audio (shown after recording stops) -->
                 <audio id="voicePlayback" controls class="hidden w-full"></audio>
 
-                <!-- Translation result (filled once the Apertus integration returns text) -->
+                <!-- Live transcription and translated result -->
                 <div id="voiceResult" class="hidden w-full p-3 rounded-xl surface-card border border-[var(--accent-gold)]/40">
-                    <span class="text-[10px] text-[var(--accent-gold)] font-bold block mb-1">Translation (الدارجة):</span>
-                    <p id="voiceResultAr" class="font-arabic text-lg font-bold text-right text-[var(--accent-primary)]" dir="rtl"></p>
-                    <p id="voiceResultLat" class="text-xs opacity-80 mt-1 font-mono"></p>
+                    <span class="text-[10px] opacity-60 font-bold block mb-1">You said:</span>
+                    <p id="voiceTranscript" class="text-sm mb-3"></p>
+                    <span id="voiceTranslationLabel" class="text-[10px] text-[var(--accent-gold)] font-bold block mb-1">Translation:</span>
+                    <p id="voiceTranslatedText" class="text-base font-bold text-[var(--accent-primary)]"></p>
+                    <p id="voiceTransliteration" class="hidden text-xs opacity-80 mt-1 font-mono"></p>
+                    <div class="flex gap-2 mt-3">
+                        <button id="voiceSpeakBtn" type="button" class="px-3 py-2 rounded-lg bg-[var(--accent-primary)] text-white text-xs font-bold"><i class="fa-solid fa-volume-high mr-1"></i> Listen to translation</button>
+                        <button id="voiceRetryBtn" type="button" class="px-3 py-2 rounded-lg surface-inset text-xs font-bold">Record again</button>
+                    </div>
                 </div>
             </div>
-            <p class="text-[10px] text-center opacity-60 mt-3">Your recording stays in your browser until translation is connected.</p>
+            <p class="text-[10px] text-center opacity-60 mt-3">Your audio is processed for transcription and is not saved by this website.</p>
         </div>
     </div>
 

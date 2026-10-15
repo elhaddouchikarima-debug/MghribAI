@@ -12,6 +12,12 @@ const ALLOWED = {
 };
 
 const SINGLE_FIELDS = ['budget', 'budgetCurrency', 'duration', 'companions', 'atmosphere', 'season', 'transport', 'startCity'];
+const DAYS_BY_RANGE = {
+  '1-2': { min: 1, max: 2, default: 2 },
+  '3-4': { min: 3, max: 4, default: 4 },
+  '5-7': { min: 5, max: 7, default: 7 },
+  '8+': { min: 8, max: 30, default: 8 }
+};
 
 // Kayrja3 { errors: [...], value: {...} }  (value = preferences nqiyin)
 function validatePreferences(body) {
@@ -38,6 +44,18 @@ function validatePreferences(body) {
     if (v === undefined || v === null || v === '') { value[f] = null; continue; }
     if (!ALLOWED[f].includes(v)) errors.push(`${f}: valeur invalide (${v})`);
     else value[f] = v;
+  }
+
+  const dayRange = DAYS_BY_RANGE[value.duration] || DAYS_BY_RANGE['3-4'];
+  const requestedDays = body.tripDays;
+  if (requestedDays === undefined || requestedDays === null || requestedDays === '') {
+    value.tripDays = dayRange.default;
+  } else if (!Number.isInteger(Number(requestedDays)) || Number(requestedDays) < 1 || Number(requestedDays) > 30) {
+    errors.push('tripDays doit être un nombre entier entre 1 et 30');
+  } else if (Number(requestedDays) < dayRange.min || Number(requestedDays) > dayRange.max) {
+    errors.push(`tripDays doit être entre ${dayRange.min} et ${dayRange.max} pour la durée choisie`);
+  } else {
+    value.tripDays = Number(requestedDays);
   }
 
   // budgetAmount: ra9m (wla khawi)

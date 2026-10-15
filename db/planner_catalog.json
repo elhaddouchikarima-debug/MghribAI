@@ -1,0 +1,753 @@
+{
+  "_metadata": {
+    "title": "MghribAI Morocco tourism data enrichment",
+    "version": "1.0",
+    "lastReviewed": "2026-10-14",
+    "currency": "MAD",
+    "dataPolicy": "Only information supported by official tourism sources is marked source-backed. Prices and coordinates are null unless independently verified; null does not mean free.",
+    "pricePolicy": "Do not treat null prices as zero. Ask users to verify variable prices with the provider before booking.",
+    "primarySource": {
+      "name": "Moroccan National Tourist Office (ONMT) - Visit Morocco",
+      "url": "https://www.visitmorocco.com/en",
+      "note": "Official destination descriptions and attraction suggestions; not a live price or availability feed."
+    }
+  },
+  "destinations": {
+    "marrakech": {
+      "displayName": "Marrakech",
+      "region": "Marrakech-Safi",
+      "themes": [
+        "culture",
+        "medina",
+        "food",
+        "gardens",
+        "day_trips"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en",
+        "https://www.visitmarrakech.com/en/destinations/"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Jemaa el-Fnaa",
+          "category": "square",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/see-do/nature"
+        },
+        {
+          "name": "Majorelle Garden",
+          "category": "garden",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "check_official_website",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/see-do/nature"
+        },
+        {
+          "name": "Medina and souks",
+          "category": "cultural_experience",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "self_guided_walk_cost_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en"
+        }
+      ],
+      "transportNotes": [
+        "Check current ONCF train routes where applicable; intercity buses and local taxis have separate fares."
+      ],
+      "seasonNotes": [
+        "Outdoor walking is often more comfortable outside the hottest part of the day; check forecast for travel dates."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "chefchaouen": {
+      "displayName": "Chefchaouen",
+      "region": "Tanger-Tetouan-Al Hoceima",
+      "themes": [
+        "blue_medina",
+        "photography",
+        "rif_mountains",
+        "crafts",
+        "hiking"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Blue-painted medina",
+          "category": "sightseeing",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "self_guided_walk_cost_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Rif mountain surroundings",
+          "category": "nature",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "guide_and_transport_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Confirm bus schedules, departure station and onward local transport for the selected date."
+      ],
+      "seasonNotes": [
+        "For hiking, check weather, daylight, trail condition and whether a local guide is advisable."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "fes": {
+      "displayName": "Fès",
+      "region": "Fès-Meknès",
+      "themes": [
+        "historic_medina",
+        "crafts",
+        "heritage",
+        "food"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/fr/voyage/ou-aller"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Fès el-Bali medina",
+          "category": "historic_medina",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "guide_optional_price_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/fr/voyage/ou-aller"
+        },
+        {
+          "name": "Traditional craft quarters",
+          "category": "crafts",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "workshop_and_purchase_prices_vary",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/fr/voyage/ou-aller"
+        }
+      ],
+      "transportNotes": [
+        "Check ONCF for train travel and confirm local transfer to the accommodation."
+      ],
+      "seasonNotes": [
+        "Medina lanes can be busy and confusing; plan a route and confirm any guide fee before starting."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "tangier": {
+      "displayName": "Tangier",
+      "region": "Tanger-Tetouan-Al Hoceima",
+      "themes": [
+        "medina",
+        "coast",
+        "heritage",
+        "cafes"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/medinas-and-beaches"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Kasbah and old medina",
+          "category": "heritage",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "site_specific_fees_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/medinas-and-beaches"
+        },
+        {
+          "name": "Grand Socco",
+          "category": "public_square",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "public_area_cafe_costs_extra",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/medinas-and-beaches"
+        }
+      ],
+      "transportNotes": [
+        "Check ONCF rail schedules and port/airport transfers against the travel date."
+      ],
+      "seasonNotes": [
+        "Coastal weather can be windy; check conditions for outdoor plans."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "essaouira": {
+      "displayName": "Essaouira",
+      "region": "Marrakech-Safi",
+      "themes": [
+        "coast",
+        "ramparts",
+        "seafood",
+        "water_sports"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/fr/voyage/ou-aller"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Skala and historic ramparts",
+          "category": "heritage",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "access_fees_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/fr/voyage/ou-aller"
+        },
+        {
+          "name": "Fishing port",
+          "category": "harbour",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "public_visit_meal_costs_extra",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/fr/voyage/ou-aller"
+        },
+        {
+          "name": "Public beach",
+          "category": "beach",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "equipment_and_lessons_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/fr/voyage/ou-aller"
+        }
+      ],
+      "transportNotes": [
+        "Confirm bus schedules and transfer costs; surf lessons and equipment hire are separate services."
+      ],
+      "seasonNotes": [
+        "Wind conditions affect beach comfort and water sports."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "daily_catch_and_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "merzouga": {
+      "displayName": "Merzouga",
+      "region": "Drâa-Tafilalet",
+      "themes": [
+        "desert",
+        "dunes",
+        "camping",
+        "stargazing",
+        "local_culture"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Erg Chebbi dunes",
+          "category": "desert_nature",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "tour_transport_and_safety_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Khamlia village",
+          "category": "cultural_experience",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "confirm_performance_or_contribution_directly",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Long-distance transfers and desert excursions should be priced separately and confirmed with the operator."
+      ],
+      "seasonNotes": [
+        "Desert temperatures can vary substantially between day and night; check forecast and operator safety advice."
+      ],
+      "budgetRules": {
+        "accommodation": "package_inclusions_must_be_checked",
+        "food": "confirm_if_included",
+        "transport": "operator_quote_required"
+      }
+    },
+    "agadir": {
+      "displayName": "Agadir",
+      "region": "Souss-Massa",
+      "themes": [
+        "beach",
+        "coast",
+        "surf",
+        "markets",
+        "food"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Agadir seafront promenade",
+          "category": "coastal_walk",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "public_walk_cost_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Taghazout",
+          "category": "surf_village",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "lessons_and_equipment_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Souk El Had",
+          "category": "market",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "purchases_optional_prices_vary",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Check airport and intercity connections for the chosen dates; surf transfers may cost extra."
+      ],
+      "seasonNotes": [
+        "Check sea conditions before swimming or booking water sports."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "rabat": {
+      "displayName": "Rabat",
+      "region": "Rabat-Salé-Kénitra",
+      "themes": [
+        "heritage",
+        "medina",
+        "gardens",
+        "museums"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Kasbah of the Udayas",
+          "category": "heritage",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "museum_or_garden_fees_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Chellah",
+          "category": "archaeological_site",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "admission_and_hours_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Rabat medina",
+          "category": "medina",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "purchases_optional_prices_vary",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Check ONCF schedules and local tram/taxi routes for the intended journey."
+      ],
+      "seasonNotes": [
+        "Confirm museum and heritage-site opening hours before visiting."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "ifrane": {
+      "displayName": "Ifrane",
+      "region": "Fès-Meknès",
+      "themes": [
+        "mountains",
+        "forest",
+        "nature",
+        "winter"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Stone Lion and town centre",
+          "category": "sightseeing",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "public_walk_cost_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Cedar forest near Azrou",
+          "category": "forest_nature",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_and_activities_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Michlifen area",
+          "category": "mountain_activity",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "seasonal_operations_and_prices_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Plan onward transport to forest or mountain sites; do not assume public transport reaches trailheads."
+      ],
+      "seasonNotes": [
+        "Winter weather and snow can affect road access and activity operations."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "al-hoceima": {
+      "displayName": "Al Hoceima",
+      "region": "Tanger-Tetouan-Al Hoceima",
+      "themes": [
+        "Mediterranean_beaches",
+        "national_park",
+        "coast",
+        "seafood",
+        "hiking"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel/al-hoceima",
+        "https://www.visitmorocco.com/en/travel/al-hoceima/beach"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Quemado Beach",
+          "category": "beach",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "beach_access_and_facility_costs_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel/al-hoceima/beach"
+        },
+        {
+          "name": "Cala Bonita Beach",
+          "category": "beach",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "access_and_facility_costs_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel/al-hoceima"
+        },
+        {
+          "name": "Sfiha Beach",
+          "category": "beach",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_and_facility_costs_not_verified",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel/al-hoceima/beach"
+        },
+        {
+          "name": "Al Hoceima National Park",
+          "category": "national_park",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "access_transport_and_guide_requirements_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel/al-hoceima"
+        },
+        {
+          "name": "Al Hoceima port",
+          "category": "harbour",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "walk_cost_not_verified_meals_cost_extra",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel/al-hoceima"
+        }
+      ],
+      "transportNotes": [
+        "Official tourism information lists approximate road distances from nearby destinations, but route times should be checked for the travel date. See destination source."
+      ],
+      "seasonNotes": [
+        "Check sea conditions, seasonal services and protected-area access before setting out."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "daily_catch_and_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "ouarzazate": {
+      "displayName": "Ouarzazate",
+      "region": "Drâa-Tafilalet",
+      "themes": [
+        "kasbahs",
+        "cinema",
+        "heritage",
+        "desert_routes"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/travel"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Taourirt Kasbah",
+          "category": "kasbah",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "interior_access_and_admission_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Aït Benhaddou",
+          "category": "historic_ksar",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_guide_and_site_fees_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        },
+        {
+          "name": "Ounila Valley",
+          "category": "scenic_valley",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_and_route_conditions_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/travel"
+        }
+      ],
+      "transportNotes": [
+        "Price excursions and transport separately; route duration depends on departure point and conditions."
+      ],
+      "seasonNotes": [
+        "Check road and weather conditions for valley and mountain routes."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    },
+    "high-atlas": {
+      "displayName": "High Atlas",
+      "region": "Marrakech-Safi and neighbouring mountain areas",
+      "themes": [
+        "hiking",
+        "mountains",
+        "villages",
+        "nature"
+      ],
+      "officialSourceUrls": [
+        "https://www.visitmorocco.com/en/see-do/nature",
+        "https://www.visitmarrakech.com/en/destinations/"
+      ],
+      "verifiedPlaces": [
+        {
+          "name": "Imlil village and valley",
+          "category": "mountain_village",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_guide_and_lodging_quote_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmarrakech.com/en/destinations/"
+        },
+        {
+          "name": "Ourika Valley",
+          "category": "valley_hiking",
+          "priceMin": null,
+          "priceMax": null,
+          "priceCurrency": "MAD",
+          "priceStatus": "transport_guide_and_local_fees_check_required",
+          "latitude": null,
+          "longitude": null,
+          "sourceUrl": "https://www.visitmorocco.com/en/see-do/nature"
+        }
+      ],
+      "transportNotes": [
+        "Confirm transport to trailheads and return options before choosing a route."
+      ],
+      "seasonNotes": [
+        "Weather, trail condition, daylight and guide needs should be checked for each hike."
+      ],
+      "budgetRules": {
+        "accommodation": "quote_required",
+        "food": "venue_menu_required",
+        "transport": "route_and_date_required"
+      }
+    }
+  },
+  "budgetEstimatorRules": {
+    "currency": "MAD",
+    "requiredInputs": [
+      "destination",
+      "travelDays",
+      "travellers",
+      "totalBudgetMAD",
+      "travelMonth"
+    ],
+    "optionalInputs": [
+      "accommodationLevel",
+      "foodStyle",
+      "interests",
+      "transportMode"
+    ],
+    "rules": [
+      "Never convert missing prices to 0 MAD.",
+      "Mark each estimate as live_quote, source_verified, user_provided, or unverified_estimate.",
+      "Separate accommodation, food, intercity transport, local transport, activities and contingency.",
+      "Include return/intercity transport only when origin and route are known.",
+      "For accommodation, price per room/night and calculate room count from traveller count only when occupancy is known.",
+      "Do not recommend a paid activity as affordable until its price or quote is available.",
+      "Show a confidence label and the date each price was checked.",
+      "Keep an emergency/contingency amount separate from planned spending."
+    ],
+    "recommendedOutputFields": [
+      "estimatedTotalMAD",
+      "dailyAverageMAD",
+      "accommodationTotalMAD",
+      "foodTotalMAD",
+      "transportTotalMAD",
+      "activitiesTotalMAD",
+      "contingencyMAD",
+      "priceConfidence",
+      "priceCheckedAt",
+      "sources"
+    ]
+  },
+  "sourcePolicy": {
+    "preferredSources": [
+      "Official Moroccan National Tourist Office / Visit Morocco",
+      "Official attraction or museum website for admission and hours",
+      "Official transport operator for schedules and fares",
+      "Accommodation provider's own booking page for dated room quotes",
+      "Restaurant's current menu or direct provider quote"
+    ],
+    "avoid": [
+      "Treating an old blog price as a current price",
+      "Assuming a place is open because it appears in a dataset",
+      "Assuming null or missing price means free",
+      "Inventing GPS coordinates, opening hours, ratings or availability"
+    ]
+  }
+}

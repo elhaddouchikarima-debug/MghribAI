@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "currency": "MAD",
+  "checkedAt": "2026-10-14",
+  "sources": {
+    "meals": {
+      "label": "Numbeo Morocco inexpensive restaurant meal baseline (25–70 MAD; crowd-sourced, October 2026). App's other budget-tier bands are broader planning estimates, not measured venue quotes.",
+      "url": "https://fr.numbeo.com/co%C3%BBt-de-la-vie/pays/Maroc"
+    },
+    "hostel": {
+      "label": "Morocco hostel dorm planning range (70–220 MAD; market guide, checked October 2026)",
+      "url": "https://moroccoprices.com/prices/hostel-dorm"
+    },
+    "guesthouse": {
+      "label": "Guide sample private guesthouse room range is 350–550 MAD; app tiers widen this to planning bands, not quotes (checked October 2026)",
+      "url": "https://moroccoprices.com/prices/guesthouse"
+    },
+    "ticket": {
+      "label": "Broad admission estimate only; verify the specific site's official ticket before visiting",
+      "url": "https://e-services.minculture.gov.ma/en/tickets"
+    },
+    "cook": {
+      "label": "Marrakech group cooking class examples (about 250–600 MAD/person; verify current offer)",
+      "url": "https://marrakechauthority.com/en/articles/cours-de-cuisine-marrakech"
+    },
+    "surf": {
+      "label": "Published Taghazout/Agadir lesson examples vary by school and group size; verify live price",
+      "url": "https://taghazoutsurfingschool.com/surf-guiding/"
+    },
+    "camel": {
+      "label": "Morocco camel ride planning range; inclusions and location change the quote",
+      "url": "https://moroccoprices.com/prices/camel-ride"
+    },
+    "transport": {
+      "label": "Local transport allowance derived from Morocco local transit fares; actual route/taxi fare varies",
+      "url": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Morocco"
+    },
+    "currency": {
+      "label": "Indicative mid-market conversion rates checked 14 October 2026; not a consumer exchange quote",
+      "url": "https://www.xe.com/en-us/currencytables/?from=MAD"
+    }
+  },
+  "mealBands": {
+    "low": { "breakfast": [20, 45], "lunch": [25, 74], "dinner": [25, 74] },
+    "moderate": { "breakfast": [30, 70], "lunch": [40, 120], "dinner": [40, 120] },
+    "comfortable": { "breakfast": [60, 120], "lunch": [80, 180], "dinner": [80, 180] },
+    "luxury": { "breakfast": [100, 200], "lunch": [150, 300], "dinner": [150, 300] }
+  },
+  "stayBands": {
+    "low": { "type": "Hostel dorm bed", "unit": "per_person_per_night", "range": [70, 220], "source": "hostel" },
+    "moderate": { "type": "Basic guesthouse/riad private room", "unit": "per_room_per_night", "range": [250, 650], "source": "guesthouse" },
+    "comfortable": { "type": "Comfortable riad/hotel private room", "unit": "per_room_per_night", "range": [550, 1200], "source": "guesthouse" },
+    "luxury": { "type": "Upscale hotel/riad private room", "unit": "per_room_per_night", "range": [1200, 3000], "source": "guesthouse" }
+  },
+  "activityRanges": {
+    "paidAdmission": [40, 120],
+    "cityTransportPerDay": [20, 80],
+    "optionalPerPersonPerDay": [30, 100]
+  },
+  "exchangeRatesMadPerUnit": { "MAD": 1, "USD": 9.81, "EUR": 10.98, "GBP": 13.00 }
+}

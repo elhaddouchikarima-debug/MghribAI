@@ -1,0 +1,1141 @@
+{
+  "_instructions": "Put the photo URL in the matching url field. Use https://... or a local path such as /assets/photos/file.jpg. Leave it empty to keep the automatic fallback. The app rereads this file when creating each itinerary; no seed command is needed after editing this file.",
+  "destinations": {
+    "marrakech/default": {
+      "name": "Marrakech",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/43/a9/ca/koutoubia-mosque-the.jpg?w=700&h=400&s=1",
+      "alt": "Scenic view of Marrakech city, Morocco"
+    },
+    "chefchaouen/default": {
+      "name": "Chefchaouen",
+      "url": "https://travelmoroccotoday.com/wp-content/uploads/2024/03/Chefchaouen-1-1024x740.webp",
+      "alt": "The famous blue-painted streets of Chefchaouen, Morocco"
+    },
+    "fes/default": {
+      "name": "Fès",
+      "url": "https://www.ab-in-den-urlaub.de/magazin/wp-content/uploads/2023/02/1675752431_Fes-Al-Qarawiyyin-Moschee-800x533.jpg",
+      "alt": "Historic architecture and streets of Fès el-Bali, Morocco"
+    },
+    "tangier/default": {
+      "name": "Tangier",
+      "url": "https://imgs.search.brave.com/Gj5_g0ZLraagwuAkVtJk_-witv0fJCeSxWO816_jXL0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YmFyY2Vsby5jb20v/Z3VpYS10dXJpc21v/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIy/LzAxL3Rhbmdlci1n/cmFuLW1lenF1aXRhLTg4OC5qcGc",
+      "alt": "Coastal view of Tangier, Morocco"
+    },
+    "essaouira/default": {
+      "name": "Essaouira",
+      "url": "https://imgs.search.brave.com/6DuWltfTzkAXMidnG540WMNhwAhhBSkHn-r7df_v6mg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9scC1j/bXMtcHJvZHVjdGlv/bi5pbWdpeC5uZXQv/MjAxOS0wNi9lOWQ4/ZDc5MzQ2MjBiNmEw/ZmM0YWMyYjRmYzhm/OGU0OS1wb3J0Lmpw/Zz9hdXRvPWZvcm1hdCxjb21wcmVzcyZx/PTcyJnc9MTkyMCZm/aXQ9Y3JvcCZjcm9w/PWZhY2VzLGVkZ2Vz",
+      "alt": "The fortified coastal city of Essaouira, Morocco"
+    },
+    "merzouga/default": {
+      "name": "Merzouga",
+      "url": "https://th.bing.com/th/id/OIP.6qckzbekpuZaQUeqrkaBlwHaE8?w=231&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+      "alt": "Golden sand dunes of Erg Chebbi in Merzouga, Morocco"
+    },
+    "agadir/default": {
+      "name": "Agadir & Taghazout",
+      "url": "https://mediaim.expedia.com/destination/1/fce12b04208a70d76ded7df136328ff9.jpg",
+      "alt": "Beautiful coastline and beaches of Agadir and Taghazout, Morocco"
+    },
+    "rabat/default": {
+      "name": "Rabat",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.oQDMg3LsTjZqTj53wKS5mQHaEo?r=0&pid=Api&h=220&P=0",
+      "alt": "Historic landmarks and modern architecture of Rabat, Morocco"
+    },
+    "ifrane/default": {
+      "name": "Ifrane",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.NEVvTJsDzuN6hEe4mFr9IwHaEz?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Snow-capped mountains and alpine-style architecture of Ifrane, Morocco"
+    },
+    "al-hoceima/default": {
+      "name": "Al Hoceima",
+      "url": "https://www.aboutmorocco.com/_next/image?url=https:%2F%2Fngkosvcqohlvljapagle.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fmedia%2Fdestinations%2Falhoceima%2Fal-hoceima-beach-view-morocco-mediterranean-coast.webp&w=3840&q=75",
+      "alt": "Mediterranean coastal views and beaches of Al Hoceima, Morocco"
+    },
+    "ouarzazate/default": {
+      "name": "Ouarzazate & Aït Benhaddou",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.OkMExN50gY8urUmFBCuMJgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The historic fortified village of Aït Benhaddou near Ouarzazate, Morocco"
+    },
+    "high-atlas/default": {
+      "name": "High Atlas & Imlil (Toubkal)",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.o8dUc47JutvucUOwZt3d1AHaEh?r=0&pid=Api&h=220&P=0",
+      "alt": "Majestic mountain landscapes of the High Atlas and Mount Toubkal, Morocco"
+    }
+  },
+  "activities": {
+    "marrakech/jemaa-el-fna-square": {
+      "name": "Jemaa el-Fna Square",
+      "url": "https://th.bing.com/th/id/OIP.M5ueMGfZbBfSz0oXj_FN5gHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3 ",
+      "alt": "Bustling Jemaa el-Fna square with vendors and performers in Marrakech"
+    },
+    "marrakech/bahia-palace": {
+      "name": "Bahia Palace",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.86VEX8bYMmptxu6VtJtx6gHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Intricate architecture and courtyards of the Bahia Palace in Marrakech"
+    },
+    "marrakech/koutoubia-mosque": {
+      "name": "Koutoubia Mosque",
+      "url": "https://th.bing.com/th/id/OIP.86VEX8bYMmptxu6VtJtx6gHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The iconic Koutoubia Mosque minaret in Marrakech"
+    },
+    "marrakech/majorelle-garden": {
+      "name": "Majorelle Garden",
+      "url": "https://th.bing.com/th/id/R.7c75688fd73c047fd3e3b0f7823faff1?rik=s%2fGjUnv5a4YwDQ&pid=ImgRaw&r=0",
+      "alt": "Vibrant blue buildings and lush exotic plants in Majorelle Garden, Marrakech"
+    },
+    "marrakech/medina-souks-and-artisan-lanes-walk": {
+      "name": "Medina souks and artisan lanes walk",
+      "url": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/f7/05/90.jpg",
+      "alt": "Colorful spices and traditional crafts in the Marrakech medina souks"
+    },
+    "marrakech/agafay-foothills-day-outing": {
+      "name": "Agafay foothills day outing",
+      "url": "https://th.bing.com/th/id/OIP.vTX1hH2KRb9v4bVHBSvSZAHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Rocky desert landscape of the Agafay foothills near Marrakech"
+    },
+    "marrakech/traditional-hammam-experience": {
+      "name": "Traditional hammam experience",
+      "url": "https://th.bing.com/th/id/OIP.rohrTgOZH4fOQ3Jy_cdaPgHaGW?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Moroccan hammam spa experience"
+    },
+    "marrakech/moroccan-cooking-class-with-a-market-visit": {
+      "name": "Moroccan cooking class with a market visit",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.D4wYOqSY25NIlxc2l053yQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Preparing traditional Moroccan dishes in a cooking class"
+    },
+    "chefchaouen/plaza-uta-el-hammam": {
+      "name": "Plaza Uta el-Hammam",
+      "url": "https://th.bing.com/th/id/OIP.VU8xJOVuveq5QglmlUur4AHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The main central square of Chefchaouen with outdoor cafes"
+    },
+    "chefchaouen/the-spanish-mosque": {
+      "name": "The Spanish Mosque",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.jg7JBJZ5hytOIayvSavM7wHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "View of the Spanish Mosque overlooking the blue city of Chefchaouen"
+    },
+    "chefchaouen/ras-el-maa-waterfall": {
+      "name": "Ras El Maa Waterfall",
+      "url": "https://th.bing.com/th/id/OIP.pkVry3l1yBXbehaWvbnU2QHaFj?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Locals and visitors gathering at the Ras El Maa waterfall in Chefchaouen"
+    },
+    "chefchaouen/kasbah-museum": {
+      "name": "Kasbah Museum",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.LygAZyzhiT9mWsVsGeBzFAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Historic Kasbah Museum in the heart of Chefchaouen's medina"
+    },
+    "chefchaouen/blue-medina-lanes-and-viewpoint-walk": {
+      "name": "Blue Medina lanes and viewpoint walk",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.Z5dFaLwoIGRytDJ1Ll_e9AHaL9?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Walking through the iconic blue-painted narrow lanes of Chefchaouen"
+    },
+    "chefchaouen/rif-foothills-nature-walk": {
+      "name": "Rif foothills nature walk",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.j8EaTBtZ1nivZK7TSVTWQQHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic nature trail in the green Rif Mountains foothills"
+    },
+    "chefchaouen/local-craft-and-wool-market-visit": {
+      "name": "Local craft and wool market visit",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.duiuzIfGcGF8OugBjcRsTgHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional wool and local crafts being sold at Chefchaouen market"
+    },
+    "chefchaouen/ras-el-maa-and-spanish-mosque-walking-loop": {
+      "name": "Ras El Maa and Spanish Mosque walking loop",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.jgKZoyZ6w1bf-m_DU4ekpQHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic walking path connecting Ras El Maa to the Spanish Mosque viewpoint"
+    },
+    "fes/chouara-tannery": {
+      "name": "Chouara Tannery",
+      "url": "https://th.bing.com/th/id/OIP.fVC-km1JiJaPae4viYcKEQHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Aerial view of the historic Chouara leather tannery vats in Fès"
+    },
+    "fes/al-quaraouiyine-university": {
+      "name": "Al Quaraouiyine University",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.yjFiIKt_zT0BtM7AQtqGYgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Historic architecture of the Al Quaraouiyine University and Mosque in Fès"
+    },
+    "fes/bou-inania-medersa": {
+      "name": "Bou Inania Medersa",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.FPFM0zxmVqnD8bQEr3KTLwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Intricate zellij tilework and woodcarving at Bou Inania Medersa, Fès"
+    },
+    "fes/bab-bou-jeloud-gate": {
+      "name": "Bab Bou Jeloud Gate",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.AOfzHRBm6NhrKzASo0NZHAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The iconic blue and green ornate Bab Bou Jeloud gate, entrance to Fès medina"
+    },
+    "fes/fes-el-bali-medina-discovery-walk": {
+      "name": "Fès el-Bali medina discovery walk",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.AGhJvroUUXAPaVoyWpzIwQHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Narrow, bustling alleyways of the ancient Fès el-Bali medina"
+    },
+    "fes/traditional-craft-quarter-visit": {
+      "name": "Traditional craft quarter visit",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.8M-zPsTe5HufKM043fdKeQHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Artisans working on traditional crafts in the Fès medina"
+    },
+    "fes/ville-nouvelle-cafe-and-architecture-stroll": {
+      "name": "Ville Nouvelle café and architecture stroll",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.EP6X0PDBnY-KX1gMCnpX0gHaEY?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "French colonial architecture and cafes in the Ville Nouvelle of Fès"
+    },
+    "fes/self-guided-craft-and-medina-discovery": {
+      "name": "Self-guided craft and medina discovery",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.zXK7gzey-ub4TZ6h2Un16AHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exploring the artisan workshops and historic streets of Fès"
+    },
+    "tangier/cap-spartel-lighthouse": {
+      "name": "Cap Spartel & Lighthouse",
+      "url": "https://th.bing.com/th/id/OIP.ZpiAZk1yoNImOYu2P6prYgHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The historic Cap Spartel lighthouse overlooking the Strait of Gibraltar"
+    },
+    "tangier/caves-of-hercules": {
+      "name": "Caves of Hercules",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.2OoL-76cVLJ99DJh1Y9vwgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The famous Caves of Hercules with their distinctive map-of-Africa shaped opening"
+    },
+    "tangier/the-kasbah-museum": {
+      "name": "The Kasbah & Museum",
+      "url": "https://th.bing.com/th/id/OIP.WMWMmJ4FMwPpFFVg3XuVmwHaFe?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The historic Kasbah of Tangier and its cultural museum"
+    },
+    "tangier/cafe-hafa": {
+      "name": "Café Hafa",
+      "url": "https://th.bing.com/th/id/OIP.7lp8_7vc3G7G8Ef0OZiGqQHaFk?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Iconic Café Hafa with its terraced seating overlooking the sea in Tangier"
+    },
+    "tangier/kasbah-and-old-medina-lanes-walk": {
+      "name": "Kasbah and old medina lanes walk",
+      "url": "https://th.bing.com/th/id/OIP.KVdYH9aMbAAx-KidLvYHuAHaE1?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Wandering through the whitewashed lanes of Tangier's old medina and Kasbah"
+    },
+    "tangier/cap-spartel-coastal-viewpoint-outing": {
+      "name": "Cap Spartel coastal viewpoint outing",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.YWFgjgss905cqdK9UhnnrQHaE5?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Panoramic coastal views from the Cap Spartel viewpoint in Tangier"
+    },
+    "tangier/grand-socco-and-petit-socco-cafe-stop": {
+      "name": "Grand Socco and Petit Socco café stop",
+      "url": "https://th.bing.com/th/id/OIP.YKYVVC4NwKKYuLdVcj9wtAHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Bustling atmosphere of the Grand Socco square in Tangier"
+    },
+    "tangier/kasbah-and-waterfront-culture-walk": {
+      "name": "Kasbah and waterfront culture walk",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.KWDjTjKplDmZHqqAJr0I4gHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic walk along the Tangier waterfront and historic Kasbah"
+    },
+    "essaouira/skala-du-port-ramparts": {
+      "name": "Skala du Port & Ramparts",
+      "url": "https://th.bing.com/th/id/OIP.SeXNNQndhcWy3cYXpnTkpAHaFb?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Historic sea-facing ramparts and cannons at Skala du Port, Essaouira"
+    },
+    "essaouira/the-fishing-port": {
+      "name": "The Fishing Port",
+      "url": "https://thumbs.dreamstime.com/b/traditional-fishing-boats-docked-port-essaouira-morocco-september-line-harbor-bringing-day-s-catch-seagulls-circle-298834539.jpg",
+      "alt": "Colorful traditional blue fishing boats docked at Essaouira port"
+    },
+    "essaouira/mogador-island": {
+      "name": "Mogador Island",
+      "url": "https://media.gettyimages.com/id/1213907559/photo/essaouira-mogador-island.jpg?s=612x612&w=gi&k=20&c=phVoIZpMrGPoEaRgF-OJd28HW7pm8O5whWqRlqz3jXs=",
+      "alt": "Rugged coastal scenery of Mogador Island off the coast of Essaouira"
+    },
+    "essaouira/thuya-wood-crafts-guild": {
+      "name": "Thuya Wood Crafts Guild",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.zsz4LHchuR_S8TF0rEtf4AHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Artisans carving intricate designs into fragrant Thuya wood in Essaouira"
+    },
+    "essaouira/skala-and-ramparts-heritage-walk": {
+      "name": "Skala and ramparts heritage walk",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.SeXNNQndhcWy3cYXpnTkpAHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Walking along the historic fortified walls of Essaouira's Skala"
+    },
+    "essaouira/fishing-port-and-fresh-catch-visit": {
+      "name": "Fishing port and fresh catch visit",
+      "url": "https://th.bing.com/th/id/OIP.vTAq3-RgY66JzhbmpF40YgHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fishermen sorting the daily fresh catch at Essaouira fishing port"
+    },
+    "essaouira/beach-walk-and-windsurf-viewing": {
+      "name": "Beach walk and windsurf viewing",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.tP9pR9IstAaRBWhz0Ri4mgHaEI?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Windsurfers riding the waves on the wide sandy beach of Essaouira"
+    },
+    "essaouira/skala-port-and-artisan-quarter-walk": {
+      "name": "Skala, port and artisan-quarter walk",
+      "url": "https://th.bing.com/th/id/OIP.TiGA3Z0x_-Atvj6o-5b_wwHaDr?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Strolling through the artisan workshops near the Skala port in Essaouira"
+    },
+    "merzouga/erg-chebbi-dunes": {
+      "name": "Erg Chebbi Dunes",
+      "url": "https://th.bing.com/th/id/OIP.JD8aNsipsjLrpidIOM2kcwHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Vast, towering golden sand dunes of Erg Chebbi in Merzouga"
+    },
+    "merzouga/khamlia-gnawa-village": {
+      "name": "Khamlia Gnawa Village",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.qapswdbaRjqMTSbGTiup9AHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Gnawa musicians performing in Khamlia village, Merzouga"
+    },
+    "merzouga/dayet-srji-flamingo-lake": {
+      "name": "Dayet Srji Flamingo Lake",
+      "url": "https://th.bing.com/th/id/OIP.RrOkCvWHmQrXuSHkqNVF_AHaEC?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Pink flamingos gathering at the seasonal Dayet Srji lake near Merzouga"
+    },
+    "merzouga/rissani-mausoleum-date-souk": {
+      "name": "Rissani Mausoleum & Date Souk",
+      "url": "https://th.bing.com/th/id/OIP.IDRsViKoyyur2xJegV9CRAHaL4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Bustling date market and historic architecture in Rissani"
+    },
+    "merzouga/erg-chebbi-dunes-at-sunrise-or-sunset": {
+      "name": "Erg Chebbi dunes at sunrise or sunset",
+      "url": "https://th.bing.com/th/id/OIP.i_WrLuYznRp3oui_WE8mnAHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Breathtaking sunrise or sunset casting shadows over the Erg Chebbi dunes"
+    },
+    "merzouga/khamlia-village-music-visit": {
+      "name": "Khamlia village music visit",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.tBaQdD3sgxXfGy3gMPMzNwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Experiencing traditional Gnawa music and culture in Khamlia village"
+    },
+    "merzouga/rissani-market-and-date-area-outing": {
+      "name": "Rissani market and date-area outing",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.0eqZkwSIE6nJ3OeUBwnZ8QHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exploring the vibrant traditional souk and date palm groves of Rissani"
+    },
+    "merzouga/optional-short-camel-ride-near-erg-chebbi": {
+      "name": "Optional short camel ride near Erg Chebbi",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.fgmfstu3waH6OLytg8vXbQHaE1?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Camel caravan trekking across the sand dunes of Erg Chebbi"
+    },
+    "agadir/agadir-oufella-kasbah": {
+      "name": "Agadir Oufella Kasbah",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.S-CCx0so9PNNu-bmpD1HzwHaC2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Ruins of the historic Agadir Oufella Kasbah overlooking the city"
+    },
+    "agadir/taghazout-bay-anchor-point": {
+      "name": "Taghazout Bay & Anchor Point",
+      "url": "https://th.bing.com/th/id/OIP.xMh-2k_uyjoHCwkjBq_IOQHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Surfers riding waves at the famous Anchor Point surf break in Taghazout"
+    },
+    "agadir/souk-el-had": {
+      "name": "Souk El Had",
+      "url": "https://th.bing.com/th/id/OIP.yAExhBfYD1XQG9rh5WcmJQHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Vibrant stalls and traditional goods at Souk El Had market in Agadir"
+    },
+    "agadir/paradise-valley": {
+      "name": "Paradise Valley",
+      "url": "https://th.bing.com/th/id/OIP.GuMVKHmov0A6U1Qt3QiEPwHaFj?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Natural rock pools and clear water in the scenic Paradise Valley near Agadir"
+    },
+    "agadir/agadir-seafront-promenade": {
+      "name": "Agadir seafront promenade",
+      "url": "https://th.bing.com/th/id/OIP.7WjgrREekG7Pi5gz7XbMjQHaFW?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Palm-lined seafront promenade and beach of Agadir"
+    },
+    "agadir/taghazout-village-and-surf-viewpoint": {
+      "name": "Taghazout village and surf viewpoint",
+      "url": "https://thumbs.dreamstime.com/b/taghazout-surf-village-agadir-morocco-view-fishing-50009621.jpg?w=992",
+      "alt": "Whitewashed houses of Taghazout village overlooking the Atlantic surf"
+    },
+    "agadir/souk-el-had-market-visit": {
+      "name": "Souk El Had market visit",
+      "url": "https://th.bing.com/th/id/OIP.GSHR4jZyKAaEubIl1cBE0gHaEH?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Visitors browsing fresh produce and crafts at Souk El Had in Agadir"
+    },
+    "agadir/optional-group-surf-lesson-in-taghazout": {
+      "name": "Optional group surf lesson in Taghazout",
+      "url": "https://th.bing.com/th/id/OIP.rcLvhvt-5KsAoR64LPB2PgHaE7?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Beginners taking a surf lesson in the waves of Taghazout Bay"
+    },
+    "rabat/hassan-tower-mausoleum": {
+      "name": "Hassan Tower & Mausoleum",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.afUQFshapNV6IMi_Jx5YEAHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The historic Hassan Tower and the adjacent Mausoleum of Mohammed V in Rabat"
+    },
+    "rabat/kasbah-of-the-udayas": {
+      "name": "Kasbah of the Udayas",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.Ki1dsRsDrX2-QarUQnOBlgHaFJ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Blue and white whitewashed streets of the Kasbah of the Udayas, Rabat"
+    },
+    "rabat/chellah-necropolis": {
+      "name": "Chellah Necropolis",
+      "url": "https://th.bing.com/th/id/OIP.bm-7xBdbXUD2HbhrzFVWjAHaDt?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Ancient Roman and medieval ruins surrounded by gardens at Chellah, Rabat"
+    },
+    "rabat/grand-theatre-of-rabat": {
+      "name": "Grand Theatre of Rabat",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.xEonZ1o_Zn5iiXnPQ4ZzNgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Modern architectural design of the Grand Theatre of Rabat"
+    },
+    "rabat/kasbah-of-the-udayas-and-riverfront-walk": {
+      "name": "Kasbah of the Udayas and riverfront walk",
+      "url": "https://th.bing.com/th/id/OIP.6VTQmzY8RtDmlCJScxj2cgHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic walk along the Bou Regreg riverfront near the Kasbah of the Udayas"
+    },
+    "rabat/chellah-and-historic-quarter-outing": {
+      "name": "Chellah and historic quarter outing",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.WwIwb_Q6IhCXY40sh9HBFgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exploring the ancient walls and stork nests of the Chellah historic quarter"
+    },
+    "rabat/rabat-medina-and-central-market-stroll": {
+      "name": "Rabat medina and central market stroll",
+      "url": "https://th.bing.com/th/id/OIP.dF7v8Oucb3dC5EppGrCIPQHaL3?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Bustling traditional market streets in the heart of Rabat medina"
+    },
+    "rabat/kasbah-of-the-udayas-and-medina-walk": {
+      "name": "Kasbah of the Udayas and medina walk",
+      "url": "https://th.bing.com/th/id/OIP.nsG0Pj397sfOkVb21KIthgHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Wandering through the historic medina and picturesque Kasbah of the Udayas"
+    },
+    "ifrane/the-stone-lion-of-ifrane": {
+      "name": "The Stone Lion of Ifrane",
+      "url": "https://thumbs.dreamstime.com/b/stone-lion-ifrane-morocco-africa-45101556.jpg",
+      "alt": "The iconic Stone Lion statue, a symbol of Ifrane, Morocco"
+    },
+    "ifrane/cedre-gouraud-forest-azrou": {
+      "name": "Cèdre Gouraud Forest (Azrou)",
+      "url": "https://th.bing.com/th/id/OIP.ksyGDy-F3zMbfRguJIBj9QHaE7?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Barbary macaques and ancient cedar trees in Cèdre Gouraud Forest near Azrou"
+    },
+    "ifrane/michlifen-ski-station": {
+      "name": "Michlifen Ski Station",
+      "url": "https://th.bing.com/th/id/OIP.FrSImmzVYqPGeUOZfwY2xgHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Snowy slopes and winter scenery at the Michlifen ski station"
+    },
+    "ifrane/vittel-spring-waterfalls": {
+      "name": "Vittel Spring & Waterfalls",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.Iv7ExQJGRgWNMdhokb4xagHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Natural spring water and lush greenery around the Vittel waterfalls in Ifrane"
+    },
+    "ifrane/ifrane-town-and-stone-lion-walk": {
+      "name": "Ifrane town and Stone Lion walk",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.TEt4RSxyMQVSZTxXgohqzgHaFe?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Strolling through the clean, alpine-style streets of Ifrane town"
+    },
+    "ifrane/cedar-forest-nature-outing-near-azrou": {
+      "name": "Cedar forest nature outing near Azrou",
+      "url": "https://th.bing.com/th/id/OIP.HNZHJVufbSFi8umy51Db0AHaD4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Hiking through the dense, green cedar forests of the Middle Atlas near Azrou"
+    },
+    "ifrane/michlifen-seasonal-mountain-outing": {
+      "name": "Michlifen seasonal mountain outing",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.SUgs9xSK2vw80AwpBohPnQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Seasonal mountain landscapes and outdoor activities around Michlifen"
+    },
+    "ifrane/self-guided-town-and-forest-walk": {
+      "name": "Self-guided town and forest walk",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.miKoUU493tgsP5Afnrak6AHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Peaceful walk through Ifrane town leading into the surrounding forest"
+    },
+    "al-hoceima/plage-quemado": {
+      "name": "Plage Quemado",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.btinwOsIoUQ7x8h-C0kEbQHaFN?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Red cliffs and clear turquoise waters of Plage Quemado in Al Hoceima"
+    },
+    "al-hoceima/al-hoceima-national-park": {
+      "name": "Al Hoceima National Park",
+      "url": "https://th.bing.com/th/id/OIP.0cyPg6KQYuOnB8ZPiRYMVwHaFb?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Rugged coastal cliffs and marine biodiversity of Al Hoceima National Park"
+    },
+    "al-hoceima/plage-asfiha-spanish-rock": {
+      "name": "Plage Asfiha & Spanish Rock",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.7DK95l_mndSBQ8YcI-kiIAHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic coastal views and unique rock formations at Plage Asfiha"
+    },
+    "al-hoceima/cala-bonita": {
+      "name": "Cala Bonita",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/7a/67/0c/shore-and-beach-umbrellas.jpg?w=1200&h=-1&s=1",
+      "alt": "Tranquil, picturesque cove of Cala Bonita in Al Hoceima"
+    },
+    "al-hoceima/quemado-beach-and-bay-walk": {
+      "name": "Quemado beach and bay walk",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.ten4qfomP4GQfJMrzNSueQHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Leisurely walk along the sandy shores and bay of Quemado beach"
+    },
+    "al-hoceima/al-hoceima-national-park-viewpoint-outing": {
+      "name": "Al Hoceima National Park viewpoint outing",
+      "url": "https://th.bing.com/th/id/OIP.DVQ-1NGlNY2oVOxT2EarbQHaF3?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Panoramic viewpoint overlooking the Mediterranean coast in Al Hoceima National Park"
+    },
+    "al-hoceima/rif-coast-seafood-and-harbour-stroll": {
+      "name": "Rif coast seafood and harbour stroll",
+      "url": "https://th.bing.com/th/id/OIP.aoPeXmYyLoAk-EyeP6CWPwHaFj?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fresh seafood and traditional boats at the Al Hoceima harbor"
+    },
+    "al-hoceima/coastal-viewpoint-and-beach-time": {
+      "name": "Coastal viewpoint and beach time",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.v9hIsyxjxK2eMv6dVEwagAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Relaxing on the pristine beaches with scenic coastal viewpoints in Al Hoceima"
+    },
+    "ouarzazate/ksar-of-ait-benhaddou": {
+      "name": "Ksar of Aït Benhaddou",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.0m7X4eHllZsdd_eE1JKzmgHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "The magnificent UNESCO-listed fortified clay village of Aït Benhaddou"
+    },
+    "ouarzazate/atlas-film-studios": {
+      "name": "Atlas Film Studios",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.BJDuZLzmnuMu_W0evKxZgwHaEX?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Famous movie sets and backdrops at the Atlas Film Studios in Ouarzazate"
+    },
+    "ouarzazate/kasbah-taourirt": {
+      "name": "Kasbah Taourirt",
+      "url": "https://th.bing.com/th/id/OIP.NroAcIVNvH3gOsW1alzjjAHaEl?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Intricate earthen architecture of the historic Kasbah Taourirt in Ouarzazate"
+    },
+    "ouarzazate/ounila-valley": {
+      "name": "Ounila Valley",
+      "url": "https://th.bing.com/th/id/OIP.yPCXSe9IG1eG0a_LsBBU3QHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic drive through the traditional Berber villages of the Ounila Valley"
+    },
+    "ouarzazate/taourirt-kasbah-quarter-walk": {
+      "name": "Taourirt Kasbah quarter walk",
+      "url": "https://th.bing.com/th/id/OIP.0za_D4JlIv9entFdFgcg_gHaLv?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exploring the historic alleys and restored sections of Taourirt Kasbah"
+    },
+    "ouarzazate/ait-benhaddou-day-visit": {
+      "name": "Aït Benhaddou day visit",
+      "url": "https://th.bing.com/th/id/OIP.DXp050zfhvB69ixmfS14IwHaEY?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Daytime exploration of the ancient ksar and surrounding palm groves of Aït Benhaddou"
+    },
+    "ouarzazate/ounila-valley-scenery-stop": {
+      "name": "Ounila Valley scenery stop",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.MwF9e1WTtC07sbDmxZNJNAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Stopping to admire the breathtaking mountain and valley scenery of Ounila"
+    },
+    "ouarzazate/old-town-and-kasbah-area-discovery": {
+      "name": "Old-town and kasbah-area discovery",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.XS41twt6PL6oCZ5q0MXUsgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Discovering the traditional architecture and daily life in Ouarzazate's old town"
+    },
+    "high-atlas/mount-toubkal-peak-4-167m": {
+      "name": "Mount Toubkal Peak (4,167m)",
+      "url": "https://th.bing.com/th/id/OIP.Bx9DZM0Bo6ZgrDP2cy27YwHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Majestic snow-capped summit of Mount Toubkal, the highest peak in North Africa"
+    },
+    "high-atlas/aroumd-village": {
+      "name": "Aroumd Village",
+      "url": "https://th.bing.com/th/id/OIP.qijGR58Nr8BF80GNaBii6AHaFc?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional stone Berber village of Aroumd nestled in the High Atlas mountains"
+    },
+    "high-atlas/tizi-n-tichka-pass": {
+      "name": "Tizi n’Tichka Pass",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.T0wRf-ZO6h9j8wjihBpsugHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Winding mountain road and panoramic views at the Tizi n’Tichka pass"
+    },
+    "high-atlas/ourika-valley-waterfalls": {
+      "name": "Ourika Valley Waterfalls",
+      "url": "https://th.bing.com/th/id/OIP.toYovh_9ExWvUcGEDAkUoQHaFj?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Cascading waterfalls and lush green banks in the Ourika Valley"
+    },
+    "high-atlas/imlil-village-and-valley-walk": {
+      "name": "Imlil village and valley walk",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.9HPKfDYK0GD5UicAsx_fuwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Scenic walking trails through the walnut groves and terraced fields of Imlil"
+    },
+    "high-atlas/aroumd-village-and-mountain-scenery-outing": {
+      "name": "Aroumd village and mountain scenery outing",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.mr4pd0n1eYcd8Pc_6hBZkQHaFU?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Hiking excursion with stunning mountain backdrops around Aroumd village"
+    },
+    "high-atlas/ourika-valley-waterfall-area-visit": {
+      "name": "Ourika Valley waterfall area visit",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.BOMipdc6UvSHDRyzxEjP_gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Visiting the popular cascading waterfalls and riverside cafes of Ourika Valley"
+    },
+    "high-atlas/self-guided-village-and-valley-walk": {
+      "name": "Self-guided village and valley walk",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.1CFHsYzq3_cVLlBQ_ErCcAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Independent exploration of the peaceful trails and Berber villages in the High Atlas"
+    }
+  },
+  "food": {
+    "marrakech/tanjia-marrakchia": {
+      "name": "Tanjia Marrakchia",
+      "url": "https://th.bing.com/th/id/OIP.DF2rms7_lYRFrczYvelCPwHaJ4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Marrakchi tanjia slow-cooked in a clay pot"
+    },
+    "marrakech/pastilla": {
+      "name": "Pastilla",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.NUDkVMJ3mVAlPwoOviJ7CwHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Savory and sweet Moroccan pastilla pie with powdered sugar and cinnamon"
+    },
+    "marrakech/mint-tea-with-sheeba": {
+      "name": "Mint Tea with Sheeba",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.4baNQIQRFxJVNXepZfNOTwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Moroccan mint tea served with sheeba (anise) cookies"
+    },
+    "marrakech/msemen-with-honey-and-mint-tea": {
+      "name": "Msemen with honey and mint tea",
+      "url": "https://th.bing.com/th/id/OIP.so2GtjAV1v31Hgr9hJXJkwHaNK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Flaky, layered Moroccan msemen flatbread drizzled with honey"
+    },
+    "marrakech/vegetable-or-meat-tagine": {
+      "name": "Vegetable or meat tagine",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.GTzMqNCmZQLMccv_cmc6uwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Aromatic Moroccan tagine simmered with vegetables or tender meat"
+    },
+    "chefchaouen/jben-fresh-goat-cheese": {
+      "name": "Jben (Fresh Goat Cheese)",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.8OzMQfDN-04Ef7gD4UVXZQHaFX?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fresh, locally made jben goat cheese from the Rif mountains"
+    },
+    "chefchaouen/bissara-soup": {
+      "name": "Bissara Soup",
+      "url": "https://www.moroccaneats.com/wp-content/uploads/2024/08/a-bowl-of-creamy-moroccan-bissara-soup-golden-gr-1.jpg",
+      "alt": "Hearty, creamy Moroccan bissara soup made from dried fava beans"
+    },
+    "chefchaouen/mountain-honey-figs": {
+      "name": "Mountain Honey & Figs",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.IyzsVVHd2SlJjpxvYXdYUQHaFk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fresh figs drizzled with organic mountain honey from the Rif region"
+    },
+    "chefchaouen/jben-bread-and-mint-tea": {
+      "name": "Jben, bread and mint tea",
+      "url": "https://th.bing.com/th/id/OIP.zOgE0osP3eEqVRTH-lFs7QHaL5?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Rif breakfast with fresh jben cheese, bread, and mint tea"
+    },
+    "chefchaouen/rif-style-vegetable-tagine": {
+      "name": "Rif-style vegetable tagine",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.LnP_KEYGDiTRZtBxKKNmHAHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Colorful vegetable tagine prepared in the traditional Rif mountain style"
+    },
+    "chefchaouen/bissara-with-bread": {
+      "name": "Bissara with bread",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.shjvP0IiFrUX4Ey-K-7_xwHaIv?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Warm bowl of traditional bissara soup served with crusty Moroccan bread"
+    },
+    "fes/pastilla-fassi": {
+      "name": "Pastilla Fassi",
+      "url": "https://th.bing.com/th/id/OIP.csVfIWRhakCvqb4OMXiZggHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Authentic Fassi-style pastilla, a delicate sweet and savory pigeon or chicken pie"
+    },
+    "fes/lamb-tagine-with-prunes": {
+      "name": "Lamb Tagine with Prunes",
+      "url": "https://th.bing.com/th/id/OIP.aBA8zsNKYk0ydcDkM9y9QAHaFR?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Tender lamb tagine slow-cooked with sweet prunes and toasted almonds"
+    },
+    "fes/khlea": {
+      "name": "Khlea",
+      "url": "https://th.bing.com/th/id/OIP.ObO_gFQFWXkkdNDnGYUbuAHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Moroccan preserved and dried spiced beef (khlea)"
+    },
+    "fes/baghrir-with-honey-and-tea": {
+      "name": "Baghrir with honey and tea",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.6US9zhgk3bgCMbQ_govO3gHaLu?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Spongy Moroccan baghrir pancakes soaked in honey and butter"
+    },
+    "fes/khlea-with-eggs-or-bread": {
+      "name": "Khlea with eggs or bread",
+      "url": "https://givukaorkjkksslrzuum.supabase.co/storage/v1/object/public/recipe-images/recipes/khlea-moroccan-preserved-spiced-beef-with-eggs.jpg",
+      "alt": "Savory khlea cooked with eggs, a traditional Fassi breakfast dish"
+    },
+    "fes/fassi-pastilla": {
+      "name": "Fassi pastilla",
+      "url": "https://th.bing.com/th/id/OIP.csVfIWRhakCvqb4OMXiZggHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exquisite Fes-style pastilla dusted with powdered sugar and cinnamon"
+    },
+    "tangier/fresh-mediterranean-fish-tagine": {
+      "name": "Fresh Mediterranean Fish Tagine",
+      "url": "https://th.bing.com/th/id/OIP.4SqWSzm2j9lnsT-1R_u6ewHaHa?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Delicious fish tagine cooked with fresh Mediterranean catch and chermoula"
+    },
+    "tangier/bocadillo-tanjawi": {
+      "name": "Bocadillo Tanjawi",
+      "url": "https://th.bing.com/th/id/OIP.2TaTT_dq5dxkEFDjC1OYSgHaNK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Popular Tangier-style bocadillo sandwich filled with tuna, vegetables, and fries"
+    },
+    "tangier/mint-tea-with-pine-nuts": {
+      "name": "Mint Tea with Pine Nuts",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.hlURRzFPDk_ScGl_DpM2aQHaJT?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Moroccan mint tea garnished with roasted pine nuts"
+    },
+    "tangier/khobz-olive-oil-and-mint-tea": {
+      "name": "Khobz, olive oil and mint tea",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.pbG6qNuhVndWWS2YVDvqdgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Simple, traditional Moroccan breakfast of fresh khobz bread dipped in olive oil"
+    },
+    "tangier/tanjawi-fish-soup-or-grilled-fish": {
+      "name": "Tanjawi fish soup or grilled fish",
+      "url": "https://th.bing.com/th/id/OIP.Hpx6g7euCV9o80DOzvwTVgHaFT?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Freshly grilled Mediterranean fish or traditional Tangier fish soup"
+    },
+    "tangier/mediterranean-fish-tagine": {
+      "name": "Mediterranean fish tagine",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.4SqWSzm2j9lnsT-1R_u6ewHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Aromatic fish tagine with potatoes, tomatoes, and olives from Tangier"
+    },
+    "essaouira/fresh-grilled-sardines": {
+      "name": "Fresh Grilled Sardines",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.XKbLqxlbbQvtLGz4ibnUewHaLG?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Freshly caught and perfectly grilled sardines, a specialty of Essaouira"
+    },
+    "essaouira/fish-tagine-with-argan-oil": {
+      "name": "Fish Tagine with Argan Oil",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.SLG-9EU4byhbg7lVOHdOwgHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Essaouira fish tagine enriched with a drizzle of local argan oil"
+    },
+    "essaouira/argan-oil-amlou": {
+      "name": "Argan Oil & Amlou",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.UjhNGhvsSCl_9w1nUpmboAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Authentic Moroccan amlou dip made with argan oil, almonds, and honey"
+    },
+    "essaouira/msemen-with-amlou": {
+      "name": "Msemen with amlou",
+      "url": "https://th.bing.com/th/id/OIP.g8Vq8I-i1BOffE4Rq7nFnQAAAA?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Warm, flaky msemen flatbread served with sweet and nutty amlou"
+    },
+    "essaouira/fish-tagine-with-seasonal-catch": {
+      "name": "Fish tagine with seasonal catch",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.3myzmh0VG5QAIZ0WdCGztgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Hearty fish tagine prepared with the day's fresh seasonal catch in Essaouira"
+    },
+    "essaouira/grilled-sardines": {
+      "name": "Grilled sardines",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.DtK2kniwzwVb5-2kteoqqgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Street-style grilled sardines served with fresh salad in Essaouira"
+    },
+    "merzouga/medfouna-berber-pizza": {
+      "name": "Medfouna (Berber Pizza)",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.EqegfyzIb5Fl5bY5xA5OeQHaEC?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Medfouna, a stuffed Berber bread baked in desert sands"
+    },
+    "merzouga/desert-camp-tagine": {
+      "name": "Desert camp tagine",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.yJv_OetLhZ7RmaSZQhPKBgHaEu?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Hearty meat or vegetable tagine cooked over an open fire at a desert camp"
+    },
+    "merzouga/dates-of-tafilalet": {
+      "name": "Dates of Tafilalet",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.xMnZpbheFaMQA1cCViEZnAHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Premium, sweet dates harvested from the palm groves of Tafilalet"
+    },
+    "merzouga/moroccan-bread-olives-and-tea": {
+      "name": "Moroccan bread, olives and tea",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.OAIUHhUzLvGm902s2_kK_wHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Simple, traditional desert hospitality with fresh bread, olives, and mint tea"
+    },
+    "merzouga/medfouna-stuffed-desert-bread": {
+      "name": "Medfouna (stuffed desert bread)",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.CrDbFFs2ZbGGh04udnTgCQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Savory Medfouna stuffed with meat, eggs, and spices, a Berber desert specialty"
+    },
+    "agadir/argan-tagine-of-the-souss": {
+      "name": "Argan Tagine of the Souss",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.WZOkc8I1Sz-qx2tHEX-XXgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Souss region tagine cooked with rich, nutty argan oil"
+    },
+    "agadir/grilled-sea-bream-calamari": {
+      "name": "Grilled Sea Bream & Calamari",
+      "url": "https://th.bing.com/th/id/OIP.1ko41stPtsW1YVLLxj1deQHaF7?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Freshly grilled sea bream and calamari caught from the Agadir coast"
+    },
+    "agadir/amlou-on-warm-msemmen": {
+      "name": "Amlou on Warm Msemmen",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.BqUS2MiccGa8TLywn41nyAHaJS?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Delicious warm msemmen flatbread generously topped with traditional amlou"
+    },
+    "agadir/amlou-with-bread-and-tea": {
+      "name": "Amlou with bread and tea",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.kLOFcqP8cGLVmFGPdwIudQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Moroccan breakfast featuring amlou, fresh bread, and sweet tea"
+    },
+    "agadir/souss-style-tagine": {
+      "name": "Souss-style tagine",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.wXsLfjfsrUFyCcZa5y5Y7wHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Authentic tagine prepared in the traditional culinary style of the Souss region"
+    },
+    "agadir/grilled-sea-bream-or-calamari": {
+      "name": "Grilled sea bream or calamari",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.dCMiw0fQn5Msp68mreo-xQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Succulent grilled seafood platter featuring local sea bream or calamari"
+    },
+    "rabat/couscous-bidawi-with-seven-vegetables": {
+      "name": "Couscous Bidawi with Seven Vegetables",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.U6oL9nuY2uaY4QTVnJxP6AHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Friday couscous bidawi served with a colorful array of seven vegetables"
+    },
+    "rabat/kaab-el-ghazal-gazelle-horns": {
+      "name": "Kaab el Ghazal (Gazelle Horns)",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.wnKicTzYhSrRFe_rhm7iOQHaGT?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Delicate Moroccan pastries filled with almond paste, known as Gazelle Horns"
+    },
+    "rabat/harira-soup-with-dates": {
+      "name": "Harira Soup with Dates",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.UdeeiAgcM66CRVAD7PCb0wHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Rich, comforting Moroccan harira soup served with sweet dates"
+    },
+    "rabat/harcha-with-honey-and-coffee": {
+      "name": "Harcha with honey and coffee",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.rKE9sFaJgUtYciEy3Ou7DwHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Warm, pan-fried semolina bread (harcha) drizzled with honey, served with coffee"
+    },
+    "rabat/harira-with-dates-and-bread": {
+      "name": "Harira with dates and bread",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.MVQ1SZecEue1pSNCbSjcHgHaEJ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional bowl of harira soup accompanied by fresh bread and dates"
+    },
+    "rabat/couscous-with-seven-vegetables": {
+      "name": "Couscous with seven vegetables",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.ObQqPJmILmJJw0Oac_FM3AHaE_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Steaming plate of fluffy couscous topped with tender meat and seven vegetables"
+    },
+    "ifrane/atlas-mountain-trout": {
+      "name": "Atlas Mountain Trout",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.vTV8ZqAkKpUSXsvRiVB5BQHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Freshly grilled trout caught in the cold, clear streams of the Atlas Mountains"
+    },
+    "ifrane/middle-atlas-wild-mushroom-tagine": {
+      "name": "Middle Atlas Wild Mushroom Tagine",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.thP9OyDm8HVOrxowFjxEuwHaNN?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Seasonal tagine featuring foraged wild mushrooms from the Middle Atlas forests"
+    },
+    "ifrane/hot-spiced-mint-tea-with-mountain-thyme": {
+      "name": "Hot Spiced Mint Tea with Mountain Thyme",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.6LuNdpel4pT5AebT9rLK7AHaFw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Warming Moroccan mint tea infused with local mountain thyme (zaatar)"
+    },
+    "ifrane/warm-bread-honey-and-mountain-tea": {
+      "name": "Warm bread, honey and mountain tea",
+      "url": "https://img.freepik.com/premium-photo/cozy-breakfast-spread-with-honey-fresh-bread-yogurt-tea-warm-setting-ai-generate_1241530-13242.jpg",
+      "alt": "Cozy mountain breakfast with warm bread, local honey, and herbal tea"
+    },
+    "ifrane/seasonal-mushroom-or-vegetable-tagine": {
+      "name": "Seasonal mushroom or vegetable tagine",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.NxvqPB__Rddd9t-bSEi7vQHaNN?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Rustic tagine made with fresh, seasonal vegetables or wild mushrooms"
+    },
+    "ifrane/atlas-trout-where-available": {
+      "name": "Atlas trout (where available)",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.17RascNcRlmcWswxEHDCfgHaJD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Delicate, flavorful trout dish sourced from the Middle Atlas region"
+    },
+    "al-hoceima/mediterranean-espeto-de-sardinas": {
+      "name": "Mediterranean Espeto de Sardinas",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.Oh851Nn4-qKpj7rOSIgirAHaJo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fresh sardines skewered and grilled over an open fire, Mediterranean style"
+    },
+    "al-hoceima/rifian-paella-seafood-platter": {
+      "name": "Rifian Paella & Seafood Platter",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.pQle_vhLUAIT0BY8aFfWhAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Delicious seafood paella featuring the fresh catch of the Al Hoceima coast"
+    },
+    "al-hoceima/fresh-fig-cactus-fruit": {
+      "name": "Fresh Fig & Cactus Fruit",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.LpcK5GJEQMnQwbYAuSUq0wHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Sweet, fresh figs and prickly pear cactus fruit from the Rif region"
+    },
+    "al-hoceima/rifian-jben-with-bread-and-tea": {
+      "name": "Rifian jben with bread and tea",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.95P45o-vIbZ7eEOCH9Un1QHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Rif breakfast of fresh jben cheese, local bread, and mint tea"
+    },
+    "al-hoceima/rif-seafood-platter": {
+      "name": "Rif seafood platter",
+      "url": "https://tse4.mm.bing.net/th/id/OIP._OW-GQlf2XM5YH1GSbqcjQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Abundant platter of fresh grilled fish and seafood from the Mediterranean"
+    },
+    "al-hoceima/grilled-mediterranean-sardines": {
+      "name": "Grilled Mediterranean sardines",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.L6lpFCTcSXdSBU0EBUxScAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Perfectly grilled, oily Mediterranean sardines served with fresh salad"
+    },
+    "ouarzazate/tagine-of-camel-meat-figs": {
+      "name": "Tagine of Camel Meat & Figs",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.yT0OsFSJ9nKDQ8Wo2mBTtgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Exotic and tender camel meat tagine slow-cooked with sweet figs"
+    },
+    "ouarzazate/ouarzazate-saffron-couscous": {
+      "name": "Ouarzazate Saffron Couscous",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.--uZ8NVoxOc3S3Y3pnI_GwHaEJ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Fluffy couscous infused with precious local Taliouine saffron"
+    },
+    "ouarzazate/berber-bread-with-olive-oil": {
+      "name": "Berber Bread with Olive Oil",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.Y4gmuev_FukPH7nXQzzteQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Freshly baked traditional Berber khobz bread served with local olive oil"
+    },
+    "ouarzazate/berber-bread-with-olive-oil-and-tea": {
+      "name": "Berber bread with olive oil and tea",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.0ufI1SDna-ARUkRGbkvQ5QHaGE?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Simple, authentic meal of warm Berber bread, olive oil, and sweet mint tea"
+    },
+    "ouarzazate/date-and-vegetable-tagine": {
+      "name": "Date and vegetable tagine",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.so6Tu_wZL8ryQw0qyU1TkwHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Sweet and savory vegetable tagine enriched with local Tafilalet dates"
+    },
+    "ouarzazate/saffron-seasoned-couscous": {
+      "name": "Saffron-seasoned couscous",
+      "url": "https://i.pinimg.com/736x/5a/57/46/5a5746a690ca79ad938bd4d27aa4798c.jpg",
+      "alt": "Traditional Moroccan couscous beautifully colored and flavored with saffron"
+    },
+    "high-atlas/berber-tagine-on-open-fire": {
+      "name": "Berber Tagine on Open Fire",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.xhaBLxqyTntikiPuSdQhvgHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Authentic Berber tagine slow-cooked over a traditional open wood fire"
+    },
+    "high-atlas/fresh-walnuts-mountain-honey": {
+      "name": "Fresh Walnuts & Mountain Honey",
+      "url": "https://images.squarespace-cdn.com/content/v1/5e4129face826c70d43a84f0/1583231725013-AYBM85BNUVGE4XEW4ZJJ/Walnuts+in+Honey+inside.jpg",
+      "alt": "Local High Atlas walnuts drizzled with pure, organic mountain honey"
+    },
+    "high-atlas/high-atlas-herb-tea": {
+      "name": "High Atlas Herb Tea",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.IlebUijhUvZXUFebzE12AgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Soothing herbal tea brewed with wild herbs foraged from the High Atlas mountains"
+    },
+    "high-atlas/mountain-bread-with-honey-and-herb-tea": {
+      "name": "Mountain bread with honey and herb tea",
+      "url": "https://th.bing.com/th/id/OIP.5-slBTJtY3qZowfKx9uAmAHaLH?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Rustic mountain bread served with sweet honey and warming herbal tea"
+    },
+    "high-atlas/vegetable-tagine-with-walnuts": {
+      "name": "Vegetable tagine with walnuts",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.eJ1_XLx7Rha0j7qCtzEssgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Hearty vegetable tagine featuring crunchy, local High Atlas walnuts"
+    },
+    "high-atlas/berber-tagine-cooked-over-a-fire": {
+      "name": "Berber tagine cooked over a fire",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.3fsH6Z4KOnJUiPiCF39H1gHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Traditional Berber clay pot tagine simmering over glowing embers"
+    }
+  },
+  "accommodations": {
+    "marrakech/comfortable": {
+      "name": "Private riad or hotel room",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.hwmfA9I3HQa75gxbkfgUBQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable, well-appointed private room in a traditional Marrakech riad or hotel"
+    },
+    "marrakech/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://th.bing.com/th/id/OIP.5LuCi4kyBGMeErlNiofycgHaE7?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Clean and affordable hostel dormitory bed in Marrakech"
+    },
+    "marrakech/luxury": {
+      "name": "Upscale riad or hotel room",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.Up1fdUM2xh_cRXUEgjtPTAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious, elegantly decorated suite in a high-end Marrakech riad or hotel"
+    },
+    "marrakech/moderate": {
+      "name": "Traditional riad or guesthouse room",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.lyU3dVMm5YnzFLZU_lD6pAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Charming, authentic room in a traditional Marrakech riad or guesthouse"
+    },
+    "chefchaouen/comfortable": {
+      "name": "Comfortable guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.IOx6Oqo3p0LRdeMhqKvkzgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Cozy and comfortable private room in a Chefchaouen guesthouse"
+    },
+    "chefchaouen/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.N6loMyIxnesrZRGxCq1ZXAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly hostel dorm bed in the blue city of Chefchaouen"
+    },
+    "chefchaouen/luxury": {
+      "name": "Boutique guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.uqTW3zTS2siNg7001cmxjgHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Elegant, boutique-style room with premium amenities in Chefchaouen"
+    },
+    "chefchaouen/moderate": {
+      "name": "Local guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.II1xOiTR4BNV1g97LeeoSwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Authentic, moderately priced room in a local Chefchaouen guesthouse"
+    },
+    "fes/comfortable": {
+      "name": "Private riad or hotel room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.JpSkUhEaWg0GMlT7gCbyzgHaFS?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room in a traditional Fès riad or modern hotel"
+    },
+    "fes/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.LpVzFRiHNImzo7PvXMF36wHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Affordable hostel dormitory bed in the heart of Fès"
+    },
+    "fes/luxury": {
+      "name": "Upscale riad or hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.wEeA6NvpMGrcuaCiYktxXwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Opulent, beautifully restored room in a luxury Fès riad or hotel"
+    },
+    "fes/moderate": {
+      "name": "Traditional riad or guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP._wkEqhiq7RYdZa3bKV5sCwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Charming, traditional room with authentic decor in a Fès guesthouse"
+    },
+    "tangier/comfortable": {
+      "name": "Private hotel or riad room",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.0IpaEwxUY5Qpnl_0CIRHJgHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room with modern amenities in a Tangier hotel or riad"
+    },
+    "tangier/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.U-_9UqloQNY6RYehictA1wHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly hostel dorm bed in Tangier"
+    },
+    "tangier/luxury": {
+      "name": "Upscale hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.V-0ZHXJ5yJ8xCV5qKr0-0QHaEq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious hotel room with premium views and services in Tangier"
+    },
+    "tangier/moderate": {
+      "name": "Guesthouse or riad room",
+      "url": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/580064773.jpg?k=3e3a7cf676814a97d9e55344961d6a345cf4a71e8783ea69ad567ed2bd41acf7&o=",
+      "alt": "Moderately priced, charming room in a Tangier guesthouse or riad"
+    },
+    "essaouira/comfortable": {
+      "name": "Private riad or hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.iHD2DFJOY_pOEyykEWP9IAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room in a coastal riad or hotel in Essaouira"
+    },
+    "essaouira/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.HTDwlzTVqjlkxOvGRsVqxQHaFD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Affordable hostel dorm bed near the beach in Essaouira"
+    },
+    "essaouira/luxury": {
+      "name": "Upscale riad or hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP._wM8P-UeK2t6qTJx9xxCFwHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxury accommodation with high-end amenities in an Essaouira riad or hotel"
+    },
+    "essaouira/moderate": {
+      "name": "Medina guesthouse or riad room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.w7cNizTrhbJQ9In4CYpG6gHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Charming, moderately priced room in an Essaouira medina guesthouse or riad"
+    },
+    "merzouga/comfortable": {
+      "name": "Comfortable desert camp or guesthouse",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.bWYe2yppoYOFseQHuQNFxQHaER?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private tent or room in a Merzouga desert camp or guesthouse"
+    },
+    "merzouga/low": {
+      "name": "Basic guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.g3Cvxd4_spyGAP11ZomqGQHaDL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Simple, budget-friendly guesthouse room in Merzouga village"
+    },
+    "merzouga/luxury": {
+      "name": "Upscale desert camp or hotel room",
+      "url": "https://th.bing.com/th/id/OIP.L4sTQqdzMi8sGheVQMNfRAHaET?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious desert camp suite or high-end hotel room in Merzouga"
+    },
+    "merzouga/moderate": {
+      "name": "Desert camp or guesthouse",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.I2NSXepvAMbhGBJd0ssQxAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Moderately priced, authentic desert camp or guesthouse in Merzouga"
+    },
+    "agadir/comfortable": {
+      "name": "Private hotel or guesthouse room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.t8IbrZ2Vkjl0IzuRPvD7XQHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room in a modern Agadir hotel or guesthouse"
+    },
+    "agadir/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.bZfCsvKiVz9ir4mI_ix5jwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly hostel dorm bed in Agadir"
+    },
+    "agadir/luxury": {
+      "name": "Upscale hotel room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.GGUEE6FVaze5AxjKtwK2LQHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious, spacious hotel room with premium amenities in Agadir"
+    },
+    "agadir/moderate": {
+      "name": "Guesthouse or simple hotel room",
+      "url": "https://th.bing.com/th/id/OIP.9FYuoyC1cZ8aSYWT4npWngHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Moderately priced, clean room in an Agadir guesthouse or simple hotel"
+    },
+    "rabat/comfortable": {
+      "name": "Private hotel or riad room",
+      "url": "https://th.bing.com/th/id/OIP.9T_NpYAv5S8L38VDa0ynFAHaFX?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room in a modern Rabat hotel or traditional riad"
+    },
+    "rabat/low": {
+      "name": "Hostel dorm bed",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.FahFyQOGaVsXLMDg8XJRhAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Affordable hostel dorm bed in the capital city of Rabat"
+    },
+    "rabat/luxury": {
+      "name": "Upscale hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.Cj1NBfkeKm3pw4uSZLa-cQHaHa?r=0&w=4000&h=4000&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxury hotel room with premium services and elegant decor in Rabat"
+    },
+    "rabat/moderate": {
+      "name": "Guesthouse or riad room",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.530umm_9wdWZwLmUJUZSYgHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Charming, moderately priced room in a Rabat guesthouse or riad"
+    },
+    "ifrane/comfortable": {
+      "name": "Private hotel or guesthouse room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.9Hk4OkiDNDxDGNMv1BoJ9gHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable, warm private room in an Ifrane hotel or mountain guesthouse"
+    },
+    "ifrane/low": {
+      "name": "Hostel or basic guesthouse bed",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.y7d7JxSzxXWKPLQdsI8-6wHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly bed in a basic hostel or guesthouse in Ifrane"
+    },
+    "ifrane/luxury": {
+      "name": "Upscale hotel or lodge room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.3AdSWQrAbTEqdNhj2USRDgHaFN?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious, well-appointed room in a high-end Ifrane hotel or mountain lodge"
+    },
+    "ifrane/moderate": {
+      "name": "Mountain guesthouse room",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.UnLmTB0Y4Sx0bZ3rh3wkGwHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Cozy, moderately priced room in a traditional Middle Atlas mountain guesthouse"
+    },
+    "al-hoceima/comfortable": {
+      "name": "Private hotel room",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.OvQBuHaEvPQ6h9whn3vsLQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private hotel room with Mediterranean views in Al Hoceima"
+    },
+    "al-hoceima/low": {
+      "name": "Hostel or basic guesthouse bed",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.x4m8WVf7TU12RL5IeMuCiAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly bed in a simple hostel or guesthouse in Al Hoceima"
+    },
+    "al-hoceima/luxury": {
+      "name": "Upscale hotel room",
+      "url": "https://tse3.mm.bing.net/th/id/OIP.3230GjByHMPS1YQDjtSLqwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious hotel room with premium amenities and coastal views in Al Hoceima"
+    },
+    "al-hoceima/moderate": {
+      "name": "Guesthouse or small hotel room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.FK62a4bY1XKavIys4FDNiwHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Moderately priced, cozy room in a small Al Hoceima hotel or guesthouse"
+    },
+    "ouarzazate/comfortable": {
+      "name": "Private hotel or guesthouse room",
+      "url": "https://th.bing.com/th/id/OIP.ZFzmOyZLK6IRLee3Ogrp_gHaD4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable private room in an Ouarzazate hotel or traditional guesthouse"
+    },
+    "ouarzazate/low": {
+      "name": "Hostel or basic guesthouse bed",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.LZNDFElzSU85mMEQ4RJMVgHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Budget-friendly bed in a basic Ouarzazate hostel or guesthouse"
+    },
+    "ouarzazate/luxury": {
+      "name": "Upscale hotel or kasbah-style inn room",
+      "url": "https://tse1.mm.bing.net/th/id/OIP.arRi4mKMMEz4fmwVP6SSOwHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Luxurious, elegantly decorated room in a high-end Ouarzazate hotel or kasbah"
+    },
+    "ouarzazate/moderate": {
+      "name": "Guesthouse or kasbah-style inn room",
+      "url": "https://th.bing.com/th/id/OIP.tnQ9AaE928hFFMZ1A4zRggHaE4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Charming, moderately priced room in a traditional kasbah-style inn in Ouarzazate"
+    },
+    "high-atlas/comfortable": {
+      "name": "Private lodge or guesthouse room",
+      "url": "https://tse2.mm.bing.net/th/id/OIP.D_fYdi_DOze3cWLKc5yZVwHaIA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Comfortable, warm private room in a High Atlas mountain lodge or guesthouse"
+    },
+    "high-atlas/low": {
+      "name": "Basic mountain guesthouse bed",
+      "url": "https://tse4.mm.bing.net/th/id/OIP.J-iroZJJtgNYrH0Gk76QZgHaJV?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "alt": "Simple, budget-friendly bed in a basic High Atlas mountain guesthouse"
+    },
+    "high-atlas/luxury": {
+      "name": "Comfortable mountain lodge room",
+      "url": "https://1889mag.com/wp-content/uploads/2023/11/Bed2.jpg",
+      "alt": "Luxurious, well-appointed room in a premium High Atlas mountain lodge"
+    },
+    "high-atlas/moderate": {
+      "name": "Mountain guesthouse room",
+      "url": "https://th.bing.com/th/id/R.0b27ce83bf53b06116e12f44ed707a11?rik=NXNwQeU3IYMlzw&riu=http%3a%2f%2fwww.vuktilaj-guest-house.al%2fimages%2fvt%2fmountain-guest-house-big-room.jpg&ehk=4MXCFELy642oFyjlSgXAiy7mhY7qLtimxAvNF2mw5NA%3d&risl=&pid=ImgRaw&r=0",
+      "alt": "Cozy, moderately priced room with mountain views in a High Atlas guesthouse"
+    }
+  }
+}

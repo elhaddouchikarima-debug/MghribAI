@@ -754,9 +754,12 @@ function switchCityTab(tabName) {
     if (targetContent) targetContent.classList.remove('hidden');
 }
 
+let activePlannerDestinationId = null;
+
 function planTripForCity(cityId) {
+    activePlannerDestinationId = cityId;
     closeCityDetail();
-    openTripPlanner({ startCity: cityId });
+    openTripPlanner({ destinationId: cityId });
 }
 
 // Lightbox Controls
@@ -942,6 +945,7 @@ let userTripPreferences = {
     budgetCurrency: 'USD',
     budgetAmount: '',
     duration: '3-4',
+    tripDays: 4,
     companions: 'partner',
     atmosphere: 'romantic',
     season: 'spring',
@@ -953,9 +957,39 @@ let userTripPreferences = {
 
 let currentPlannerStep = 0;
 
+function getActivePlannerQuestions() {
+    if (!activePlannerDestinationId) return PLANNER_QUESTIONS;
+    return ['budget', 'duration'].map(id => PLANNER_QUESTIONS.find(question => question.id === id));
+}
+
 function openTripPlanner(prefill = {}) {
     const planner = $('#planner');
     if (!planner) return;
+
+    // A city-card launch pins the generated plan to that city. Opening the
+    // general planner clears any previous pin so its recommendations stay open.
+    activePlannerDestinationId = typeof prefill.destinationId === 'string' ? prefill.destinationId : null;
+
+    // The magic-wand flow for a specific city only asks about budget and trip
+    // length. Start with neutral defaults so answers from the full planner do
+    // not silently affect this city plan.
+    if (activePlannerDestinationId) {
+        userTripPreferences = {
+            ...userTripPreferences,
+            experience: [],
+            budget: 'moderate',
+            budgetCurrency: 'MAD',
+            budgetAmount: '',
+            duration: '3-4',
+            tripDays: 4,
+            companions: null,
+            atmosphere: null,
+            season: null,
+            transport: 'undecided',
+            startCity: 'anywhere',
+            notes: ''
+        };
+    }
 
     if (prefill.startCity) {
         userTripPreferences.startCity = prefill.startCity;
@@ -980,8 +1014,9 @@ function renderPlannerProgress() {
     const container = $('#progress');
     if (!container) return;
 
-    const total = PLANNER_QUESTIONS.length;
-    container.innerHTML = PLANNER_QUESTIONS.map((q, idx) => `
+    const questions = getActivePlannerQuestions();
+    const total = questions.length;
+    container.innerHTML = questions.map((q, idx) => `
         <div class="flex items-center ${idx < total - 1 ? 'flex-1' : ''}">
             <div class="pdot ${idx === currentPlannerStep ? 'active' : ''} ${idx < currentPlannerStep ? 'done' : ''}" title="Step ${idx + 1}: ${q.title}"></div>
             ${idx < total - 1 ? `<div class="pline ${idx < currentPlannerStep ? 'done' : ''}"><i></i></div>` : ''}
@@ -993,8 +1028,9 @@ function renderPlannerStep() {
     const stepBody = $('#stepBody');
     if (!stepBody) return;
 
-    const q = PLANNER_QUESTIONS[currentPlannerStep];
-    const total = PLANNER_QUESTIONS.length;
+    const questions = getActivePlannerQuestions();
+    const q = questions[currentPlannerStep];
+    const total = questions.length;
     const cur = currentPlannerStep;
 
     const btnBack = $('#btnBack');
@@ -1007,6 +1043,7 @@ function renderPlannerStep() {
 
     let contentHtml = `
         <div class="max-w-2xl mx-auto text-center mb-8">
+            ${activePlannerDestinationId ? `<span class="text-[10px] font-bold uppercase tracking-widest text-[var(--accent-primary)] mb-2 inline-block">City trip · ${escapeHtml(DESTINATIONS.find(city => city.id === activePlannerDestinationId)?.name || 'Selected city')}</span>` : ''}
             <span class="text-[11px] font-bold uppercase tracking-widest text-[var(--accent-gold)] mb-2 inline-block">
                 Question ${cur + 1} of ${total}
             </span>
@@ -1060,6 +1097,13 @@ function renderPlannerStep() {
                 </div>
             `;
         }
+        if (q.id === 'duration') {
+            const bounds = { '1-2': [1, 2], '3-4': [3, 4], '5-7': [5, 7], '8+': [8, 30] }[userTripPreferences.duration] || [1, 30];
+            if (!Number.isInteger(userTripPreferences.tripDays) || userTripPreferences.tripDays < bounds[0] || userTripPreferences.tripDays > bounds[1]) {
+                userTripPreferences.tripDays = bounds[1];
+            }
+            contentHtml += `<div class="max-w-2xl mx-auto mt-5 p-4 rounded-2xl surface-card flex flex-col sm:flex-row sm:items-center justify-between gap-3"><div><label for="tripDaysInput" class="block text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">Exact number of trip days</label><p class="text-[11px] opacity-70 mt-1">Choose a number within the selected range.</p></div><div class="flex items-center gap-2"><input id="tripDaysInput" type="number" min="${bounds[0]}" max="${bounds[1]}" step="1" value="${userTripPreferences.tripDays}" oninput="userTripPreferences.tripDays = this.value === '' ? '' : Number(this.value)" class="w-24 bg-[var(--bg-main)] border border-[var(--border-color)] rounded-xl px-3 py-2 text-sm font-bold" aria-label="Exact number of trip days"><span class="text-xs opacity-70">days</span></div></div>`;
+        }
     } else if (q.type === 'text') {
         contentHtml += `
             <div class="max-w-2xl mx-auto">
@@ -1090,24 +1134,30 @@ function selectPlannerOption(qId, optId, isMulti) {
         }
     } else {
         userTripPreferences[qId] = optId;
+        if (qId === 'duration') {
+            const defaultDays = { '1-2': 2, '3-4': 4, '5-7': 7, '8+': 8 }[optId];
+            const bounds = { '1-2': [1, 2], '3-4': [3, 4], '5-7': [5, 7], '8+': [8, 30] }[optId];
+            if (userTripPreferences.tripDays < bounds[0] || userTripPreferences.tripDays > bounds[1]) userTripPreferences.tripDays = defaultDays;
+        }
     }
     renderPlannerStep();
 }
 
 function handlePlannerNext() {
-    const total = PLANNER_QUESTIONS.length;
+    const total = getActivePlannerQuestions().length;
     if (currentPlannerStep < total - 1) {
         currentPlannerStep++;
         renderPlannerStep();
     } else {
-        // Record timestamp and navigate to Apertus AI Integration Placeholder
+        // Keep the saved answers intact while the backend builds the itinerary.
         userTripPreferences.submittedAt = new Date().toISOString();
-        showApertusPlaceholder(userTripPreferences);
+        showApertusRecommendations(userTripPreferences);
     }
 }
 
 function handlePlannerBack() {
-    if (currentPlannerStep > 0) {
+    const questions = getActivePlannerQuestions();
+    if (currentPlannerStep > 0 && currentPlannerStep < questions.length) {
         currentPlannerStep--;
         renderPlannerStep();
     }
@@ -1118,189 +1168,72 @@ function handlePlannerSkip() {
 }
 
 // =============================================================================
-// 9. APERTUS AI MODEL INTEGRATION POINT & PLACEHOLDER VIEW
+// 9. APERTUS RECOMMENDATIONS & DATABASE-BACKED DAY PLAN
 // =============================================================================
-/**
- * -----------------------------------------------------------------------------
- * DEVELOPER INTEGRATION POINT (FOR TEAMMATE):
- * -----------------------------------------------------------------------------
- * This service object is where the Apertus AI model should be connected.
- * Do not rebuild the trip questionnaire or visual layout — hook your backend
- * client into `ApertusAIService.generateItinerary(preferences)` below.
- */
-const ApertusAIService = {
-    /**
-     * Future integration function for teammate to connect Apertus AI model.
-     * @param {Object} preferences - Sanitized visitor trip preferences
-     * @returns {Promise<Object|null>} Model-generated itinerary payload
-     */
-    async generateItinerary(preferences) {
-        // [APERTUS INTEGRATION POINT]:
-        // Connect Apertus AI model API here when ready.
-        // Example:
-        // const response = await fetch('/api/apertus/itinerary', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(preferences)
-        // });
-        // return await response.json();
-        return null;
-    }
-};
+let recommendationsPending = false;
 
-/**
- * Displays the clean, dedicated recommendation results placeholder.
- * Does NOT run any local recommendation algorithms or fake itineraries.
- */
-function showApertusPlaceholder(preferences) {
+function formatMadRange(range) {
+    if (!range || !Number.isFinite(range.min) || !Number.isFinite(range.max)) return 'Price unavailable';
+    if (range.min === 0 && range.max === 0) return 'Free self-guided';
+    return `${range.min.toLocaleString()}–${range.max.toLocaleString()} MAD`;
+}
+
+function renderItineraryHtml(itinerary) {
+    if (!itinerary || !Array.isArray(itinerary.days)) return '';
+    const fallback = escapeHtml(itinerary.destination?.imageFallback || '/assets/hero/marrakech-riad-rooftops-1600.jpg');
+    const money = range => escapeHtml(formatMadRange(range));
+    const imageCard = (item, detail) => {
+        const image = item.image?.url ? `<img src="${escapeHtml(item.image.url)}" alt="${escapeHtml(item.image.alt || item.name)}" loading="eager" decoding="async" class="w-full h-44 object-cover" onerror="this.onerror=null;this.src='${fallback}'">` : `<img src="${fallback}" alt="${escapeHtml(item.name)}" class="w-full h-44 object-cover">`;
+        return `<article class="surface-card rounded-xl overflow-hidden border border-[var(--border-color)]">${image}<div class="p-4"><div class="flex items-start justify-between gap-2"><h5 class="font-bold text-sm">${escapeHtml(item.name || '')}</h5><span class="text-[10px] whitespace-nowrap text-[var(--accent-gold)] font-bold">${money(item.price)}</span></div><p class="text-xs opacity-75 mt-1">${escapeHtml(item.description || '')}</p><p class="text-[10px] opacity-65 mt-2">${escapeHtml(item.time || '')}${item.durationMinutes ? ` · ${item.durationMinutes} min` : ''} · ${escapeHtml(item.location || '')}</p>${detail || ''}${item.tip || item.practicalTip ? `<p class="text-[10px] opacity-65 mt-2">${escapeHtml(item.tip || item.practicalTip)}</p>` : ''}</div></article>`;
+    };
+    const days = itinerary.days.map(day => {
+        const schedule = [...(day.activities || []), ...(day.meals || [])].sort((a, b) => String(a.time || '').localeCompare(String(b.time || '')));
+        const cards = schedule.map(item => {
+            const detail = item.category === 'meal'
+                ? `<p class="text-[10px] font-bold mt-2 text-[var(--accent-primary)]">${escapeHtml(item.mealType || 'Meal')} · ${money(item.price)} / person</p>`
+                : `<p class="text-[10px] font-bold mt-2 text-[var(--accent-primary)]">${money(item.price)} / person</p>`;
+            return `<div><span class="inline-flex mb-2 px-2.5 py-1 rounded-full surface-inset text-[10px] font-extrabold text-[var(--accent-gold)]"><i class="fa-regular fa-clock mr-1"></i>${escapeHtml(item.time || 'Flexible')}</span>${imageCard(item, detail)}</div>`;
+        }).join('');
+        const stay = day.overnightStay;
+        const stayHtml = stay ? `<div class="mt-4 p-4 rounded-xl surface-inset grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-4">${stay.image?.url ? `<img src="${escapeHtml(stay.image.url)}" alt="${escapeHtml(stay.image.alt || stay.type)}" loading="eager" class="w-full h-32 object-cover rounded-lg" onerror="this.onerror=null;this.src='${fallback}'">` : ''}<div><strong class="text-sm">Stay tonight · ${escapeHtml(stay.name || stay.type)}</strong><p class="text-xs text-[var(--accent-primary)] mt-1">${money(stay.pricePerUnitNight)} / ${stay.unit === 'per_person_per_night' ? 'bed/person' : 'room'} per night · ${stay.roomsOrBeds} unit(s)</p><p class="text-xs mt-1">This night estimate: ${money(stay.total)}</p><p class="text-[10px] opacity-70 mt-2">${escapeHtml(stay.note || '')}</p></div></div>` : '';
+        return `<section class="surface-card rounded-2xl p-4 md:p-6 border border-[var(--border-color)] mb-5"><div class="flex justify-between items-start gap-3 mb-4"><div><span class="text-[10px] uppercase tracking-wider font-bold text-[var(--accent-gold)]">Day ${day.dayNumber} · Daily plan</span><h3 class="font-heading text-xl font-bold">${escapeHtml(day.title || itinerary.destination.name)}</h3><p class="text-xs opacity-70 mt-1">${escapeHtml(day.description || '')}</p></div><strong class="text-xs whitespace-nowrap">Day total: ${money(day.dailySubtotal)}</strong></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">${cards}</div>${stayHtml}<p class="text-[10px] opacity-65 mt-3">${day.localTransport ? `Local transport (group): ${money(day.localTransport.price)} · ` : ''}Optional expenses (group): ${money(day.optionalExpenses?.price)}.</p></section>`;
+    }).join('');
+    const stay = itinerary.accommodationSummary;
+    const accommodation = itinerary.nightsCount > 0 && stay ? `<section class="surface-card rounded-2xl overflow-hidden border border-[var(--accent-gold)] mb-5"><div class="grid grid-cols-1 md:grid-cols-[260px_1fr]"><img src="${escapeHtml(stay.image?.url || fallback)}" alt="${escapeHtml(stay.image?.alt || `Illustrative stay in ${itinerary.destination.name}`)}" class="w-full h-48 md:h-full min-h-48 object-cover" loading="eager" onerror="this.onerror=null;this.src='${fallback}'"><div class="p-5 md:p-6"><span class="text-[10px] uppercase tracking-widest font-extrabold text-[var(--accent-gold)]">${stay.nights} night(s) · ${stay.roomsOrBeds} ${stay.unit === 'per_person_per_night' ? 'bed(s)' : 'room(s)'}</span><h3 class="font-heading text-xl font-bold mt-1">Your stay in ${escapeHtml(itinerary.destination.name)}</h3><p class="text-sm font-bold text-[var(--accent-primary)] mt-2">${escapeHtml(stay.name || stay.type)} · ${money(stay.pricePerUnitNight)} / night</p><p class="text-xs opacity-75 mt-2">${escapeHtml(stay.note || '')}</p><p class="mt-4 pt-3 border-t border-[var(--border-color)] flex justify-between text-sm"><span>Estimated stay total</span><strong>${money(stay.total)}</strong></p></div></div></section>` : '';
+    const totals = itinerary.pricing?.totals;
+    const budgetRows = totals ? [
+        ['Activities & experiences', totals.activitiesExperiences], ['Breakfast', totals.breakfast], ['Lunch', totals.lunch], ['Dinner', totals.dinner],
+        [`Accommodation (${itinerary.nightsCount} night(s))`, totals.accommodation], ['Local transportation', totals.transportation], ['Optional expenses', totals.optionalExpenses]
+    ].map(([label, range]) => `<div class="flex justify-between gap-3 border-b border-[var(--border-color)] py-2 text-xs"><span>${escapeHtml(label)}</span><strong>${money(range)}</strong></div>`).join('') : '';
+    return `<div class="max-w-5xl mx-auto mt-8" id="generatedItinerary"><header class="surface-card rounded-3xl p-5 md:p-8 border border-[var(--accent-gold)] mb-6 flex gap-4 items-center"><img src="${escapeHtml(itinerary.destination.image || fallback)}" alt="${escapeHtml(itinerary.destination.imageAlt || itinerary.destination.name)}" class="w-20 h-20 md:w-28 md:h-28 object-cover rounded-2xl" onerror="this.onerror=null;this.src='${fallback}'"><div><span class="text-[10px] uppercase tracking-widest font-bold text-[var(--accent-gold)]">Personalized day-by-day plan · ${itinerary.travelers} traveler(s)</span><h2 class="font-heading text-2xl md:text-3xl font-extrabold">${itinerary.daysCount} days in ${escapeHtml(itinerary.destination.name)}</h2><p class="text-xs opacity-70 mt-1">${itinerary.nightsCount} night(s) · price estimates in MAD</p></div></header>${days}${accommodation}<section class="surface-card rounded-2xl p-5 md:p-7 border border-[var(--accent-gold)]"><h3 class="font-heading text-xl font-bold mb-4">Estimated trip budget · MAD</h3>${budgetRows}<div class="flex justify-between gap-3 pt-3 text-sm"><strong>Estimated total (group)</strong><strong>${money(totals?.totalIncludingOptional)}</strong></div><div class="flex justify-between gap-3 text-sm text-[var(--accent-primary)]"><strong>Estimated per person</strong><strong>${money(totals?.perPersonIncludingOptional)}</strong></div>${itinerary.pricing?.budgetComparison ? `<div class="mt-4 rounded-xl surface-inset p-3 text-xs"><strong>Budget: ${escapeHtml(itinerary.pricing.budgetComparison.status.replaceAll('_', ' '))}</strong><p class="mt-1">${escapeHtml(itinerary.pricing.budgetComparison.explanation)}</p></div>` : ''}<p class="text-[10px] opacity-70 mt-4">${escapeHtml(itinerary.disclaimer || '')}</p></section></div>`;
+}
+
+async function showApertusRecommendations(preferences) {
     $('#plannerQuestionView')?.classList.add('hidden');
     const resultView = $('#plannerResult');
     if (!resultView) return;
-
-    // Format human-readable summary badges of visitor's preferences
-    const experiencesText = (preferences.experience && preferences.experience.length > 0)
-        ? preferences.experience.map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(', ')
-        : 'General Exploration';
-    const durationText = preferences.duration === '8+' ? '8+ Days' : `${preferences.duration} Days`;
-    const budgetText = preferences.budget ? preferences.budget.charAt(0).toUpperCase() + preferences.budget.slice(1) : 'Moderate';
-    const atmosphereText = preferences.atmosphere ? preferences.atmosphere.charAt(0).toUpperCase() + preferences.atmosphere.slice(1) : 'Balanced';
-    const companionsText = preferences.companions ? preferences.companions.charAt(0).toUpperCase() + preferences.companions.slice(1) : 'Traveling';
-    const startCityText = preferences.startCity ? preferences.startCity.charAt(0).toUpperCase() + preferences.startCity.slice(1) : 'Morocco Gateway';
-
-    resultView.innerHTML = `
-        <div class="max-w-4xl mx-auto py-2">
-            
-            <!-- Moroccan Ornamental Header Banner -->
-            <div class="surface-card rounded-3xl p-6 md:p-10 mb-8 border border-[var(--accent-gold)] relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-gold)] to-[var(--accent-burgundy)]"></div>
-                
-                <div class="text-center max-w-2xl mx-auto">
-                    <div class="w-16 h-16 rounded-2xl bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 flex items-center justify-center mx-auto mb-4 text-2xl text-[var(--accent-primary)]">
-                        <i class="fa-solid fa-compass"></i>
-                    </div>
-                    
-                    <span class="text-xs uppercase font-bold tracking-widest text-[var(--accent-gold)] mb-2 inline-block">
-                        🇲🇦 Apertus AI Integration Placeholder
-                    </span>
-                    <h2 class="font-heading text-3xl md:text-5xl font-extrabold mb-3 text-[var(--text-main)]">
-                        Your Moroccan Journey
-                    </h2>
-                    <p class="text-sm md:text-base opacity-85 leading-relaxed mb-6">
-                        Your personalized travel itinerary will appear here once the <strong>Apertus AI model</strong> is connected. Your trip preferences have been cleanly collected and stored below, ready for model processing.
-                    </p>
-
-                    <!-- Back to Questionnaire Action -->
-                    <button onclick="returnToQuestionnaire()" 
-                            class="px-6 py-3 rounded-xl bg-[var(--accent-primary)] hover:opacity-90 text-white font-bold text-xs transition-all shadow-md inline-flex items-center gap-2">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Return to Questionnaire & Edit Preferences</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Preserved Preferences Summary Card -->
-            <div class="surface-card rounded-2xl p-6 mb-8 border border-[var(--border-color)]">
-                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
-                    <h3 class="font-heading text-base font-bold text-[var(--accent-primary)]">
-                        Saved Travel Preferences Payload
-                    </h3>
-                    <span class="text-[11px] opacity-60 font-mono">
-                        Status: Ready for Apertus
-                    </span>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Duration</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${durationText}</span>
-                    </div>
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Atmosphere</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${atmosphereText}</span>
-                    </div>
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Companions</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${companionsText}</span>
-                    </div>
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Budget Tier</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${budgetText} (${preferences.budgetCurrency})</span>
-                    </div>
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Starting City</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${startCityText}</span>
-                    </div>
-                    <div class="surface-inset p-3 rounded-xl">
-                        <span class="text-[10px] font-bold opacity-60 uppercase block">Season</span>
-                        <span class="text-xs font-extrabold text-[var(--accent-primary)] mt-1 block">${preferences.season ? preferences.season.toUpperCase() : 'FLEXIBLE'}</span>
-                    </div>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-[var(--border-color)] flex items-center justify-between text-xs opacity-75">
-                    <span><strong>Experiences:</strong> ${experiencesText}</span>
-                    ${preferences.notes ? `<span class="italic max-w-xs truncate">"${escapeHtml(preferences.notes)}"</span>` : ''}
-                </div>
-            </div>
-
-            <!-- Clearly Structured Content Areas Reserved for Apertus Results -->
-            <div class="space-y-6 mb-8">
-                
-                <!-- Apertus Slot 1: Recommended Destination Header -->
-                <div class="apertus-slot">
-                    <div class="w-10 h-10 rounded-full bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] flex items-center justify-center mx-auto mb-2 text-base">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                    <h4 class="font-heading text-base font-bold mb-1">
-                        [Apertus Result Area 1: Recommended Moroccan Destination & Rationale]
-                    </h4>
-                    <p class="text-xs opacity-70 max-w-lg mx-auto">
-                        This section is reserved for the primary Moroccan city or regional route chosen by the Apertus AI model, along with a personalized explanation of why it fits the traveler.
-                    </p>
-                </div>
-
-                <!-- Apertus Slot 2: Day-by-Day Itinerary -->
-                <div class="apertus-slot">
-                    <div class="w-10 h-10 rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] flex items-center justify-center mx-auto mb-2 text-base">
-                        <i class="fa-solid fa-calendar-days"></i>
-                    </div>
-                    <h4 class="font-heading text-base font-bold mb-1">
-                        [Apertus Result Area 2: Day-by-Day Customized Route & Activities]
-                    </h4>
-                    <p class="text-xs opacity-70 max-w-lg mx-auto">
-                        Structured container reserved for day-by-day morning, afternoon, and evening recommendations generated by Apertus.
-                    </p>
-                </div>
-
-                <!-- Apertus Slot 3: Budget Breakdown & Practical Insights -->
-                <div class="apertus-slot">
-                    <div class="w-10 h-10 rounded-full bg-[var(--accent-burgundy)]/10 text-[var(--accent-burgundy)] flex items-center justify-center mx-auto mb-2 text-base">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <h4 class="font-heading text-base font-bold mb-1">
-                        [Apertus Result Area 3: Estimated Budget Breakdown & Cultural Tips]
-                    </h4>
-                    <p class="text-xs opacity-70 max-w-lg mx-auto">
-                        Reserved for accommodation, food, local transport, and activity cost estimates generated by Apertus in ${preferences.budgetCurrency}.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Footer Controls -->
-            <div class="pt-6 border-t border-[var(--border-color)] flex items-center justify-between flex-wrap gap-4">
-                <button onclick="returnToQuestionnaire()" 
-                        class="px-6 py-3.5 rounded-xl surface-inset hover:border-[var(--accent-primary)] font-bold text-xs transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-rotate-left"></i>
-                    <span>Edit Travel Preferences</span>
-                </button>
-                <button onclick="closeTripPlanner()" 
-                        class="px-6 py-3.5 rounded-xl bg-[var(--accent-burgundy)] hover:opacity-90 text-white font-bold text-xs transition-all shadow-md">
-                    <span>Close Trip Planner</span>
-                </button>
-            </div>
-        </div>
-    `;
-
+    if (recommendationsPending) return;
+    recommendationsPending = true;
+    const next = $('#btnNext');
+    if (next) { next.disabled = true; next.setAttribute('aria-busy', 'true'); }
     resultView.classList.remove('hidden');
+    resultView.innerHTML = `<div class="max-w-4xl mx-auto py-16 text-center" role="status"><div class="animate-pulse text-3xl text-[var(--accent-primary)] mb-4"><i class="fa-solid fa-compass"></i></div><h2 class="font-heading text-2xl font-bold">Building your day-by-day Morocco plan…</h2><p class="text-sm opacity-70 mt-2">Matching your answers with city activities, food, stays and photos.</p></div>`;
+    try {
+        const response = await fetch('/api/recommendations', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ preferences, language: currentSiteLang || 'en', destinationId: activePlannerDestinationId })
+        });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || `Request failed (${response.status})`);
+        if (!payload.itinerary || !Array.isArray(payload.itinerary.days)) throw new Error('No day-by-day itinerary was returned.');
+        const recommendation = payload.destinations?.[0];
+        resultView.innerHTML = `<div class="max-w-5xl mx-auto py-2"><section class="surface-card rounded-3xl p-6 md:p-8 mb-6 border border-[var(--accent-gold)]"><span class="text-[10px] uppercase tracking-widest font-extrabold text-[var(--accent-gold)]">${payload.modelStatus === 'apertus' ? 'Apertus AI · Morocco destination guide' : 'Morocco guide · local data fallback'}</span><h2 class="font-heading text-2xl md:text-3xl font-extrabold mt-2">${escapeHtml(recommendation?.city?.name || payload.itinerary.destination.name)}${activePlannerDestinationId ? ' day-by-day trip' : ' is your best match'}</h2><p class="text-sm opacity-80 mt-2">${escapeHtml(recommendation?.match_reason || payload.summary || '')}</p>${payload.modelNotice ? `<p class="text-xs opacity-65 mt-2">${escapeHtml(payload.modelNotice)}</p>` : ''}<p class="text-[10px] opacity-65 mt-3">${escapeHtml(payload.disclaimer || '')}</p></section>${renderItineraryHtml(payload.itinerary)}<div class="flex flex-wrap gap-3 mt-5"><button type="button" onclick="returnToQuestionnaire()" class="px-5 py-3 rounded-xl surface-inset font-bold text-xs">Edit answers</button><button type="button" onclick="closeTripPlanner()" class="px-5 py-3 rounded-xl bg-[var(--accent-primary)] text-white font-bold text-xs">Close planner</button></div></div>`;
+    } catch (error) {
+        resultView.innerHTML = `<div class="max-w-3xl mx-auto py-16 text-center surface-card rounded-3xl p-8 border border-[var(--accent-gold)]"><div class="text-2xl text-[var(--accent-burgundy)] mb-3"><i class="fa-solid fa-triangle-exclamation"></i></div><h2 class="font-heading text-2xl font-bold mb-2">We couldn't create your itinerary</h2><p class="text-sm opacity-75 mb-6">${escapeHtml(error.message || 'Please check the server and try again.')}</p><div class="flex flex-wrap justify-center gap-3"><button type="button" onclick="showApertusRecommendations(userTripPreferences)" class="px-5 py-3 rounded-xl bg-[var(--accent-primary)] text-white text-xs font-bold">Try again</button><button type="button" onclick="returnToQuestionnaire()" class="px-5 py-3 rounded-xl surface-inset text-xs font-bold">Edit answers</button></div></div>`;
+    } finally {
+        recommendationsPending = false;
+        if (next) { next.disabled = false; next.removeAttribute('aria-busy'); }
+    }
 }
 
 function returnToQuestionnaire() {
@@ -1311,48 +1244,18 @@ function returnToQuestionnaire() {
 }
 
 // =============================================================================
-// 10. VOICE TRANSLATOR: INTERFACE PREVIEW
+// 10. VOICE TRANSLATOR
 // =============================================================================
-const VOICE_PREVIEW_PHRASES = {
-    en: {
-        spoken: 'Where is the nearest entrance to the medina, please?',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    },
-    fr: {
-        spoken: 'Où se trouve la porte la plus proche de la médina, s’il vous plaît ?',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    },
-    es: {
-        spoken: '¿Dónde está la entrada más cercana a la medina, por favor?',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    },
-    de: {
-        spoken: 'Wo ist bitte der nächste Eingang zur Medina?',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    },
-    it: {
-        spoken: 'Dov’è l’ingresso più vicino alla medina, per favore?',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    },
-    ar: {
-        spoken: 'أين يوجد أقرب مدخل إلى المدينة العتيقة من فضلك؟',
-        darijaAr: 'فين كاين أقرب باب للمدينة عافاك؟',
-        darijaLat: 'Fein kayen aqreb bab l-medina afak?'
-    }
-};
-
 let currentVoiceLang = 'en';
+let currentVoiceTargetLang = 'darija';
+let lastVoiceTargetLang = 'darija';
 
 function openVoiceTranslator() {
     const modal = $('#voiceModal');
     if (!modal) return;
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    if ($('#voiceTargetLang')) $('#voiceTargetLang').value = currentVoiceTargetLang;
     selectVoiceLanguage(currentVoiceLang);
 }
 
@@ -1374,6 +1277,8 @@ let voiceTimerId = null;
 let voiceStartedAt = 0;
 let voiceAudioUrl = null;
 let voiceDiscard = false;
+let voicePending = false;
+let lastDarijaText = '';
 
 function setVoiceStatus(text) {
     const el = $('#voiceStatus');
@@ -1401,6 +1306,7 @@ function setVoiceRecordingUI(isRecording) {
 }
 
 async function startVoiceRecording() {
+    if (voicePending || (voiceRecorder && voiceRecorder.state === 'recording')) return;
     if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
         setVoiceStatus('Recording is not supported in this browser. Try Chrome, Edge, Firefox or Safari.');
         return;
@@ -1421,10 +1327,17 @@ async function startVoiceRecording() {
 
     voiceChunks = [];
     voiceDiscard = false;
-    voiceRecorder = new MediaRecorder(voiceStream);
-    voiceRecorder.ondataavailable = (e) => { if (e.data && e.data.size > 0) voiceChunks.push(e.data); };
-    voiceRecorder.onstop = onVoiceRecordingStopped;
-    voiceRecorder.start();
+    try {
+        const mimeType = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'].find(type => MediaRecorder.isTypeSupported?.(type));
+        voiceRecorder = mimeType ? new MediaRecorder(voiceStream, { mimeType }) : new MediaRecorder(voiceStream);
+        voiceRecorder.ondataavailable = (e) => { if (e.data && e.data.size > 0) voiceChunks.push(e.data); };
+        voiceRecorder.onstop = onVoiceRecordingStopped;
+        voiceRecorder.start();
+    } catch {
+        releaseVoiceStream();
+        setVoiceStatus('Could not start audio recording. Try another browser or microphone.');
+        return;
+    }
 
     // reset previous result
     $('#voicePlayback')?.classList.add('hidden');
@@ -1432,7 +1345,9 @@ async function startVoiceRecording() {
     voiceStartedAt = Date.now();
     voiceTimerId = setInterval(() => {
         const t = $('#voiceTimer');
-        if (t) t.textContent = formatVoiceTime(Date.now() - voiceStartedAt);
+        const elapsed = Date.now() - voiceStartedAt;
+        if (t) t.textContent = formatVoiceTime(elapsed);
+        if (elapsed >= 60000) stopVoiceRecording(false);
     }, 250);
     setVoiceRecordingUI(true);
     setVoiceStatus('Recording… tap again to stop.');
@@ -1474,47 +1389,73 @@ async function onVoiceRecordingStopped() {
         player.classList.remove('hidden');
     }
 
-    setVoiceStatus('Recording saved. Translating…');
+    voicePending = true;
+    const recordButton = $('#voiceRecordBtn');
+    if (recordButton) recordButton.disabled = true;
+    const targetLabel = $('#voiceTargetLang')?.selectedOptions?.[0]?.textContent?.trim() || 'the selected language';
+    setVoiceStatus(`Transcribing your recording, then translating to ${targetLabel}…`);
     try {
-        const result = await translateWithApertus(audioBlob, currentVoiceLang);
+        const result = await translateWithApertus(audioBlob, currentVoiceLang, currentVoiceTargetLang);
         showVoiceTranslation(result);
     } catch (err) {
         console.error('Voice translation failed:', err);
-        setVoiceStatus('Translation failed. Please try again.');
+        setVoiceStatus(`Translation failed: ${err.message || 'Please try again.'}`);
+        $('#voiceResult')?.classList.remove('hidden');
+        $('#voiceRetryBtn')?.classList.remove('hidden');
+    } finally {
+        voicePending = false;
+        if (recordButton) recordButton.disabled = false;
     }
 }
 
 function showVoiceTranslation(result) {
-    if (!result) {
-        // Apertus is not connected yet: the recording is ready, nothing to display.
-        setVoiceStatus('Recording saved. Translation will appear here once Apertus is connected.');
-        return;
-    }
-    $('#voiceResultAr').textContent = result.darijaAr || '';
-    $('#voiceResultLat').textContent = result.darijaLat || '';
+    $('#voiceTranscript').textContent = result.transcription || '';
+    $('#voiceTranscript').dir = currentVoiceLang === 'ar' ? 'rtl' : 'auto';
+    $('#voiceTranslatedText').textContent = result.translatedText || '';
+    $('#voiceTranslatedText').dir = ['ar', 'darija'].includes(result.targetLanguage) ? 'rtl' : 'auto';
+    $('#voiceTranslationLabel').textContent = `Translation · ${result.targetLanguageName || 'Selected language'}`;
+    const transliteration = $('#voiceTransliteration');
+    transliteration.textContent = result.transliteration || '';
+    transliteration.classList.toggle('hidden', !result.transliteration);
+    lastDarijaText = result.translatedText || '';
+    lastVoiceTargetLang = result.targetLanguage || currentVoiceTargetLang;
     $('#voiceResult')?.classList.remove('hidden');
+    $('#voiceRetryBtn')?.classList.remove('hidden');
     setVoiceStatus('Done.');
 }
 
-/**
- * ===========================================================================
- *  APERTUS INTEGRATION POINT
- *  Called automatically when a recording finishes.
- *    audioBlob  : the recorded audio (Blob, usually audio/webm or audio/mp4)
- *    sourceLang : language the visitor spoke ('en','fr','es','de','it','ar')
- *  Return (or resolve with):
- *    { darijaAr: 'النص بالدارجة', darijaLat: 'Text in Latin letters' }
- *  Return null to show "waiting for Apertus" (current behaviour).
- *  Example once the API is available:
- *    const body = new FormData();
- *    body.append('audio', audioBlob, 'recording.webm');
- *    body.append('source_lang', sourceLang);
- *    const res = await fetch('<APERTUS_ENDPOINT>', { method: 'POST', body });
- *    return await res.json();
- * ===========================================================================
- */
-async function translateWithApertus(audioBlob, sourceLang) {
-    return null;
+async function translateWithApertus(audioBlob, sourceLang, targetLang) {
+    const response = await fetch('/api/voice-translate', {
+        method: 'POST',
+        headers: { 'Content-Type': audioBlob.type || 'audio/webm', 'X-Source-Language': sourceLang, 'X-Target-Language': targetLang },
+        body: audioBlob
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || `Request failed (${response.status})`);
+    if (!result.transcription || !result.translatedText) throw new Error('The voice service returned an incomplete result.');
+    return result;
+}
+
+function speakTranslation() {
+    if (!lastDarijaText || !('speechSynthesis' in window)) {
+        setVoiceStatus('Speech playback is not available in this browser.');
+        return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(lastDarijaText);
+    const locales = { en: 'en-US', fr: 'fr-FR', es: 'es-ES', de: 'de-DE', it: 'it-IT', ar: 'ar', darija: 'ar-MA' };
+    utterance.lang = locales[lastVoiceTargetLang] || 'ar-MA';
+    const prefix = utterance.lang.slice(0, 2).toLowerCase();
+    const matchingVoice = window.speechSynthesis.getVoices().find(voice => voice.lang.toLowerCase().startsWith(prefix));
+    if (matchingVoice) utterance.voice = matchingVoice;
+    utterance.onerror = () => setVoiceStatus('Could not play speech on this device.');
+    window.speechSynthesis.speak(utterance);
+}
+
+function retryVoiceTranslation() {
+    $('#voiceResult')?.classList.add('hidden');
+    setVoiceStatus('Tap the microphone and speak.');
+    startVoiceRecording();
 }
 
 function toggleVoiceRecording() {
@@ -1534,49 +1475,208 @@ function selectVoiceLanguage(langCode) {
         btn.classList.toggle('bg-[var(--accent-primary)]/15', isSelected);
     });
 
-    const phrase = VOICE_PREVIEW_PHRASES[langCode] || VOICE_PREVIEW_PHRASES.en;
-    const spokenEl = $('#voiceSampleSpoken');
-    const darijaArEl = $('#voiceSampleDarijaAr');
-    const darijaLatEl = $('#voiceSampleDarijaLat');
+    const targetSelect = $('#voiceTargetLang');
+    if (targetSelect) {
+        [...targetSelect.options].forEach(option => { option.disabled = option.value === langCode; });
+        if (currentVoiceTargetLang === langCode) currentVoiceTargetLang = 'darija';
+        targetSelect.value = currentVoiceTargetLang;
+    }
 
-    if (spokenEl) spokenEl.textContent = `"${phrase.spoken}"`;
-    if (darijaArEl) darijaArEl.textContent = phrase.darijaAr;
-    if (darijaLatEl) darijaLatEl.textContent = phrase.darijaLat;
+}
+
+function selectVoiceTargetLanguage(langCode) {
+    currentVoiceTargetLang = langCode;
 }
 
 // =============================================================================
-// 10c. PAGE LANGUAGE SWITCHER (EN / FR / DE / AR)
-//      UI only: choosing a language stores the choice and calls the hook below.
-//      No text is translated yet.
+// 10c. PAGE LANGUAGE SWITCHER (EN / FR / ES / DE / IT / AR)
 // =============================================================================
 const SITE_LANGUAGES = {
     en: { code: 'EN', name: 'English' },
     fr: { code: 'FR', name: 'Français' },
+    es: { code: 'ES', name: 'Español' },
     de: { code: 'DE', name: 'Deutsch' },
+    it: { code: 'IT', name: 'Italiano' },
     ar: { code: 'AR', name: 'العربية' }
 };
 let currentSiteLang = 'en';
 let langToastTimer = null;
+const pageOriginals = new Map();
+const pageTranslationCache = new Map();
+let pageTranslationRun = 0;
+let pageTranslationObserver = null;
+let pageMutationTimer = null;
 
-/**
- * ===========================================================================
- *  APERTUS INTEGRATION POINT — WHOLE-PAGE TRANSLATION
- *  Called every time the visitor picks a language in the navbar.
- *    targetLang : 'en' | 'fr' | 'de' | 'ar'
- *  What to do here once Apertus is connected:
- *    - translate the visible page text (headings, paragraphs, buttons, labels,
- *      destination cards, planner questions...) into targetLang
- *    - set document.documentElement.lang = targetLang
- *    - set document.documentElement.dir  = (targetLang === 'ar' ? 'rtl' : 'ltr')
- *  Return true when the page was translated.
- *  Return false/null to show the "coming soon" notice (current behaviour).
- * ===========================================================================
- */
-async function translatePageWithApertus(targetLang) {
+function pageCacheKey(lang, value) { return `${lang}\u0000${value}`; }
+
+function getPageCachedTranslation(lang, value) {
+    const key = pageCacheKey(lang, value);
+    if (pageTranslationCache.has(key)) return pageTranslationCache.get(key);
+    try {
+        const cached = localStorage.getItem(`mghrib_page_translation:${key}`);
+        if (cached) {
+            pageTranslationCache.set(key, cached);
+            return cached;
+        }
+    } catch (e) { /* storage unavailable */ }
     return null;
 }
 
-function showLangToast(message) {
+function setPageCachedTranslation(lang, value, translated) {
+    const key = pageCacheKey(lang, value);
+    pageTranslationCache.set(key, translated);
+    try { localStorage.setItem(`mghrib_page_translation:${key}`, translated); } catch (e) { /* cache is optional */ }
+}
+
+function ignoredTranslationElement(element) {
+    return !element || element.closest('script, style, noscript, template, code, pre, #langToggle, .lang-option, .lang-chip, .lang-name, #langCode, #langToast, [data-no-translate]');
+}
+
+function collectPageTranslations({ onlyUnknown = false } = {}) {
+    const entries = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+        if (ignoredTranslationElement(node.parentElement) || !node.nodeValue.trim() || !/[A-Za-z\u0600-\u06FF]/.test(node.nodeValue)) continue;
+        if (!pageOriginals.has(node)) pageOriginals.set(node, { kind: 'text', original: node.nodeValue });
+        const record = pageOriginals.get(node);
+        if (onlyUnknown && record.translated) continue;
+        entries.push({ node, record });
+    }
+    // These are UI strings; entered form values are deliberately never read or changed.
+    document.querySelectorAll('input[placeholder], textarea[placeholder], [aria-label], [title]').forEach(element => {
+        if (ignoredTranslationElement(element)) return;
+        for (const attr of ['placeholder', 'aria-label', 'title']) {
+            if (!element.hasAttribute(attr)) continue;
+            const value = element.getAttribute(attr);
+            if (!value?.trim()) continue;
+            let attributes = pageOriginals.get(element);
+            if (!attributes) { attributes = { kind: 'attributes', values: {} }; pageOriginals.set(element, attributes); }
+            if (!(attr in attributes.values)) attributes.values[attr] = value;
+            if (!onlyUnknown || !attributes.translated?.[attr]) entries.push({ element, attr, record: attributes, original: attributes.values[attr] });
+        }
+    });
+    return entries;
+}
+
+function restorePageOriginals() {
+    pageOriginals.forEach((record, target) => {
+        if (!target.isConnected) return;
+        if (record.kind === 'text') target.nodeValue = record.original;
+        else Object.entries(record.values).forEach(([attr, value]) => target.setAttribute(attr, value));
+        record.translated = null;
+    });
+}
+
+function setPageEntry(entry, value, lang) {
+    if (entry.node) {
+        entry.node.nodeValue = value;
+        entry.record.translated = lang;
+    } else {
+        entry.element.setAttribute(entry.attr, value);
+        entry.record.translated ||= {};
+        entry.record.translated[entry.attr] = lang;
+    }
+}
+
+async function requestPageTranslationBatch(lang, entries, runId) {
+    const pending = [];
+    const results = new Array(entries.length);
+    entries.forEach((entry, index) => {
+        const original = entry.original ?? entry.record.original ?? entry.record.values[entry.attr];
+        const cached = getPageCachedTranslation(lang, original);
+        if (cached !== null) results[index] = cached;
+        else pending.push({ index, text: original });
+    });
+    const requestBatches = [];
+    let requestBatch = [];
+    let requestChars = 0;
+    for (const item of pending) {
+        if (requestBatch.length >= 60 || requestChars + item.text.length > 12000) {
+            if (requestBatch.length) requestBatches.push(requestBatch);
+            requestBatch = [];
+            requestChars = 0;
+        }
+        requestBatch.push(item);
+        requestChars += item.text.length;
+    }
+    if (requestBatch.length) requestBatches.push(requestBatch);
+    for (const batch of requestBatches) {
+        if (runId !== pageTranslationRun) return false;
+        const response = await fetch('/api/translate', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ targetLanguage: lang, items: batch.map(item => item.text) })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || `Translation request failed (${response.status})`);
+        if (!Array.isArray(payload.translations) || payload.translations.length !== batch.length || payload.translations.some(value => typeof value !== 'string')) {
+            throw new Error('Translation provider returned an invalid response');
+        }
+        batch.forEach((item, index) => {
+            results[item.index] = payload.translations[index];
+            setPageCachedTranslation(lang, item.text, payload.translations[index]);
+        });
+    }
+    if (runId !== pageTranslationRun) return false;
+    entries.forEach((entry, index) => setPageEntry(entry, results[index], lang));
+    return true;
+}
+
+async function translatePageWithApertus(targetLang) {
+    const runId = ++pageTranslationRun;
+    restorePageOriginals();
+    document.documentElement.lang = targetLang;
+    document.documentElement.dir = targetLang === 'ar' ? 'rtl' : 'ltr';
+    if (targetLang === 'en') {
+        pageTranslationObserver?.observe(document.body, { childList: true, subtree: true });
+        return true;
+    }
+
+    const entries = collectPageTranslations();
+    const batches = [];
+    // Keep each request comfortably within the backend payload limit.
+    let batch = [];
+    let chars = 0;
+    for (const entry of entries) {
+        const original = entry.original ?? entry.record.original ?? entry.record.values[entry.attr];
+        if (batch.length >= 60 || chars + original.length > 12000) {
+            if (batch.length) batches.push(batch);
+            batch = [];
+            chars = 0;
+        }
+        batch.push(entry);
+        chars += original.length;
+    }
+    if (batch.length) batches.push(batch);
+    let nextBatch = 0;
+    const workers = Array.from({ length: Math.min(2, batches.length) }, async () => {
+        while (nextBatch < batches.length) {
+            const batch = batches[nextBatch++];
+            await requestPageTranslationBatch(targetLang, batch, runId);
+        }
+    });
+    await Promise.all(workers);
+    if (runId !== pageTranslationRun) return false;
+    pageTranslationObserver?.observe(document.body, { childList: true, subtree: true });
+    return true;
+}
+
+function observeNewPageText() {
+    if (!document.body || pageTranslationObserver) return;
+    pageTranslationObserver = new MutationObserver(() => {
+        if (currentSiteLang === 'en') return;
+        clearTimeout(pageMutationTimer);
+        pageMutationTimer = setTimeout(async () => {
+            const lang = currentSiteLang;
+            const entries = collectPageTranslations({ onlyUnknown: true });
+            if (!entries.length) return;
+            try { await requestPageTranslationBatch(lang, entries, pageTranslationRun); }
+            catch (error) { showLangToast('Some new page content could not be translated.'); }
+        }, 250);
+    });
+}
+
+function showLangToast(message, { persistent = false } = {}) {
     let toast = $('#langToast');
     if (!toast) {
         toast = document.createElement('div');
@@ -1589,7 +1689,7 @@ function showLangToast(message) {
     toast.textContent = message;
     toast.classList.add('show');
     if (langToastTimer) clearTimeout(langToastTimer);
-    langToastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    if (!persistent) langToastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
 }
 
 function setLangMenuOpen(open) {
@@ -1612,15 +1712,21 @@ async function selectSiteLanguage(langCode) {
     try { localStorage.setItem('maghrib_lang', langCode); } catch (e) { /* storage unavailable */ }
     updateLangUI();
     setLangMenuOpen(false);
+    showLangToast(langCode === 'en' ? 'Restoring English…' : `Translating to ${SITE_LANGUAGES[langCode].name}…`, { persistent: true });
 
     try {
         const translated = await translatePageWithApertus(langCode);
-        if (!translated && langCode !== 'en') {
-            showLangToast(`Translation to ${SITE_LANGUAGES[langCode].name} is coming soon.`);
-        }
+        if (translated) showLangToast(langCode === 'en' ? 'English restored.' : `Page translated to ${SITE_LANGUAGES[langCode].name}.`);
     } catch (err) {
-        console.error('Page translation failed:', err);
-        showLangToast('Translation failed. Please try again.');
+        if (langCode !== 'en' && currentSiteLang === langCode) {
+            restorePageOriginals();
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+            currentSiteLang = 'en';
+            try { localStorage.setItem('maghrib_lang', 'en'); } catch (e) { /* storage unavailable */ }
+            updateLangUI();
+        }
+        if (currentSiteLang === 'en' || currentSiteLang === langCode) showLangToast(err.message || 'Translation failed. Please try again.');
     }
 }
 
@@ -1633,6 +1739,7 @@ function initLanguageSwitcher() {
         if (saved && SITE_LANGUAGES[saved]) currentSiteLang = saved;
     } catch (e) { /* storage unavailable */ }
     updateLangUI();
+    observeNewPageText();
 
     toggle.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1644,6 +1751,10 @@ function initLanguageSwitcher() {
     document.addEventListener('click', (e) => {
         if (!e.target.closest('#langSwitcher')) setLangMenuOpen(false);
     });
+    if (currentSiteLang !== 'en') {
+        // Wait for initial page sections and destination cards to finish rendering.
+        setTimeout(() => selectSiteLanguage(currentSiteLang), 0);
+    }
 }
 
 // Utility: Escape HTML
@@ -1746,6 +1857,9 @@ document.addEventListener('DOMContentLoaded', () => {
     $$('[data-open-voice]').forEach(btn => btn.addEventListener('click', openVoiceTranslator));
     $('#closeVoiceModal')?.addEventListener('click', closeVoiceTranslator);
     $('#voiceRecordBtn')?.addEventListener('click', toggleVoiceRecording);
+    $('#voiceSpeakBtn')?.addEventListener('click', speakTranslation);
+    $('#voiceRetryBtn')?.addEventListener('click', retryVoiceTranslation);
+    $('#voiceTargetLang')?.addEventListener('change', event => selectVoiceTargetLanguage(event.target.value));
     $$('.voice-lang-btn').forEach(btn => {
         btn.addEventListener('click', () => selectVoiceLanguage(btn.dataset.voiceLang));
     });
