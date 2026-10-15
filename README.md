@@ -12,6 +12,7 @@ MghribAI is an AI-powered tourism project designed to help travelers explore Mor
 ### 🛠️ Technologies
 - HTML, CSS, JavaScript
 - Node.js
+- Python
 - Apertus AI
 
 ### 🏆 Hackathon
